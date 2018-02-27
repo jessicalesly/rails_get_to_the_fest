@@ -1,0 +1,60 @@
+<h1>Matches#results</h1>
+<p>Find me in app/views/matches/results.html.erb</p>
+
+<h2>Followed artists</h2>
+<ul>
+  <% @followed_artists.each do |followed_artist| %>
+    <li>
+      <%= followed_artist.name %>, related to:
+      <% followed_artist.related_artists.each do |related_artist| %>
+        <%= related_artist.name %>,
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Top artists</h2>
+<ul>
+  <% @top_artists.each do |artist|%>
+    <li>
+      <%= artist.name %>, related to :
+      <% artist.related_artists.each do |related_artist| %>
+        <%= related_artist.name %>,
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h1> Saved tracks 10</h1>
+<ul>
+  <% @saved_tracks_10.each do |saved_track|%>
+    <li>
+      <%= saved_track.name %>, artists :
+      <% saved_track.artists.each do |artist| %>
+        <%= artist.name %>,
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Top tracks</h2>
+<ul>
+  <% @top_tracks.each do |track|%>
+    <li><%= track.name %>, artists :
+      <% track.artists.each do |artist| %>
+        <%= artist.name %>,
+      <% end %></li>
+  <% end %>
+</ul>
+
+<h1> Saved albums 10</h1>
+<ul>
+  <% @saved_albums_10.each do |saved_album|%>
+    <li>
+      <%= saved_album.name %>, artists :
+      <% saved_album.artists.each do |artist| %>
+        <%= artist.name %>,
+      <% end %>
+    </li>
+  <% end %>
+</ul>

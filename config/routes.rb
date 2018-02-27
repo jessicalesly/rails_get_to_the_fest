@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/results', to: 'matches#results', as: :match_path
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
