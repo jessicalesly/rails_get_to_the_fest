@@ -1,0 +1,66 @@
+.white-container-results{
+  background-color: #F4F4F4;
+  height: 200vh;
+}
+.yellow-container-results{
+  padding-top: 10px;
+  background: linear-gradient(135deg,
+    #F4F4F4 50%,
+    #F7A629 0%) fixed no-repeat bottom right;
+  /*background-color: #F7A629;*/
+  height: 200vh;
+}
+.card-black{
+  margin: 0 220px 0 220px;
+  border-radius: 50px 0px 50px 0;
+  box-shadow: 5px 5px 5px #624210;
+  background-color: black;
+  height: 300px;
+  margin-top:100px;
+  position:relative;
+}
+.card-date{
+  position: absolute;
+  width: 70px;
+  top: 30px;
+  right:80px;
+}
+
+.card-date .month{
+  color:white;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+.card-date .day {
+  font-family: 'Plaster', cursive;
+  color: #F9CE00;
+  font-size:30px;
+  margin-top: 0;
+}
+#title-fest {
+  position: absolute;
+  font-family: 'Plaster', cursive;
+  top:15px;
+  left:60px;
+  color: #F9CE00;
+  font-size: 40px;
+}
+#title-place {
+  position: absolute;
+  top:100px;
+  left:60px;
+}
+#city{
+  font-size: 20px;
+}
+#country {
+  font-size: 20px;
+}
+.title-affinity {
+  position: absolute;
+  font-size: 20px;
+  /*font-family: 'Plaster', cursive;*/
+  top:150px;
+  left:60px;
+  color: #F9CE00;
+}

@@ -1,7 +1,7 @@
 /* Main navbar */
-.navbar-wagon {
+.navbar-gttf {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background: black;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
@@ -11,47 +11,46 @@
 }
 
 /* Logo */
-.navbar-wagon-brand img {
+.navbar-gttf-brand img {
   height: 50px;
 }
 
 /* User Avatar */
-.navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
+.navbar-gttf .avatar {
+  height: 30px;
+  width: 20px;
 }
 
 /* Right section */
-.navbar-wagon-right {
+.navbar-gttf-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 /* Basic navbar item */
-.navbar-wagon-item {
+.navbar-gttf-item {
   cursor: pointer;
   padding: 0 20px;
 }
 
 /* Navbar link */
-.navbar-wagon-link {
-  color: #616668;
+.navbar-gttf-link {
+  color: #F9CE00;
   font-size: 14px;
 }
-.navbar-wagon-link:hover {
-  color: #da552f;
+.navbar-gttf-link:hover {
+  color: #F7A629;
   text-decoration: none;
 }
 
 /* Dropdown menu */
-.navbar-wagon-dropdown-menu {
+.navbar-gttf-dropdown-menu {
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }
-.navbar-wagon-dropdown-menu li > a {
+.navbar-gttf-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
   color: #999999 !important;
@@ -59,11 +58,11 @@
   line-height: 22px !important;
   padding: 10px 20px;
 }
-.navbar-wagon-dropdown-menu li > a:hover {
+.navbar-gttf-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
 }
-.navbar-wagon-dropdown-menu:before {
+.navbar-gttf-dropdown-menu:before {
   content: ' ';
   height: 10px;
   width: 10px;

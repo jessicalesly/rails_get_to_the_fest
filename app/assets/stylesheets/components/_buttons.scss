@@ -1,13 +1,18 @@
 .btn-get {
-  color: #080f26;
+  color: black;
   font-size: 20px;
   border-radius: 10px 0px 10px 0;
   padding: 10px 15px;
   font-weight: bolder;
   background-color: #F9CE00;
-  width:140px;
-  height: 70px;
+  width:180px;
+  height: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
+  // &:hover {
+  //   text-decoration: none;
+  //   color: black;
+  //   opacity: 0.40;
+  // }
 }
