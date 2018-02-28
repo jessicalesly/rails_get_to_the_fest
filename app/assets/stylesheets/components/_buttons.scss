@@ -5,14 +5,36 @@
   padding: 10px 15px;
   font-weight: bolder;
   background-color: #F9CE00;
-  width:180px;
-  height: 75px;
+  width:170px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  // &:hover {
-  //   text-decoration: none;
-  //   color: black;
-  //   opacity: 0.40;
-  // }
+  text-decoration: none;
+}
+
+.btn-get:link {
+  color: black;
+  text-decoration: none;
+}
+
+.btn-get:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.btn-get:hover {
+  color: black;
+  text-decoration: none;
+  .btn-get-text {
+    opacity: 0.70;
+  }
+}
+
+.btn-get:active {
+  color: black;
+  text-decoration: none;
+  .btn-get-text {
+    opacity: 0.70;
+  }
 }
