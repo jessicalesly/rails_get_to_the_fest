@@ -84,6 +84,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-md-6 col-md-offset-3">
             <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
           </div>
@@ -103,6 +104,22 @@
       <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
   </div>
+
+<h1>Recommended festivals</h1>
+<ul>
+  <% @festival_hash.each do |festival_name, festival_hash|  %>
+  <li>
+    <h3><%= festival_name %></h3>
+    <% if festival_hash[:followed] %>
+      <p> <%= festival_hash[:followed].count %> followed artists : <%= festival_hash[:followed] %> </p>
+    <% end %>
+    <% if festival_hash[:related] %>
+      <p> <%= festival_hash[:related].count %> related artists : <%= festival_hash[:related] %> </p>
+      <% end %>
+  </li>
+  <% end %>
+</ul>
+
 
 <h2>Followed artists</h2>
 <ul>
