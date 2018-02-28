@@ -11,6 +11,43 @@ class MatchesController < ApplicationController
 
     @festival_hash = {}
 
+    #Creation of 3 arrays Top_artists, Top_tracks_artists, Related_artists
+    @top_artists_array = []
+    @top_artists.each do |top_artist|
+      @top_artists_array << top_artist.name
+    end
+
+    @top_tracks_artists_array = []
+    @top_tracks.each do |top_track|
+      top_track.artists.map do |artist|
+        @top_tracks_artists_array << artist.name unless @top_artists_array.include?(artist.name)
+      end
+    end
+
+    @related_artists_array = []
+    @top_artists.each do |top_artist|
+      top_artist.related_artists.each do |related_artist|
+        @related_artists_array << related_artist.name unless ( @top_artists_array.include?(related_artist.name) || @top_tracks_artists_array.include?(related_artist.name) )
+      end
+    end
+
+    @top_tracks.each do |top_track|
+      top_track.artists.each do |artist|
+        artist.related_artists.each do |related|
+          @related_artists_array << related.name unless ( @top_artists_array.include?(related.name) || @top_tracks_artists_array.include?(related.name) )
+        end
+      end
+    end
+    #Remove duplicates de chaque liste
+    # @top_artists_array.uniq!
+    # @top_tracks_artists_array.uniq!
+    # @related_artists_array.uniq!
+
+
+
+
+
+
     @followed_artists.each do |followed_artist|
       artist_db = Artist.find_by(name: followed_artist.name)
       if artist_db
@@ -49,16 +86,6 @@ class MatchesController < ApplicationController
         end
       end
 
-    end
-
-    @top_tracks.each do |top_track|
-      top_track.artists do |top_track_artist|
-        #appeler fonction qui ajoute des festivals où passent chaque top_tack_artist ou ses related artists
-      end
-    end
-
-    @top_artists.each do |top_artist|
-      #appeler fonction qui ajoute des festivals où passent chaque top_artist ou ses related artists
     end
 
 
