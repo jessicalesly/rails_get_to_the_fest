@@ -84,6 +84,31 @@
               </div>
             </div>
           </div>
+
+          <%# @festival_hash.each do |festival_name, festival_hash|  %>
+            <!-- <div class="col-md-12">
+              <div class="card-black">
+                <h2 id="title-fest"><%= festival_name %></h2>
+                <div id="title-place">
+                  <div class="flex-align-colle">
+                    <h2 id="city">Boulogne</h2>
+                    <h2 class="text-bold" id="country">/ FRANCE</h2>
+                  </div>
+                </div>
+                <div class="title-affinity">
+                  <h2 style="font-size: 40px">60%</h2>d'affinité
+                </div>
+                <div class="card-date">
+                  <h3 class="month">November</h3>
+                  <h2 class="day">14</h2>
+                  <h3 style="color:white; margin:0; font-weight:bold">>></h3>
+                  <h3 class ="month">November</h3>
+                  <h2 class="day">15</h2>
+                </div>
+              </div>
+            </div>
+          <%# end %> -->
+
           <div class="col-md-6 col-md-offset-3">
             <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
           </div>
@@ -103,6 +128,22 @@
       <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
   </div>
+
+<h1>Recommended festivals</h1>
+<ul>
+  <% @festival_hash.each do |festival_name, festival_hash|  %>
+  <li>
+    <h3><%= festival_name %></h3>
+    <% if festival_hash[:followed] %>
+      <p> <%= festival_hash[:followed].count %> followed artists : <%= festival_hash[:followed] %> </p>
+    <% end %>
+    <% if festival_hash[:related] %>
+      <p> <%= festival_hash[:related].count %> related artists : <%= festival_hash[:related] %> </p>
+      <% end %>
+  </li>
+  <% end %>
+</ul>
+
 
 <h2>Followed artists</h2>
 <ul>
