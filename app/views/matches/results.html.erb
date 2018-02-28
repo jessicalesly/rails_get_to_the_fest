@@ -38,6 +38,46 @@
     </div>
 
 
+<!-- Beginning of the filtered menu -->
+
+
+<!-- <div class="container">
+ -->  <div>
+    <div class="background-filter hidden" id="search-filter">
+      <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control filter_style",
+            placeholder: "Date" %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control filter_style",
+          placeholder: "Localisation" %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control filter_style",
+          placeholder: "Genre" %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control filter_style",
+          placeholder: "Artiste" %>
+        <%= submit_tag 'Rechercher', class: 'button-search' %>
+      <% end %>
+    </div>
+    <div>
+      <div id="nav-icon2" onclick="myFunction()" class>
+        <div id="filterResult">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- End of the filtered menu -->
 
     <div class="yellow-container-results">
       <div class="container">
