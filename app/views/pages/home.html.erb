@@ -1,59 +1,40 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "Sign in with Spotify", omniauth_authorize_path(:user, :spotify) %>
-
-<html>
-
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Get to the fest</title>
-    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Faster+One|Holtwood+One+SC|Monoton|Plaster|Righteous|Shrikhand|Ultra" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-
-  <body>
-    <div class="black-container">
-      <div class="title-container-img">
-        <div class="title-container-linear">
-          <div class="flex-align-colle">
-            <h2>A SIMPLE TOOL TO FIND FESTIVALS <strong>/ FITTING WITH YOUR MUSICAL TASTES</strong></h2>
-          </div>
-          <div class="main-title">
-          <h1>GET TO THE</h1>
-          <h1>FEST</h1>
-          </div>
-          <div class="left">
-            <p>Discover festivals you could like by matching artists you follow on Spotify - It's really simple, all you have to do is to click below</p>
-          </div>
-          <br>
-          <br>
-          <div class="btn-get">Let's go</div>
-          <!-- <img src="images/roc.png" alt=""> -->
-        </div>
+<div class="black-container">
+  <div class="title-container-img">
+    <div class="title-container-linear">
+      <div class="flex-align-colle">
+        <h2>A SIMPLE TOOL TO FIND FESTIVALS <strong>/ FITTING WITH YOUR MUSICAL TASTES</strong></h2>
       </div>
-      <div class="title-container">
-        <div class="left">
-          <p></p>
-        </div>
+      <div class="main-title">
+      <h1>GET TO THE</h1>
+      <h1>FEST</h1>
       </div>
-    </div>
-  </body>
-
-  <div class="footer">
-    <div class="footer-copyright">
-      Follow us <i class="fa fa-headphones" aria-hidden="true"></i>
-    </div>
-    <div class="footer-links">
-      <a href="#"><i class="fa fa-github"></i></a>
-      <a href="#"><i class="fa fa-instagram"></i></a>
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <div class="left">
+        <p>Discover festivals you could like by matching artists you follow on Spotify - It's really simple, all you have to do is to click below</p>
+      </div>
+      <br>
+      <br>
+        <%= link_to omniauth_authorize_path(:user, :spotify), class: "btn-get" do %>
+        <span class="btn-get-text"><i class="fab fa-spotify"></i>Connect</span>
+        <% end %>
+      <!-- <img src="images/roc.png" alt=""> -->
     </div>
   </div>
+  <div class="title-container">
+    <div class="left">
+      <p></p>
+    </div>
+  </div>
+</div>
 
-</html>
+<div class="footer">
+<div class="footer-copyright">
+  Follow us <i class="fa fa-headphones" aria-hidden="true"></i>
+</div>
+<div class="footer-links">
+  <a href="#"><i class="fab fa-github"></i></a>
+  <a href="#"><i class="fab fa-instagram"></i></a>
+  <a href="#"><i class="fab fa-facebook"></i></a>
+  <a href="#"><i class="fab fa-twitter"></i></a>
+  <a href="#"><i class="fab fa-linkedin"></i></a>
+</div>
+</div>

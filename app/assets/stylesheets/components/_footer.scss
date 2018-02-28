@@ -29,3 +29,45 @@
 .footer-copyright {
   font-size: 20px;
 }
+
+.footer-results {
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: #F9CE00;
+}
+.footer-links-results {
+  display: flex;
+  align-items: center;
+}
+.footer-links-results a {
+  color: #F9CE00;
+  opacity: 0.60;
+  text-decoration: none;
+  font-size: 30px;
+  padding: 0px 10px;
+}
+.footer-links-results a:hover {
+  color: #F9CE00;
+  opacity: 1;
+}
+.footer .fa-headphones {
+  color: #F9CE00;
+}
+
+.footer-copyright-results {
+  font-size: 20px;
+}
+
+.footer-copyright-results-text {
+  opacity: 0.60;
+  margin-right: 8px;
+}
+
+.footer-copyright-results-head {
+  opacity: 1;
+}
+
