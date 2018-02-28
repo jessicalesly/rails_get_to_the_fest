@@ -9,9 +9,10 @@ class User < ApplicationRecord
     # rspotify_user = RSpotify::User.new(auth)
     user = User.find_by(provider: auth.provider, uid: auth.uid)
     user_music_hash = {}
-    if user
-      # user.music_hash = user_music_hash
-    else
+    if user #updating the authentification hash # updating user's hash for rspotify requests
+      spotify_user = RSpotify::User.new(auth)
+      user.spotify_hash = spotify_user.to_hash
+    else # setting up a new user
       spotify_user = RSpotify::User.new(auth)
       user = User.new(email: auth.info.email)
       user.token = auth.token
@@ -25,6 +26,6 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
       user.save!
     end
-    return user
+    return user #returning user for omniauth controller
   end
 end
