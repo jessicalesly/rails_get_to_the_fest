@@ -84,59 +84,80 @@
   <div class="yellow-container-results">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <div class="card-black">
-            <!-- Front of the card -->
-            <div class="front">
-              <div class="pad">
-                <h2 id="title-fest">Main Square Festival</h2>
-                <div id="title-place">
-                  <div class="flex-align-colle">
-                    <h2 id="city">Arras</h2>
-                    <h2 class="text-bold" id="country">/ FRANCE</h2>
+        <% counter = 0 %>
+        <% animal_counter = 0 %>
+        <% @festival_hash.each do |festival_name, festival_hash|  %>
+          <% counter += 1 %>
+          <% @score = festival_hash[:top_artists].count * 5 + festival_hash[:top_tracks_artists].count * 3 + festival_hash[:related_artists].count %>
+          <div class="col-md-8 col-md-offset-2">
+            <div class="card-black">
+              <!-- Front of the card -->
+              <div class="front">
+                <div class="pad">
+                  <h2 id="title-fest"><%= festival_name %></h2>
+                  <div id="title-place">
+                    <div class="flex-align-colle">
+                      <h2 id="city"><%= festival_hash[:location].first %></h2>
+                      <h2 class="text-bold" id="country">/ <%= festival_hash[:location].last.upcase %></h2>
+                    </div>
                   </div>
-                </div>
-                <div class="title-affinity">
-                  <h2 style="font-size: 40px">87%</h2>d'affinité
-                </div>
-                <div class="card-date">
-                  <h3 class="month">July</h3>
-                  <h2 class="day">24</h2>
-                  <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month">July</h3>
-                  <h2 class="day">26</h2>
+                  <div class="title-affinity">
+                    <h2 style="font-size: 40px"><%= @score * 2 %>%</h2>d'affinité
+                  </div>
+                  <div class="card-date">
+                    <h3 class="month"><%= ( festival_hash[:date].first + 1.month).strftime("%B") %></h3>
+                    <h2 class="day"><%= festival_hash[:date].first.day %></h2>
+                    <h3 style="color:white; margin:0; font-weight:bold">>></h3>
+                    <h3 class ="month"><%= ( festival_hash[:date].last + 1.month).strftime("%B") %></h3>
+                    <h2 class="day"><%= festival_hash[:date].last.day %></h2>
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- Back of the card -->
-            <div class="back">
-              <div class="pad">
-                <div id="desc-fest">
-                  <div class="desc-flex-align-colle">
-                    <p id="desc">Le Main Square Festival est un festival de musique qui se déroule à la citadelle d'Arras. Il se caractérise par une programmation internationale et une rivalité avec le festival des Eurockéennes. Le festival fêtera cette année ses 15 ans</p>
+              <!-- Back of the card -->
+              <div class="back">
+                <div class="pad">
+                  <div id="desc-fest">
+                    <div class="desc-flex-align-colle">
+                      <p id="desc"> <%= festival_hash[:desc] %> </p>
+                    </div>
                   </div>
-                </div>
-                <div class="content-flexbox">
+                  <div class="content-flexbox">
 
-                  <div class="artists-top text-center">
-                    <div class="artists-top-number">8</div>
-                    <div class="artists-top-desc">artists you like</div>
-                  </div>
-                  <div class="artists-recently-listened text-center">
-                    <div class="artists-recently-listened-number">7</div>
-                    <div class="artists-recently-listened-desc">artists recently listened</div>
-                  </div>
-                  <div class="artists-you-could-like text-center">
-                    <div class="artists-you-could-like-number">10</div>
-                    <div class="artists-you-could-like-desc">artists you could like</div>
-                  </div>
+                    <div class="artists-top text-center">
+                      <div class="artists-top-number"><%= festival_hash[:top_artists].count %></div>
+                      <div class="artists-top-desc">from your top artists</div>
+                    </div>
+                    <div class="artists-recently-listened text-center">
+                      <div class="artists-recently-listened-number"><%= festival_hash[:top_tracks_artists].count%></div>
+                      <div class="artists-recently-listened-desc">from your recently listened artists</div>
+                    </div>
+                    <div class="artists-you-could-like text-center">
+                      <div class="artists-you-could-like-number"><%= festival_hash[:related_artists].count %></div>
+                      <div class="artists-you-could-like-desc">artists you could like</div>
+                    </div>
 
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- End of the festival card -->
+          <!-- End of the festival card -->
+
+          <!-- Renard logo -->
+          <% if counter%2 == 0 %>
+            <% animal_counter +=1 %>
+            <% if animal_counter%2 == 0 %>
+              <div class="col-md-6 col-md-offset-3">
+                <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
+              </div>
+            <% else %>
+              <div class="col-md-4 col-md-offset-4">
+                <img src="<%=image_path('suricate.png')%>" style="margin-top:90px;" alt="">
+              </div>
+            <% end %>
+          <% end %>
+
+        <% end %>
         <div class="col-md-8 col-md-offset-2">
           <div class="card-black">
             <div class="front">
