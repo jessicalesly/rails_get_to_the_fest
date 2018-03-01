@@ -10,14 +10,11 @@
   /*background-color: #F7A629;*/
   height: 200vh;
 }
-.card-black{
-  border-radius: 50px 0px 50px 0;
-  box-shadow: 5px 5px 5px #624210;
-  background-color: black;
-  height: 300px;
-  margin-top:100px;
-  position:relative;
-}
+// .card-black {
+//   height: 300px;
+//   margin-top:100px;
+//   position:relative;
+// }
 .card-date{
   position: absolute;
   width: 70px;
@@ -50,7 +47,7 @@
   left:60px;
 }
 #city{
-  font-size: 20px;
+  font-size: 10px;
 }
 #country {
   font-size: 20px;
@@ -62,4 +59,84 @@
   top:150px;
   left:60px;
   color: #F9CE00;
+}
+
+#title-desc-fest {
+  position: absolute;
+  font-family: 'Plaster', cursive;
+  top:15px;
+  left:60px;
+  color: black;
+  font-size: 27px;
+}
+
+#desc-fest {
+  position: absolute;
+  top:84px;
+  left:60px;
+}
+
+.desc-flex-align-colle {
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+#desc{
+  font-size: 19px;
+  padding-right: 10%;
+}
+
+.artists-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.artists-top-number {
+  position: absolute;
+  top:195px;
+  left:150px;
+  color: black;
+  font-size: 30px;
+}
+
+.artists-top-desc {
+  position: absolute;
+  top:239px;
+  left:60px;
+  color: black;
+  font-size: 18px;
+}
+
+.artists-recently-listened-number {
+  position: absolute;
+  top:195px;
+  left:366px;
+  color: black;
+  font-size: 30px;
+}
+
+.artists-recently-listened-desc {
+  position: absolute;
+  top:239px;
+  left:275px;
+  color: black;
+  font-size: 18px;
+}
+
+.artists-you-could-like-number {
+  position: absolute;
+  top:195px;
+  left:566px;
+  color: black;
+  font-size: 30px;
+}
+
+.artists-you-could-like-desc {
+  position: absolute;
+  top:239px;
+  left:500px;
+  color: black;
+  font-size: 18px;
 }
