@@ -4,3 +4,4 @@ $(document).ready(function(){
     $('#search-filter').toggleClass('hidden');
   });
 });
+

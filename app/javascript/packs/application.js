@@ -1,6 +1,16 @@
 import "../plugins/flatpickr";
 import "bootstrap";
-import {burger} from '../components/burger';
-import { flip_cards } from '../components/flip_cards';
+import '../components/burger';
+import {flip_cards} from '../components/flip_cards';
+import { bindLoaderToSpotifyConnectButton } from '../components/loader';
 
-flip_cards()
+const spotifyConnectButton = document.getElementById('connect-spotify');
+if (spotifyConnectButton) {
+  bindLoaderToSpotifyConnectButton(spotifyConnectButton);
+}
+
+const cards_black = document.querySelectorAll(".card-black");
+if(cards_black) {
+  flip_cards();
+}
+

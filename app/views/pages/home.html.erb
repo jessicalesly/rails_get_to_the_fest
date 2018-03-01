@@ -1,3 +1,7 @@
+<div id="loader-container">
+  LOADER
+</div>
+
 <div class="black-container">
   <div class="title-container-img">
     <div class="title-container-linear">
@@ -13,7 +17,7 @@
       </div>
       <br>
       <br>
-        <%= link_to omniauth_authorize_path(:user, :spotify), class: "btn-get" do %>
+        <%= link_to omniauth_authorize_path(:user, :spotify), class: "btn-get", id: "connect-spotify" do %>
         <span class="btn-get-text"><i class="fab fa-spotify"></i>Connect</span>
         <% end %>
       <!-- <img src="images/roc.png" alt=""> -->
