@@ -1,4 +1,5 @@
 import "bootstrap";
+// import "hover";
 import {burger} from '../components/burger';
 import { flip_cards } from '../components/flip_cards';
 
