@@ -1,4 +1,25 @@
-.loader-container{
-  background-color: grey;
+#loader-container{
+  background-color: black;
   height: 100vh;
+}
+
+.loader-container-flex{
+  height:100vh;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  h2 {
+    color: #F9CE00;
+    font-size: 40px;
+    font-weight:bold;
+  }
+}
+
+svg.loader1{
+  width: 150px;
+  height: 250px;
+}
+
+svg {
+  visibility: hidden;
 }

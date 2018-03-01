@@ -1,3 +1,4 @@
+import "gsap";
 import "../plugins/flatpickr";
 import "bootstrap";
 import '../components/burger';
