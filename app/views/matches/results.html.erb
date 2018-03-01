@@ -43,16 +43,13 @@
 
 <!-- Beginning of the filtered menu -->
 
-
-<!-- <div class="container">
- -->
-<div>
-  <div class="background-filter hidden" id="search-filter">
-    <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
-      <%= text_field_tag :query,
-          params[:query],
-          class: "form-control filter_style",
-          placeholder: "Date" %>
+  <div>
+    <div class="background-filter hidden" id="search-filter">
+      <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control filter_style", id: "range_start",
+            placeholder: "Date" %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control filter_style",
