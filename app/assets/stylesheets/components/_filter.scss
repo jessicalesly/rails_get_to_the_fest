@@ -9,16 +9,25 @@
   width: 300px;
 }
 
+.searchbar-icon {
+  position: relative;
+}
+
+#nav-icon2{
+  position: absolute;
+  left: 10px;
+  bottom: -33px;
+}
 
 .background-filter {
   // margin: 15px;
   padding: 10px 50px;
   background: #F5A53A;
   border-radius: 0 0 0 10px;
-  transition: .5s ease-in-out;
   margin-top: -85px;
   position: relative;
   z-index: -1;
+  transition: all .5s ease-in-out;
   &.active {
     margin-top: 0;
   }
@@ -48,6 +57,7 @@
   width: 8em;
   margin-top: -2.5em;
 }
+
 
 // button search
 
