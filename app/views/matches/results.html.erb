@@ -214,9 +214,8 @@
   <li>
     <h3><%= festival_name %></h3>
       <% @score = festival_hash[:top_artists].count * 5 + festival_hash[:top_tracks_artists].count * 3 + festival_hash[:related_artists].count %>
-      <!-- <p>Score : @score </p> -->
       <p> Affinité : <%= @score * 2 %>% </p>
-
+      <p> <%= festival_hash[:date].first.year %> </p>
       <p> <%= festival_hash[:top_artists].count %> top artists : <%= festival_hash[:top_artists] %> pts </p>
       <p> <%= festival_hash[:top_tracks_artists].count %> top tracks artists : <%= festival_hash[:top_tracks_artists] %> </p>
       <p> <%= festival_hash[:related_artists].count %> related artists : <%= festival_hash[:related_artists] %> </p>

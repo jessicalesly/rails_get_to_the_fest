@@ -54,6 +54,8 @@ class MatchesController < ApplicationController
     @festivals.each do |festival_name|
       festival = Festival.where(name: festival_name).first
       @festival_hash[festival_name] = {
+        date: [DateTime.new(2018,2,3), DateTime.new(2018,7,8)],
+        location: ["Paris", "France"],
         top_artists: festival.artists.where("artists.name IN (?)", @top_artists_array).pluck(:name),
         top_tracks_artists: festival.artists.where("artists.name IN (?)", @top_tracks_artists_array).pluck(:name),
         related_artists: festival.artists.where("artists.name IN (?)", @related_artists_array).pluck(:name)
