@@ -86,15 +86,14 @@
       <div class="row">
         <% counter = 0 %>
         <% animal_counter = 0 %>
-        <% @festival_hash.each do |festival_name, festival_hash|  %>
+        <% @festival_array.each do |festival_hash|  %>
           <% counter += 1 %>
-          <% @score = festival_hash[:top_artists].count * 5 + festival_hash[:top_tracks_artists].count * 3 + festival_hash[:related_artists].count %>
           <div class="col-md-8 col-md-offset-2">
             <div class="card-black">
               <!-- Front of the card -->
               <div class="front">
                 <div class="pad">
-                  <h2 id="title-fest"><%= festival_name %></h2>
+                  <h2 id="title-fest"><%= festival_hash[:festival_name] %></h2>
                   <div id="title-place">
                     <div class="flex-align-colle">
                       <h2 id="city"><%= festival_hash[:location].first %></h2>
@@ -102,7 +101,7 @@
                     </div>
                   </div>
                   <div class="title-affinity">
-                    <h2 style="font-size: 40px"><%= @score * 2 %>%</h2>d'affinité
+                    <h2 style="font-size: 40px"><%= festival_hash[:score] %>%</h2>d'affinité
                   </div>
                   <div class="card-date">
                     <h3 class="month"><%= ( festival_hash[:date].first + 1.month).strftime("%B") %></h3>
@@ -129,7 +128,7 @@
                     </div>
                     <div class="artists-recently-listened text-center">
                       <div class="artists-recently-listened-number"><%= festival_hash[:top_tracks_artists].count%></div>
-                      <div class="artists-recently-listened-desc">from your recently listened artists</div>
+                      <div class="artists-recently-listened-desc">recently listened artists</div>
                     </div>
                     <div class="artists-you-could-like text-center">
                       <div class="artists-you-could-like-number"><%= festival_hash[:related_artists].count %></div>
@@ -241,9 +240,9 @@
 
 <h1>Recommended festivals</h1>
 <ul>
-  <% @festival_hash.each do |festival_name, festival_hash|  %>
+  <% @festival_array.each do |festival_hash|  %>
   <li>
-    <h3><%= festival_name %></h3>
+    <h3><%= festival_hash[:festival_name] %></h3>
       <% @score = festival_hash[:top_artists].count * 5 + festival_hash[:top_tracks_artists].count * 3 + festival_hash[:related_artists].count %>
       <p> Affinité : <%= @score * 2 %>% </p>
       <p> <%= festival_hash[:date].first.year %> </p>
@@ -251,79 +250,5 @@
       <p> <%= festival_hash[:top_tracks_artists].count %> top tracks artists : <%= festival_hash[:top_tracks_artists] %> </p>
       <p> <%= festival_hash[:related_artists].count %> related artists : <%= festival_hash[:related_artists] %> </p>
   </li>
-  <% end %>
-</ul>
-
-
-<h2>Followed artists</h2>
-<ul>
-  <% @followed_artists.each do |followed_artist| %>
-    <li>
-      <%= followed_artist.name %>, related to:
-      <% followed_artist.related_artists.each do |related_artist| %>
-        <%= related_artist.name %>,
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<h2>Top artists</h2>
-<ul>
-  <% @top_artists.each do |artist|%>
-    <li>
-      <%= artist.name %>, related to :
-      <% artist.related_artists.each do |related_artist| %>
-        <%= related_artist.name %>,
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<h2>Top tracks recent</h2>
-<ul>
-  <% @top_tracks_recent.each do |track|%>
-    <li><%= track.name %>, artists :
-      <% track.artists.each do |artist| %>
-        <%= artist.name %>,
-      <% end %></li>
-  <% end %>
-</ul>
-<h2>Top tracks medium</h2>
-<ul>
-  <% @top_tracks_medium.each do |track|%>
-    <li><%= track.name %>, artists :
-      <% track.artists.each do |artist| %>
-        <%= artist.name %>,
-      <% end %></li>
-  <% end %>
-</ul>
-<h2>Top tracks Long term</h2>
-<ul>
-  <% @top_tracks_long.each do |track|%>
-    <li><%= track.name %>, artists :
-      <% track.artists.each do |artist| %>
-        <%= artist.name %>,
-      <% end %></li>
-  <% end %>
-</ul>
-<h2>Top tracks ever</h2>
-<ul>
-  <% @top_tracks_recent.each do |track|%>
-    <li><%= track.name %>, artists :
-      <% track.artists.each do |artist| %>
-        <%= artist.name %>,
-      <% end %></li>
-  <% end %>
-</ul>
-
-<h1> Saved albums 10</h1>
-<ul>
-  <% @saved_albums_10.each do |saved_album|%>
-    <li>
-      <%= saved_album.name %>, artists :
-      <% saved_album.artists.each do |artist| %>
-        <%= artist.name %>,
-      <% end %>
-    </li>
   <% end %>
 </ul>
