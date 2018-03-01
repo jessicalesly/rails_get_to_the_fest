@@ -1,14 +1,16 @@
+function flip_cards() {
 
-const cards_black = document.querySelectorAll(".card-black")
-cards_black.forEach (function(card_black) {
-  card_black.addEventListener("click", (event) => {
-    event.currentTarget.classList.toggle("flip");
+  const cards_black = document.querySelectorAll(".card-black")
+  cards_black.forEach (function(card_black) {
+    card_black.addEventListener("click", (event) => {
+      event.currentTarget.classList.toggle("flip");
+    });
   });
-});
+}
+
+export { flip_cards };
 
 
-
-// function flip_cards() {
 //   const card = document.querySelector(".card-black")
 
 // card.addEventListener("click", (event) => {
@@ -23,4 +25,3 @@ cards_black.forEach (function(card_black) {
 
 // }
 
-// export { flip_cards };

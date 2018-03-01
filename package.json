@@ -5,10 +5,13 @@
     "@rails/webpacker": "^3.2.2",
     "bootstrap": "3",
     "flatpickr": "^4.3.2",
+    "gsap": "^1.20.4",
     "hover.css": "^2.2.1",
+
     "jquery": "^3.3.1"
   },
   "devDependencies": {
+    "webpack-cli": "^2.0.9",
     "webpack-dev-server": "^3.0.0"
   }
 }

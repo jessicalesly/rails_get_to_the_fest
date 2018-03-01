@@ -1,3 +1,17 @@
+<div id="loader-container">
+  <div class="loader-container-flex">
+    <svg class="loader1" fill="#FFF" height="80" viewBox="0 0 55 80" width="55" xmlns="http://www.w3.org/2000/svg">
+        <g transform="matrix(1 0 0 -1 0 80)">
+          <rect height="20" rx="3" width="10" style="fill: #F9CE00"></rect>
+          <rect height="80" rx="3" width="10" x="15" style="fill: #F9CE00"></rect>
+          <rect height="50" rx="3" width="10" x="30" style="fill: #F9CE00"></rect>
+          <rect height="30" rx="3" width="10" x="45" style="fill: #F9CE00"></rect>
+        </g>
+      </svg>
+      <h2>We are working, OK??</h2>
+  </div>
+</div>
+
 <div class="black-container">
   <div class="title-container-img">
     <div class="title-container-linear">
@@ -13,7 +27,7 @@
       </div>
       <br>
       <br>
-        <%= link_to omniauth_authorize_path(:user, :spotify), class: "btn-get" do %>
+        <%= link_to omniauth_authorize_path(:user, :spotify), class: "btn-get", id: "connect-spotify" do %>
         <span class="btn-get-text"><i class="fab fa-spotify"></i>Connect</span>
         <% end %>
       <!-- <img src="images/roc.png" alt=""> -->
