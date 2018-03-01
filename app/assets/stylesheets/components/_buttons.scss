@@ -38,3 +38,45 @@
     opacity: 0.70;
   }
 }
+
+
+.btn-get-tickets {
+  color: black;
+  font-size: 16px;
+  border-radius: 10px 0px 10px 0;
+  padding: 10px 15px;
+  background-color: #F9CE00;
+  width: 122px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.btn-get-tickets:link {
+  color: black;
+  text-decoration: none;
+}
+
+.btn-get-tickets:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.btn-get-tickets:hover {
+  color: black;
+  text-decoration: none;
+  .btn-get-tickets-text {
+    opacity: 0.70;
+  }
+}
+
+.btn-get-tickets:active {
+  color: black;
+  text-decoration: none;
+  .btn-get-text {
+    opacity: 0.70;
+  }
+}

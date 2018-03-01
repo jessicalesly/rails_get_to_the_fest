@@ -9,17 +9,19 @@
 
     <a href="" class="navbar-gttf-item navbar-gttf-link">Favorites</a>
     <a href="" class="navbar-gttf-item navbar-gttf-link">Settings</a>
-    <a href="" class="navbar-gttf-item navbar-gttf-link">Log out</a>
+    <%= link_to destroy_user_session_path, class: "navbar-gttf-item navbar-gttf-link", method: "delete" do %>
+      <%= t(".sign_out", default: "Log out") %>
+    <% end %>
 
   <!-- Profile picture with dropdown list -->
     <div class="navbar-gttf-item">
       <div class="dropdown">
         <img src="<%=image_path('rock-hand.png')%>" class="avatar dropdown-toggle" id="navbar-gttf-menu" data-toggle="dropdown">
-        <ul class="dropdown-menu dropdown-menu-right navbar-gttf-dropdown-menu">
+        <!-- <ul class="dropdown-menu dropdown-menu-right navbar-gttf-dropdown-menu">
           <li><a href="#">Profile</a></li>
           <li><a href="#">Dashboard</a></li>
           <li><a href="#">Log Out</a></li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </div>
@@ -27,12 +29,12 @@
   <!-- Dropdown appearing on mobile only -->
   <div class="navbar-gttf-item hidden-md hidden-lg">
     <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <!-- <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-gttf-dropdown-menu">
         <li><a href="#">Host</a></li>
         <li><a href="#">Trips</a></li>
         <li><a href="#">Messagese</a></li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </div>
@@ -43,171 +45,129 @@
 
 
 <!-- <div class="container">
- -->  <div>
-    <div class="background-filter hidden" id="search-filter">
-      <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
-        <%= text_field_tag :query,
-            params[:query],
-            class: "form-control filter_style",
-            placeholder: "Date" %>
-        <%= text_field_tag :query,
+ -->
+<div>
+  <div class="background-filter hidden" id="search-filter">
+    <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
+      <%= text_field_tag :query,
           params[:query],
           class: "form-control filter_style",
-          placeholder: "Localisation" %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control filter_style",
-          placeholder: "Genre" %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control filter_style",
-          placeholder: "Artiste" %>
-        <%= submit_tag 'Rechercher', class: 'button-search' %>
-      <% end %>
-    </div>
-    <div>
-      <div id="nav-icon2" onclick="myFunction()" class>
-        <div id="filterResult">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+          placeholder: "Date" %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control filter_style",
+        placeholder: "Localisation" %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control filter_style",
+        placeholder: "Genre" %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control filter_style",
+        placeholder: "Artiste" %>
+      <%= submit_tag 'Rechercher', class: 'button-search' %>
+    <% end %>
+  </div>
+  <div>
+    <div id="nav-icon2" onclick="myFunction()" class>
+      <div id="filterResult">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
   </div>
+</div>
 <!-- End of the filtered menu -->
 
-<!-- Begining of festival cards -->
-  <div class="yellow-container-results">
-    <div class="container">
-      <div class="row">
-        <% counter = 0 %>
-        <% animal_counter = 0 %>
-        <% @festival_array.each do |festival_hash|  %>
-          <% counter += 1 %>
-          <div class="col-md-8 col-md-offset-2">
-            <div class="card-black">
-              <!-- Front of the card -->
-              <div class="front">
-                <div class="pad">
-                  <h2 id="title-fest"><%= festival_hash[:festival_name] %></h2>
-                  <div id="title-place">
-                    <div class="flex-align-colle">
-                      <h2 id="city"><%= festival_hash[:location].first %></h2>
-                      <h2 class="text-bold" id="country">/ <%= festival_hash[:location].last.upcase %></h2>
-                    </div>
-                  </div>
-                  <div class="title-affinity">
-                    <h2 style="font-size: 40px"><%= festival_hash[:score] %>%</h2>d'affinité
-                  </div>
-                  <div class="card-date">
-                    <h3 class="month"><%= ( festival_hash[:date].first + 1.month).strftime("%B") %></h3>
-                    <h2 class="day"><%= festival_hash[:date].first.day %></h2>
-                    <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                    <h3 class ="month"><%= ( festival_hash[:date].last + 1.month).strftime("%B") %></h3>
-                    <h2 class="day"><%= festival_hash[:date].last.day %></h2>
-                  </div>
-                </div>
-              </div>
-              <!-- Back of the card -->
-              <div class="back">
-                <div class="pad">
-                  <div id="desc-fest">
-                    <div class="desc-flex-align-colle">
-                      <p id="desc"> <%= festival_hash[:desc] %> </p>
-                    </div>
-                  </div>
-                  <div class="content-flexbox">
+<!-- Results -->
+<div class="yellow-container-results">
+  <div class="container">
+    <div class="row">
 
-                    <div class="artists-top text-center">
-                      <div class="artists-top-number"><%= festival_hash[:top_artists].count %></div>
-                      <div class="artists-top-desc">from your top artists</div>
-                    </div>
-                    <div class="artists-recently-listened text-center">
-                      <div class="artists-recently-listened-number"><%= festival_hash[:top_tracks_artists].count%></div>
-                      <div class="artists-recently-listened-desc">recently listened artists</div>
-                    </div>
-                    <div class="artists-you-could-like text-center">
-                      <div class="artists-you-could-like-number"><%= festival_hash[:related_artists].count %></div>
-                      <div class="artists-you-could-like-desc">artists you could like</div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End of the festival card -->
-
-          <!-- Renard logo -->
-          <% if counter%2 == 0 %>
-            <% animal_counter +=1 %>
-            <% if animal_counter%2 == 0 %>
-              <div class="col-md-6 col-md-offset-3">
-                <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
-              </div>
-            <% else %>
-              <div class="col-md-4 col-md-offset-4">
-                <img src="<%=image_path('suricate.png')%>" style="margin-top:90px;" alt="">
-              </div>
-            <% end %>
-          <% end %>
-
-        <% end %>
+      <% counter = 0 %>
+      <% animal_counter = 0 %>
+      <% @festival_array.each do |festival_hash|  %>
+        <% counter += 1 %>
         <div class="col-md-8 col-md-offset-2">
           <div class="card-black">
+            <!-- Front of the card -->
             <div class="front">
               <div class="pad">
-                <h2 id="title-fest">CHORUS FESTIVAL</h2>
+                <h2 id="title-fest"><%= festival_hash[:festival_name] %></h2>
                 <div id="title-place">
                   <div class="flex-align-colle">
-                    <h2 id="city">Boulogne</h2>
-                    <h2 class="text-bold" id="country">/ FRANCE</h2>
+                    <h2 id="city"><%= festival_hash[:location].first %></h2>
+                    <h2 class="text-bold" id="country">/ <%= festival_hash[:location].last.upcase %></h2>
                   </div>
                 </div>
                 <div class="title-affinity">
-                  <h2 style="font-size: 40px">60%</h2>d'affinité
+                  <h2 style="font-size: 40px"><%= festival_hash[:score] %>%</h2>d'affinité
                 </div>
                 <div class="card-date">
-                  <h3 class="month">November</h3>
-                  <h2 class="day">14</h2>
+                  <h3 class="month"><%= ( festival_hash[:date].first + 1.month).strftime("%B") %></h3>
+                  <h2 class="day"><%= festival_hash[:date].first.day %></h2>
                   <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month">November</h3>
-                  <h2 class="day">16</h2>
+                  <h3 class ="month"><%= ( festival_hash[:date].last + 1.month).strftime("%B") %></h3>
+                  <h2 class="day"><%= festival_hash[:date].last.day %></h2>
                 </div>
               </div>
             </div>
+            <!-- Back of the card -->
             <div class="back">
               <div class="pad">
-                <h2 id="title-fest">BEJOUR</h2>
-                <div id="title-place">
-                  <div class="flex-align-colle">
-                    <h2 id="city">Dans ton bled</h2>
-                    <h2 class="text-bold" id="country">/ GROENLAND</h2>
+                <div id="desc-fest">
+                  <div class="desc-flex-align-colle">
+                    <p id="desc"> <%= festival_hash[:desc] %> </p>
                   </div>
                 </div>
-                <div class="title-affinity">
-                  <h2 style="font-size: 40px">12%</h2>d'affinité
+              </div>
+              <div class="content-flexbox">
+                <div class="artists-top text-center">
+                  <div class="artists-top-number"><%= festival_hash[:top_artists].count %></div>
+                  <div class="artists-top-desc">from your top artists</div>
                 </div>
-                <div class="card-date">
-                  <h3 class="month">October</h3>
-                  <h2 class="day">1</h2>
-                  <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month">September</h3>
-                  <h2 class="day">30</h2>
+                <div class="artists-recently-listened text-center">
+                  <div class="artists-recently-listened-number"><%= festival_hash[:top_tracks_artists].count%></div>
+                  <div class="artists-recently-listened-desc">recently listened artists</div>
+                </div>
+                <div class="artists-you-could-like text-center">
+                  <div class="artists-you-could-like-number"><%= festival_hash[:related_artists].count %></div>
+                  <div class="artists-you-could-like-desc">artists you could like</div>
+                </div>
+              </div>
+              <div class="content-flexbox2">
+                <div class="lunch-playlist">
+                  <span class="logo-playlist">></span>
+                  <span class="lunch-playlist-desc">Lunch playlist</span>
+                </div>
+                <div class="tickets-button">
+                  <div class="btn-get-tickets">Book tickets</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      <!-- Renard logo -->
-      <div class="col-md-6 col-md-offset-3">
-        <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
-      </div>
-      <!-- End of Renard logo -->
+
+        <!-- End of the festival card -->
+
+        <!-- Renard logo -->
+        <% if counter%2 == 0 %>
+          <% animal_counter +=1 %>
+          <% if animal_counter%2 == 0 %>
+            <div class="col-md-6 col-md-offset-3">
+              <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
+            </div>
+          <% else %>
+            <div class="col-md-4 col-md-offset-4">
+              <img src="<%=image_path('suricate.png')%>" style="margin-top:90px;" alt="">
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
