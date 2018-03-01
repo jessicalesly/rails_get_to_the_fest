@@ -43,8 +43,8 @@
 
 <!-- Beginning of the filtered menu -->
 
-  <div>
-    <div class="background-filter hidden" id="search-filter">
+  <div class= "searchbar-icon">
+    <div class="background-filter" id="search-filter">
       <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
         <%= text_field_tag :query,
             params[:query],
@@ -66,15 +66,8 @@
     <% end %>
   </div>
   <div>
-    <div id="nav-icon2" onclick="myFunction()" class>
-      <div id="filterResult">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div  id= "nav-icon2" onclick="myFunction()" class>
+        <i class="fas fa-search"></i>
     </div>
   </div>
 </div>
