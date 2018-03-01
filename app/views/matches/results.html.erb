@@ -9,7 +9,9 @@
 
     <a href="" class="navbar-gttf-item navbar-gttf-link">Favorites</a>
     <a href="" class="navbar-gttf-item navbar-gttf-link">Settings</a>
-    <a href="" class="navbar-gttf-item navbar-gttf-link">Log out</a>
+    <%= link_to destroy_user_session_path, class: "navbar-gttf-item navbar-gttf-link", method: "delete" do %>
+      <%= t(".sign_out", default: "Log out") %>
+    <% end %>
 
   <!-- Profile picture with dropdown list -->
     <div class="navbar-gttf-item">
@@ -80,10 +82,11 @@
   </div>
 <!-- End of the filtered menu -->
 
-<!-- Begining of festival cards -->
+<!-- Results -->
   <div class="yellow-container-results">
     <div class="container">
       <div class="row">
+        <!-- Begining of festival cards -->
         <div class="col-md-8 col-md-offset-2">
           <div class="card-black">
             <!-- Front of the card -->
@@ -117,7 +120,6 @@
                   </div>
                 </div>
                 <div class="content-flexbox">
-
                   <div class="artists-top text-center">
                     <div class="artists-top-number">8</div>
                     <div class="artists-top-desc">artists you like</div>
@@ -130,59 +132,73 @@
                     <div class="artists-you-could-like-number">10</div>
                     <div class="artists-you-could-like-desc">artists you could like</div>
                   </div>
-
+                </div>
+                <div class="content-flexbox2">
+                  <div class="lunch-playlist">
+                    <span class="logo-playlist">></span>
+                    <span class="lunch-playlist-desc">Lunch playlist</span>
+                  </div>
+                  <div class="tickets-button">
+                    <div class="btn-get-tickets">Book tickets</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <!-- End of the festival card -->
+        <!-- Begining of festival cards -->
         <div class="col-md-8 col-md-offset-2">
           <div class="card-black">
+            <!-- Front of the card -->
             <div class="front">
               <div class="pad">
-                <h2 id="title-fest">CHORUS FESTIVAL</h2>
+                <h2 id="title-fest">Main Square Festival</h2>
                 <div id="title-place">
                   <div class="flex-align-colle">
-                    <h2 id="city">Boulogne</h2>
+                    <h2 id="city">Arras</h2>
                     <h2 class="text-bold" id="country">/ FRANCE</h2>
                   </div>
                 </div>
                 <div class="title-affinity">
-                  <h2 style="font-size: 40px">60%</h2>d'affinité
+                  <h2 style="font-size: 40px">87%</h2>d'affinité
                 </div>
                 <div class="card-date">
-                  <h3 class="month">November</h3>
-                  <h2 class="day">14</h2>
+                  <h3 class="month">July</h3>
+                  <h2 class="day">24</h2>
                   <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month">November</h3>
-                  <h2 class="day">16</h2>
+                  <h3 class ="month">July</h3>
+                  <h2 class="day">26</h2>
                 </div>
               </div>
             </div>
+            <!-- Back of the card -->
             <div class="back">
               <div class="pad">
-                <h2 id="title-fest">BEJOUR</h2>
-                <div id="title-place">
-                  <div class="flex-align-colle">
-                    <h2 id="city">Dans ton bled</h2>
-                    <h2 class="text-bold" id="country">/ GROENLAND</h2>
+                <div id="desc-fest">
+                  <div class="desc-flex-align-colle">
+                    <p id="desc">Le Main Square Festival est un festival de musique qui se déroule à la citadelle d'Arras. Il se caractérise par une programmation internationale et une rivalité avec le festival des Eurockéennes. Le festival fêtera cette année ses 15 ans</p>
                   </div>
                 </div>
-                <div class="title-affinity">
-                  <h2 style="font-size: 40px">12%</h2>d'affinité
-                </div>
-                <div class="card-date">
-                  <h3 class="month">October</h3>
-                  <h2 class="day">1</h2>
-                  <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month">September</h3>
-                  <h2 class="day">30</h2>
+                <div class="content-flexbox">
+                  <div class="artists-top text-center">
+                    <div class="artists-top-number">8</div>
+                    <div class="artists-top-desc">artists you like</div>
+                  </div>
+                  <div class="artists-recently-listened text-center">
+                    <div class="artists-recently-listened-number">7</div>
+                    <div class="artists-recently-listened-desc">artists recently listened</div>
+                  </div>
+                  <div class="artists-you-could-like text-center">
+                    <div class="artists-you-could-like-number">10</div>
+                    <div class="artists-you-could-like-desc">artists you could like</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- End of the festival card -->
       <!-- Renard logo -->
       <div class="col-md-6 col-md-offset-3">
         <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
