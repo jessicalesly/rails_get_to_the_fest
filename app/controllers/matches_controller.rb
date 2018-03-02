@@ -66,7 +66,7 @@ class MatchesController < ApplicationController
     end
 
     @festival_array.each do |festival_hash|
-      festival_hash[:score] = 100 / 50 * (festival_hash[:top_artists].count * 5 + festival_hash[:top_tracks_artists].count * 3 + festival_hash[:related_artists].count)
+      festival_hash[:score] = 100 / 25 * (festival_hash[:top_artists].count * 5 + festival_hash[:top_tracks_artists].count * 3 + festival_hash[:related_artists].count)
     end
 
     @festival_array.sort_by! { |festival_hash| festival_hash[:score] }.reverse!
