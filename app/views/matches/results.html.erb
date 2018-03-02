@@ -43,16 +43,13 @@
 
 <!-- Beginning of the filtered menu -->
 
-
-<!-- <div class="container">
- -->
-<div>
-  <div class="background-filter hidden" id="search-filter">
-    <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
-      <%= text_field_tag :query,
-          params[:query],
-          class: "form-control filter_style",
-          placeholder: "Date" %>
+  <div class= "searchbar-icon">
+    <div class="background-filter" id="search-filter">
+      <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control filter_style", id: "range_start",
+            placeholder: "Date" %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control filter_style",
@@ -68,18 +65,11 @@
       <%= submit_tag 'Rechercher', class: 'button-search' %>
     <% end %>
   </div>
-  <div>
-    <div id="nav-icon2" onclick="myFunction()" class>
-      <div id="filterResult">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
+<!--   <div>
+ -->    <div  id= "nav-icon2">
+        <i class="fas fa-search"></i>
+<!--     </div>
+ -->  </div>
 </div>
 <!-- End of the filtered menu -->
 

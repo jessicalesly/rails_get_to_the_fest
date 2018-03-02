@@ -1,39 +1,68 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'rest-client'
+require 'json'
 
+# cleaning seeds
 
+p "Cleaning seed..."
 
+LineUp.destroy_all
+Festival.destroy_all
+Artist.destroy_all
 
+p "Finished cleaning seed"
 
+# finding all location with SK metro id in France
 
-# Artist.destroy_all
-puts "create artists..."
-artist_names = ["Lou Reed", "The Velvet Underground", "Television", "Iggy Pop", "The Modern Lovers", "John Cale", "PJ Harvey", "Nico", "Marianne Faithfull", "The Stooges", "Richard Hell", "New York Dolls", "Wire", "Suicide", "The Slits", "Nick Cave & The Bad Seeds", "La Femme", "Lescop", "Juniore", "Feu! Chatterton", "Flavien Berger", "Kid Francescoli", "Grand Blanc", "Fishbach", "Agar Agar", "Isaac Delusion", "Vendredi sur Mer", "The Pirouettes", "Sébastien Tellier", "Pépite", "Papooz", "Camp Claude", "Las Aves", "Polo & Pan", "L'Impératrice", "Frànçois & The Atlas Mountains", "Izia", "Skip the Use", "Eiffel", "Mademoiselle K.", "Luke", "Dionysos", "BB Brunes", "Deportivo", "Yodelice", "Brigitte", "Hyphen Hyphen", "Saez", "No One Is Innocent", "Hollysiz", "Mickey 3d", "Miossec", "Naïve New Beaters", "La Grande Sophie", "Cocoon", "AaRON", "Oldelaf", "Patti Smith"]
-artist_names.each do |artist_name|
-  Artist.create(name: artist_name)
+p "Beginning to map metroarea ids from Songkick..."
+
+city_page = 1 #iterate over this until totalEntries / 50
+total_entries = 1000
+sg_metroarea_ids = []
+until city_page > total_entries
+  cities = RestClient.get("http://api.songkick.com/api/3.0/search/locations.json?query=france&apikey=#{ENV["SONGKICK_API_KEY"]}&page=#{city_page}", {accept: :json})
+  cities = JSON.parse(cities)
+  total_entries = (cities["resultsPage"]["totalEntries"]/50).ceil
+  cities = cities["resultsPage"]["results"]["location"]
+  cities.each do |city|
+    unless sg_metroarea_ids.include?(city["metroArea"]["id"])
+      sg_metroarea_ids << city["metroArea"]["id"]
+    end
+  end
+  city_page += 1
 end
 
-# Festival.destroy_all
-puts "create festivals..."
-Festival.create(name: "Mainsquare festival")
-Festival.create(name: "Les femmes d'en mêlent")
-Festival.create(name: "Les vieilles charrues")
-Festival.create(name: "Le printemps de bourges")
-Festival.create(name: "Chorus Festival")
-Festival.create(name: "La vilette sonic")
+p "Finished mapping metroarea ids from Songkick"
 
-40.times do
-  lineup = LineUp.new()
-  puts "LineUp.new"
-  lineup.festival = Festival.find(1 + Random.rand(Festival.all.count))
-  puts lineup.festival.name
-  lineup.artist = Artist.find(1 + Random.rand(Artist.all.count))
-  puts lineup.artist.name
-  lineup.save!
-  puts"lineup saved"
+# iterating over festivals for a specific location
+
+sg_metroarea_ids.each do |sg_metroarea_id|
+  p "Seeding line-ups from metroarea #{sg_metroarea_id}..."
+  all_festivals = RestClient.get("http://api.songkick.com/api/3.0/events.json?apikey=#{ENV["SONGKICK_API_KEY"]}&location=sk:#{sg_metroarea_id}&type=festival", {accept: :json})
+  all_festivals = JSON.parse(all_festivals)
+  all_festivals = all_festivals["resultsPage"]["results"]["event"]
+  if all_festivals
+    all_festivals.each do |event|
+      unless event["performance"] == []
+        fest = Festival.new
+        fest.name = event["displayName"]
+        fest.start_date = event["start"]["date"]
+        fest.end_date = event["end"]["date"]
+        fest.city = event["venue"]["metroArea"]["displayName"]
+        fest.country = event["venue"]["metroArea"]["country"]["displayName"]
+        fest.save
+        event["performance"].each do |artists|
+          lineup = LineUp.new
+          lineup.festival = fest
+          if Artist.find_by(name: artists["artist"]["displayName"])
+            lineup.artist = Artist.find_by(name: artists["artist"]["displayName"])
+          else
+            Artist.create(name: artists["artist"]["displayName"])
+            lineup.artist = Artist.find_by(name: artists["artist"]["displayName"])
+          end
+          lineup.save
+        end
+      end
+    end
+  end
+  p "Finished seeding this metroarea"
 end
