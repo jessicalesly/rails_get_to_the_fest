@@ -111,7 +111,7 @@
               <div class="pad">
                 <div id="desc-fest">
                   <div class="desc-flex-align-colle">
-                    <p id="desc"> <%= festival_hash[:desc] %> </p>
+                    <p id="desc"> <%= festival_hash[:festival_name].capitalize %> has matched with the following artists: </p>
                   </div>
                 </div>
               </div>
@@ -128,6 +128,27 @@
                   <div class="artists-you-could-like-number"><%= festival_hash[:related_artists].count %></div>
                   <div class="artists-you-could-like-desc">artists you could like</div>
                 </div>
+              </div>
+              <div class="collapse-content-top">
+                <ul>
+                  <% festival_hash[:top_artists].each do |artist|%>
+                    <li> <%= artist %> </li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="collapse-content-saved">
+                <ul>
+                  <% festival_hash[:top_tracks_artists].each do |artist|%>
+                    <li> <%= artist %> </li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="collapse-content-related">
+                <ul>
+                  <% festival_hash[:related_artists].each do |artist|%>
+                    <li> <%= artist %> </li>
+                  <% end %>
+                </ul>
               </div>
               <div class="content-flexbox2">
                 <div class="lunch-playlist">
