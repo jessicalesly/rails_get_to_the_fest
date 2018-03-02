@@ -1,19 +1,19 @@
 function flip_cards() {
 
-  const artists_top_div_all = document.querySelectorAll('.collapse-content-top')
-  const artists_saved_div_all = document.querySelectorAll('.collapse-content-saved')
-  const artists_related_div_all = document.querySelectorAll('.collapse-content-related')
+  // const artists_top_div_all = document.querySelectorAll('.collapse-content-top')
+  // const artists_saved_div_all = document.querySelectorAll('.collapse-content-saved')
+  // const artists_related_div_all = document.querySelectorAll('.collapse-content-related')
 
 
-  artists_top_div_all.forEach (function(div){
-   div.style.display = "none";
-  });
-  artists_saved_div_all.forEach (function(div){
-   div.style.display = "none";
-  });
-  artists_related_div_all.forEach (function(div){
-   div.style.display = "none";
-  });
+  // artists_top_div_all.forEach (function(div){
+  //  div.style.display = "none";
+  // });
+  // artists_saved_div_all.forEach (function(div){
+  //  div.style.display = "none";
+  // });
+  // artists_related_div_all.forEach (function(div){
+  //  div.style.display = "none";
+  // });
 
 const cards_black = document.querySelectorAll(".card-black")
 cards_black.forEach (function(card_black) {

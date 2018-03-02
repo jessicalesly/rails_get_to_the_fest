@@ -53,10 +53,12 @@ class MatchesController < ApplicationController
 
     @festivals.each do |festival_name|
       festival = Festival.where(name: festival_name).first
+      start_date = DateTime.parse(festival.start_date)
+      end_date = DateTime.parse(festival.end_date)
       festival_hash = {
         festival_name: festival_name,
-        date: [Time.new(2018,2,3), Time.new(2018,7,8)],
-        location: ["Paris", "France"],
+        date: [Time.new(start_date.year,start_date.month,start_date.day), Time.new(end_date.year,end_date.month,end_date.day)],
+        location: [festival.city.capitalize, festival.country.capitalize],
         desc: "Le Main Square Festival est un festival de musique qui se déroule à la citadelle d'Arras. Il se caractérise par une programmation internationale et une rivalité avec le festival des Eurockéennes. Le festival fêtera cette année ses 15 ans",
         top_artists: festival.artists.where("artists.name IN (?)", @top_artists_array).pluck(:name),
         top_tracks_artists: festival.artists.where("artists.name IN (?)", @top_tracks_artists_array).pluck(:name),
