@@ -297,7 +297,7 @@
 </div>
 
 
-<h2>Top artist</h2>
+<!-- <h2>Top artist</h2>
  <p> <%= @top_artists_array %> </p>
 <br>
 <h2>Top tracks artists</h2>
@@ -305,20 +305,4 @@
 <br>
 <h2>Related artists</h2>
 <p><%= @related_artists_array %></p>
-
-
-
-<h1>Recommended festivals</h1>
-<ul>
-  <% @festival_array.each do |festival_hash|  %>
-  <li>
-    <h3><%= festival_hash[:festival_name] %></h3>
-      <% @score = festival_hash[:top_artists].count * 5 + festival_hash[:top_tracks_artists].count * 3 + festival_hash[:related_artists].count %>
-      <p> Affinité : <%= @score * 2 %>% </p>
-      <p> <%= festival_hash[:date].first.year %> </p>
-      <p> <%= festival_hash[:top_artists].count %> top artists : <%= festival_hash[:top_artists] %> pts </p>
-      <p> <%= festival_hash[:top_tracks_artists].count %> top tracks artists : <%= festival_hash[:top_tracks_artists] %> </p>
-      <p> <%= festival_hash[:related_artists].count %> related artists : <%= festival_hash[:related_artists] %> </p>
-  </li>
-  <% end %>
-</ul>
+ -->
