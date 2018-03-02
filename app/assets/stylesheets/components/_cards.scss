@@ -48,7 +48,7 @@
 }
 
 #city{
-  font-size: 10px;
+  font-size: 20px;
 }
 
 #country {
@@ -89,10 +89,15 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   top: 117px;
   left: 35px;
   height: 30%;
   width: 92%;
+}
+
+.artists-details {
+
 }
 
 .artists-top {
@@ -128,6 +133,12 @@
 .artists-you-could-like-desc {
   color: black;
   font-size: 18px;
+}
+
+.collapse-content-top, .collapse-content-saved, .collapse-content-related {
+  position: absolute;
+  top: 40px;
+  left: -300px;
 }
 
 .content-flexbox2 {
