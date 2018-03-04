@@ -117,7 +117,7 @@
               </div>
               <div class="content-flexbox">
                 <div class="artists-top text-center">
-                  <div class="artists-top-number"><%= festival_hash[:top_artists].count %></div>
+                  <div class="artists-top-number"><%= festival_hash[:top_artists].count + festival_hash[:saved_tracks_artists].count %></div>
                   <div class="artists-top-desc">from your top artists</div>
                 </div>
                 <div class="artists-recently-listened text-center">
@@ -132,6 +132,7 @@
               <div class="collapse-content-top">
                 <ul>
                   <% festival_hash[:top_artists].each do |artist|%>
+                  <!-- Ajouter les saved_tracks artists -->
                     <li> <%= artist %> </li>
                   <% end %>
                 </ul>
@@ -296,8 +297,8 @@
   </div>
 </div>
 
-
-<!-- <h2>Top artist</h2>
+<%= @premium %>
+<h2>Top artist</h2>
  <p> <%= @top_artists_array %> </p>
 <br>
 <h2>Top tracks artists</h2>
@@ -305,4 +306,14 @@
 <br>
 <h2>Related artists</h2>
 <p><%= @related_artists_array %></p>
- -->
+<h2>saved tracks artists</h2>
+<p> <%= @saved_tracks_artists_array %> </p>
+
+
+<h2>top artists offset 0</h2>
+ <%= @top_art_offset_0 %>
+ <img src=<%= "#{@top_art_offset_0.sample.images.first['url']}" %> alt="">
+<h2>top artists offset 1</h2>
+<%= @top_art_offset_1 %>
+<h2>tracks added at</h2>
+<%= @tracks_added_at %>
