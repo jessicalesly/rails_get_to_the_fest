@@ -1,9 +1,9 @@
 .main-title h1 {
   margin-top: 20px;
-  font-family: 'Plaster', cursive;
+  font-family: $title-font, cursive;
   color: #F9CE00;
   font-size: 70px;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .flex-align-colle {
@@ -13,14 +13,14 @@
 }
 
 .flex-align-colle h2 {
-  font-family: 'Montserra', sans-serif;
+  font-family: $body-font, sans-serif;
   font-size: 20px;
 }
 
 .text-bold {
   font-weight: bold;
   padding-left: 5px;
-  font-family: 'Montserra', sans-serif;
+  font-family: $body-font, sans-serif;
 }
 
 .black-container {

@@ -25,7 +25,7 @@
 }
 
 .card-date .day {
-  font-family: 'Plaster', cursive;
+  font-family: $headers-font, cursive;
   color: #F9CE00;
   font-size:30px;
   margin-top: 0;
@@ -33,7 +33,7 @@
 
 #title-fest {
   position: absolute;
-  font-family: 'Plaster', cursive;
+  font-family: $headers-font, cursive;
   top: 15px;
   left: 60px;
   color: #F9CE00;
