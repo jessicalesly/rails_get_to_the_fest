@@ -1,8 +1,7 @@
 class MatchesController < ApplicationController
   def results
-    @lists_hash = list_spotify_artists
     #List of festivals where there is at least one user's artist
-    @festivals = Festival.joins(line_ups: :artist).where("artists.name IN (?)", @lists_hash[:total]).distinct.pluck(:name)
+    @festivals = Festival.joins(line_ups: :artist).where("artists.name IN (?)", list_spotify_artists).distinct
 
     @festival_array = []
 
@@ -14,7 +13,6 @@ class MatchesController < ApplicationController
         festival_name: festival_name,
         date: [Time.new(start_date.year,start_date.month,start_date.day), Time.new(end_date.year,end_date.month,end_date.day)],
         location: [festival.city.capitalize, festival.country.capitalize],
-        desc: "Le Main Square Festival est un festival de musique qui se déroule à la citadelle d'Arras. Il se caractérise par une programmation internationale et une rivalité avec le festival des Eurockéennes. Le festival fêtera cette année ses 15 ans",
         top_artists: festival.artists.where("artists.name IN (?)", @lists_hash[:top_artists]).pluck(:name),
         top_tracks_artists: festival.artists.where("artists.name IN (?)", @lists_hash[:top_tracks]).pluck(:name),
         saved_tracks_artists: festival.artists.where("artists.name IN (?)", @lists_hash[:saved_tracks]).pluck(:name),
