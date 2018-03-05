@@ -42,4 +42,12 @@ class User < ApplicationRecord
     end
     return user #returning user for omniauth controller
   end
+
+  # def top_artists
+  #   SpotifyArtistsService.new(self.spotify_hash).top_artists
+  # end
+
+  # def top_artists_in(festival)
+  #   # retun artist name
+  # end
 end
