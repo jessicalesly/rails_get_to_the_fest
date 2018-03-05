@@ -1,7 +1,7 @@
 require 'rest-client'
 require 'json'
 
-# cleaning seeds
+cleaning seeds
 
 p "Cleaning seed..."
 
@@ -49,6 +49,7 @@ sg_metroarea_ids.each do |sg_metroarea_id|
         fest.end_date = event["end"]["date"]
         fest.city = event["venue"]["metroArea"]["displayName"]
         fest.country = event["venue"]["metroArea"]["country"]["displayName"]
+        fest.tickets_link = event["uri"]
         fest.save
         event["performance"].each do |artists|
           lineup = LineUp.new
@@ -64,5 +65,60 @@ sg_metroarea_ids.each do |sg_metroarea_id|
       end
     end
   end
-  p "Finished seeding this metroarea"
+  p "Finished seeding this metroarea"😀
 end
+
+###
+
+### GENERATING A PLAYLIST FOR EACH EVENT
+
+# Creating the RSpotify user instance that creates playlists
+admin = RSpotify::User.new(User.find_by(email: "gttf.lewagon@gmail.com").spotify_hash)
+
+# Iterating over festivals in DB
+
+ADMIN_PLAYLISTS = []
+counter = 0
+PLAYLIST_NAMES = []
+while admin.playlists(limit: 50, offset: counter).count > 0
+  ADMIN_PLAYLISTS = ADMIN_PLAYLISTS + admin.playlists(limit: 50, offset: counter)
+  counter += 50
+end
+ADMIN_PLAYLISTS.each { |playlist| PLAYLIST_NAMES << playlist.name }
+
+Festival.all.each do |festival|
+  if PLAYLIST_NAMES.include?(festival.name)
+    festival_playlists = ADMIN_PLAYLISTS.select { |playlist| playlist.name == festival.name }
+    spotify_playlist = festival_playlists.first.external_urls["spotify"]
+    festival.save
+  else
+    puts festival.name
+    puts "WARNING: New festival, consider generating playlist on @Spotify#gttf.lewagon@gmail.com"
+  end)
+end
+
+## PLAYLIST GENERATOR - DO NOT USE UNLESS YOU NEED TO GENERATE NEW PLAYLISTS
+## PLAYLISTS ARE AVAILABLE ON Spotify account gttf.lewagon@gmail.com
+
+# Festival.all.each do |festival|
+#   unless PLAYLIST_NAMES.include?(festival.name)
+#     p festival.name
+#     unless festival.artists.nil?
+#       artist_tracks = []
+#       festival.artists.pluck(:name).each do |artist|
+#         unless RSpotify::Track.search(artist, limit: 1).first == nil
+#           artist_track = RSpotify::Track.search(artist, limit: 1)
+#           artist_tracks << artist_track
+#         end
+#       end
+#       unless artist_tracks == []
+#         p festival.name
+#         festival_playlist = admin.create_playlist!(festival.name, public: true)
+#         festival_playlist.add_tracks!(artist_tracks.flatten)
+#         festival.playlist = festival_playlist.external_urls["spotify"]
+#         festival.save!
+#       end
+#     end
+#   end
+# end
+# p "Finished creating your playlists"
