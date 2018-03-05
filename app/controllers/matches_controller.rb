@@ -5,32 +5,29 @@ class MatchesController < ApplicationController
 
     @festival_array = []
 
-    @festivals.each do |festival_name|
-      festival = Festival.where(name: festival_name).first
-      start_date = DateTime.parse(festival.start_date)
-      end_date = DateTime.parse(festival.end_date)
-      festival_hash = {
-        festival_name: festival_name,
-        date: [Time.new(start_date.year,start_date.month,start_date.day), Time.new(end_date.year,end_date.month,end_date.day)],
-        location: [festival.city.capitalize, festival.country.capitalize],
-        top_artists: festival.artists.where("artists.name IN (?)", @lists_hash[:top_artists]).pluck(:name),
-        top_tracks_artists: festival.artists.where("artists.name IN (?)", @lists_hash[:top_tracks]).pluck(:name),
-        saved_tracks_artists: festival.artists.where("artists.name IN (?)", @lists_hash[:saved_tracks]).pluck(:name),
-        related_artists: festival.artists.where("artists.name IN (?)", @lists_hash[:related]).pluck(:name)
+    @festivals.each do |festival|
+      fest_hash = {
+        festival_instance: festival,
+        artists: list_artists_for_a_fest(festival),
       }
-      @festival_array <<  festival_hash
+      fest_hash[:affinity] = 0
+      fest_hash[:artists].each do |artist_hash|
+        fest_hash[:affinity] += artist_hash[:score]
+      end
+      fest_hash[:affinity] = 100 / 25 * fest_hash[:affinity]
+      @festival_array <<  fest_hash
     end
 
-    @festival_array.each do |festival_hash|
-      festival_hash[:score] = 100 / 25 * (festival_hash[:top_artists].count * 5 + festival_hash[:saved_tracks_artists].count * 4 + festival_hash[:top_tracks_artists].count * 3 + festival_hash[:related_artists].count)
-    end
-
-    @festival_array.sort_by! { |festival_hash| festival_hash[:score] }.reverse!
+    @festival_array.sort_by! { |festival_hash| festival_hash[:affinity] }.reverse!
   end
 
   private
 
   def list_spotify_artists
     SpotifyArtistsService.new(user_hash: current_user.spotify_hash).list_artists
+  end
+
+  def list_artists_for_a_fest(festival)
+    SpotifyArtistsService.new(user_hash: current_user.spotify_hash).favorites_artists(festival)
   end
 end
