@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301165416) do
+ActiveRecord::Schema.define(version: 20180305142603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20180301165416) do
     t.string "end_date"
     t.string "city"
     t.string "country"
+    t.string "tickets_link"
+    t.string "playlist"
   end
 
   create_table "line_ups", force: :cascade do |t|
