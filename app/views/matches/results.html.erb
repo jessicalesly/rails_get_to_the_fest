@@ -49,15 +49,19 @@
         <%= text_field_tag :query,
             params[:query],
             class: "form-control filter_style", id: "range_start",
-            placeholder: "Date" %>
+            placeholder: "Startin at" %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control filter_style", id: "secondRangeInput",
+            placeholder: "Ending at" %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control filter_style",
+        class: "form-control filter_style", id: "fest_address",
         placeholder: "Localisation" %>
-      <%= text_field_tag :query,
+   <!--    <#%= text_field_tag :query,
         params[:query],
         class: "form-control filter_style",
-        placeholder: "Genre" %>
+        placeholder: "Genre" %> -->
       <%= text_field_tag :query,
         params[:query],
         class: "form-control filter_style",
