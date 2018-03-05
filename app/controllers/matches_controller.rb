@@ -5,8 +5,8 @@ class MatchesController < ApplicationController
     # Access private data
     # @followed_artists = spotify_user.following(type: 'artist')
     # @saved_albums_10 = spotify_user.saved_albums(limit: 10, offset: 0)
-    @top_art_offset_0 = spotify_user.top_artists(limit: 2, offset: 0, time_range: 'short_term')
-    @top_art_offset_1 = spotify_user.top_artists(limit: 10, offset: 3, time_range: 'short_term')
+    # @top_art_offset_0 = spotify_user.top_artists(limit: 2, offset: 0, time_range: 'short_term')
+    # @top_art_offset_1 = spotify_user.top_artists(limit: 10, offset: 3, time_range: 'short_term')
 
     # @top_tracks = spotify_user.top_tracks
     @top_tracks_recent = spotify_user.top_tracks(limit: 50, time_range: 'short_term')
@@ -78,6 +78,11 @@ class MatchesController < ApplicationController
     @related_artists_array.uniq!
     @all_artists = @top_artists_array + @top_tracks_artists_array + @saved_tracks_artists_array +@related_artists_array
 
+
+
+
+    @list_of_user_spotify_artists = list_spotify_artists
+
     #List of festivals where there is at least one user's artist
     @festivals = Festival.joins(line_ups: :artist).where("artists.name IN (?)", @all_artists).distinct.pluck(:name)
 
@@ -103,11 +108,11 @@ class MatchesController < ApplicationController
     end
 
     @festival_array.sort_by! { |festival_hash| festival_hash[:score] }.reverse!
+  end
 
-    #player
-    # player = spotify_user.player
-    # tracks_uris = ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"]
-    # player.play_tracks(nil, tracks_uris)
-    @premium = spotify_user.product
+  private
+
+  def list_spotify_artists
+    SpotifyArtistsService.new(user_hash: current_user.spotify_hash).list_artists
   end
 end
