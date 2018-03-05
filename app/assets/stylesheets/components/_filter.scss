@@ -4,7 +4,6 @@
   text-align: center;
 }
 
-
 .filter_style {
   width: 300px;
 }
@@ -12,6 +11,9 @@
 .searchbar-icon {
   position: relative;
   z-index: -1;
+  &.active {
+    z-index: 1;
+  }
 }
 
 #nav-icon2{
@@ -20,9 +22,6 @@
   left: 10px;
 }
 
-.position-icon {
-  z-index: 10;
-}
 .background-filter {
   // margin: 15px;
   padding: 10px 50px;
