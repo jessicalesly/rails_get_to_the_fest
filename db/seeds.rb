@@ -68,6 +68,35 @@ sg_metroarea_ids.each do |sg_metroarea_id|
   p "Finished seeding this metroarea"😀
 end
 
+# iterating over artists to add pictures
+
+COUNTER = 0
+
+Artist.all.each do |artist|
+  if COUNTER < 15 && artist.picture == nil
+    picture = RSpotify::Artist.search(artist.name)
+    unless picture == []
+      picture = picture.first
+      unless picture == []
+        picture = picture.images
+        unless picture == []
+          picture = picture.first["url"]
+          artist.picture = picture
+          artist.save!
+          p artist
+          p artist.name
+          COUNTER += 1
+          p COUNTER
+        end
+      end
+    end
+  else
+    COUNTER = 0
+    p COUNTER
+    sleep(3)
+  end
+end
+
 ###
 
 ### GENERATING A PLAYLIST FOR EACH EVENT
