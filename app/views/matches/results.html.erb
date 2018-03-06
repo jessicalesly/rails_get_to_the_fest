@@ -161,12 +161,61 @@
 </div>
 
 
+
+<% counter = 0 %>
+<% animal_counter = 0 %>
+<% @festival_array.each do |festival_hash|  %>
+  <% counter += 1 %>
+  <p> <%= festival_hash[:festival_instance].name %> </p>
+  <p> <%= festival_hash[:affinity] %>% d'affinité </p>
+  <ul>
+    <% related = [] %>
+    <% other_artists = [] %>
+    <% festival_hash[:artists].each do |artist| %>
+      <% if artist[:score] > 1 %>
+        <li>
+          <%= artist[:name] %>
+          <%= ", is one of your top artists" if artist[:is_top_artist] %>
+          <%= ", we found #{artist[:nb_top_tracks]} tracks in your top tracks" if artist[:nb_top_tracks] > 0 %>
+          <%= ", you saved #{artist[:nb_saved_tracks]} tracks" if artist[:nb_saved_tracks] > 0 %>
+          <%= "is an artist you could like" if artist[:score] == 1 %>
+        </li>
+      <% elsif artist[:score] > 0 %>
+        <% related << artist[:name] %>
+      <% else %>
+        <% other_artists << artist[:name] %>
+      <% end %>
+    <% end %>
+    <li>
+      <%= "#{related.count} artists you could like : #{related.join(', ')}" %>
+    </li>
+    <li>
+      <%= "Other artists : #{other_artists.join(', ')}" %>
+    </li>
+  </ul>
+<% end %>
+
+
+
+<%#= @premium %>
 <!-- <h2>Top artist</h2>
  <p> <%= @top_artists_array %> </p>
-<br>
-<h2>Top tracks artists</h2>
+<br> -->
+<!-- <h2>Top tracks artists</h2>
 <p><%= @top_tracks_artists_array %></p>
 <br>
 <h2>Related artists</h2>
 <p><%= @related_artists_array %></p>
+<h2>saved tracks artists</h2>
+<p> <%= @saved_tracks_artists_array %> </p>
  -->
+
+<!-- <h2>top artists offset 0</h2>
+ <%= @top_art_offset_0 %>
+ <img src=<%=  %> alt="">
+<h2>top artists offset 1</h2>
+<%= @top_art_offset_1 %>
+<h2>tracks added at</h2>
+<%= @tracks_added_at %> -->
+<!-- "#{@top_art_offset_0.sample.images.first['url']}" -->
+<%#= @festival_array %>

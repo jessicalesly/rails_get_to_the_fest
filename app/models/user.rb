@@ -42,4 +42,32 @@ class User < ApplicationRecord
     end
     return user #returning user for omniauth controller
   end
+
+  # def favorites_artists(festival)
+  #   service = SpotifyArtistsService.new(user_hash: self.spotify_hash)
+  #   top_artists_array = service.top_artists
+  #   top_tracks_artists_array = service.top_tracks_artists
+  #   saved_tracks_artists_array = service.saved_tracks_artists
+  #   related_artists_array = service.related_artists
+
+  #   festival_artists_array = []
+
+  #   festival.artists.each do |artist|
+  #     artist_hash = {
+  #       name: artist.name,
+  #       is_top_artist: top_artists_array.include?(artist.name),
+  #       nb_top_tracks: top_tracks_artists_array.count(artist.name),
+  #       nb_saved_tracks: saved_tracks_artists_array.count(artist.name),
+  #       related_to: [],
+  #       score: 0
+  #     }
+  #     artist_hash[:score] = 10 if artist_hash[:is_top_artist]
+  #     artist_hash[:score] += 3 * artist_hash[:nb_top_tracks]
+  #     artist_hash[:score] += 1 * artist_hash[:nb_saved_tracks]
+  #     artist_hash[:score] = artist_hash[:related_to].count if artist_hash[:score] = 0
+
+  #     festival_artists_array << artist_hash
+  #   end
+  #   return festival_artists_array
+  # end
 end
