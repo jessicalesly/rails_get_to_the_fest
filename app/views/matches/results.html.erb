@@ -89,7 +89,7 @@
             <!-- Front of the card -->
             <div class="front">
               <div class="pad">
-                <h2 id="title-fest"><%= festival_hash[:festival_instance].name %></h2>
+                <h2 id="title-fest" style="font-family: 'Lobster', cursive;" ><%= festival_hash[:festival_instance].name.downcase.capitalize %></h2>
                 <div id="title-place">
                   <div class="flex-align-colle">
                     <h2 id="city"><%= festival_hash[:festival_instance].city %></h2>
@@ -113,9 +113,10 @@
             </div>
             <!-- Back of the card -->
             <div class="back">
-              <p style="color: white;">BONJOUR</p>
-              <div>
-                <iframe src=<%"#{festival_hash[:festival_instance].playlist}"%> width="100" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe>
+              <h2 id="title-fest" style="font-family: 'Lobster', cursive;" ><%= festival_hash[:festival_instance].name.downcase.capitalize %></h2>
+              <div class="player">
+                <iframe src="https://open.spotify.com/embed?uri=spotify:user:8foox3aatein8vp9fqjbvk9t1:playlist:79z3ChMs8D7besJjFkNFSQ" width="700" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe>
+                <!-- <iframe src="<%= festival_hash[:festival_instance].playlist %>" width="100" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe> -->
               </div>
             </div>
             <div class="line-up line-up-close">
