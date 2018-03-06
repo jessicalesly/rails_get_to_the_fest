@@ -3,12 +3,17 @@ class Festival < ApplicationRecord
   has_many :artists, through: :line_ups
 
   include PgSearch
-  pg_search_scope :global_fest,
-    against: [:name, :city, :start_date, :end_date],
+  pg_search_scope :search_by_localisation,
+    against: [:city, :country],
+    using: {
+      tsearch: { prefix: true }
+    }
+  pg_search_scope :search_by_artist,
     associated_against: {
       artists: [ :name ]
     },
     using: {
       tsearch: { prefix: true }
     }
+
 end
