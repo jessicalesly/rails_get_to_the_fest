@@ -1,0 +1,112 @@
+<div class="navbar-gttf">
+<!-- Logo -->
+  <a href="/" class="navbar-gttf-brand">
+    <!-- <img src="images/logo.png" alt="logo"> -->
+  </a>
+
+  <!-- Right Navigation -->
+  <div class="navbar-gttf-right hidden-xs hidden-sm">
+
+  <!-- Profile picture with dropdown list -->
+    <div class="navbar-gttf-item">
+      <div class="dropdown">
+        <%= link_to "Get to the fest", root_path, class:"title-navbar" %>
+        <%= link_to root_path do %>
+          <img src="<%=image_path('rock-hand.png')%>", class="avatar", id="navbar-gttf-menu" data-toggle="">
+        <% end %>
+        <!-- <ul class="dropdown-menu dropdown-menu-right navbar-gttf-dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Log Out</a></li>
+        </ul> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-gttf-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <!-- <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-gttf-dropdown-menu">
+        <li><a href="#">Host</a></li>
+        <li><a href="#">Trips</a></li>
+        <li><a href="#">Messagese</a></li>
+      </ul> -->
+    </div>
+  </div>
+</div>
+
+<div class="yellow-container-results">
+  <div class="container">
+    <div class="row">
+
+        <div class="col-md-8 col-md-offset-2">
+          <div class="card-black">
+            <!-- Front of the card -->
+            <div class="front">
+              <div class="pad">
+                <h2 id="title-fest"><%= @festival.name %></h2>
+                <div id="title-place">
+                  <div class="flex-align-colle">
+                    <h2 id="city"><%= @festival.city %></h2>
+                    <h2 class="text-bold" id="country">/ <%= @festival.country.upcase %></h2>
+                  </div>
+                </div>
+                <div class="card-date">
+                  <h3 class="month"><%= @festival.start_date %></h3>
+                  <h2 class="day"><%= @festival.start_date %></h2>
+                  <h3 style="color:white; margin:0; font-weight:bold">>></h3>
+                  <h3 class ="month"><%= @festival.end_date %></h3>
+                  <h2 class="day"><%= @festival.end_date %></h2>
+                </div>
+                <div class="btn-turn">
+                  <div class="btn-get-turn"><p>Line Up</p></div>
+                </div>
+              </div>
+            </div>
+            <!-- Back of the card -->
+            <div class="back">
+              <!-- <div class="btn-turn">
+                  <div class="btn-get-turn"></div>
+              </div> -->
+            </div>
+            <div class="line-up line-up-close">
+              <div class="line-up-content line-up-content-close">
+                <ul>
+                  <% @festival.artists.each do |artist| %>
+                  <li> <%= artist.name %> </li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="btn-line-up">
+                  <div class="btn-get-line-up">Get back to the Fest</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- End of the festival card -->
+
+        <!-- Renard logo -->
+        <div class="col-md-6 col-md-offset-3">
+          <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer-results">
+  <div class="footer-copyright-results">
+    <span class="footer-copyright-results-text">Follow us</span><span class="footer-copyright-results-head"><i class="fas fa-headphones" aria-hidden="true"></i></span>
+  </div>
+  <div class="footer-links-results">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+</div>
+

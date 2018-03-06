@@ -1,0 +1,10 @@
+.title-navbar {
+  font-family: $title-font;
+  color:#F9CE00;
+  font-size: 25px;
+  padding-right: 10px;
+  &:hover {
+    color:#F7A629;
+    text-decoration: none;
+  }
+}
