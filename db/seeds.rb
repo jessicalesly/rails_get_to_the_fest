@@ -67,37 +67,6 @@ sg_metroarea_ids.each do |sg_metroarea_id|
   end
 end
 
-# iterating over artists to add pictures
-
-counter = 0
-
-Artist.all.each do |artist|
-  if artist.picture.nil?
-    if counter < 15 && artist.picture == nil
-      picture = RSpotify::Artist.search(artist.name)
-      unless picture == []
-        picture = picture.first
-        unless picture == []
-          picture = picture.images
-          p artist.name
-          unless picture == []
-            picture = picture.first["url"]
-            artist.picture = picture
-            artist.save!
-            p artist
-            counter += 1
-            p counter
-          end
-        end
-      end
-    else
-      counter = 0
-      p counter
-      sleep(3)
-    end
-  end
-end
-
 ### ASSOCIATING A PLAYLIST TO EACH EVENT
 
 # Creating the RSpotify user instance that creates playlists
