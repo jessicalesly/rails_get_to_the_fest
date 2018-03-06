@@ -89,7 +89,7 @@ p "Associating playlists with matching festival names..."
 Festival.all.each do |festival|
   if PLAYLIST_NAMES.include?(festival.name)
     festival_playlists = ADMIN_PLAYLISTS.select { |playlist| playlist.name == festival.name }
-    spotify_playlist = festival_playlists.first.external_urls["spotify"]
+    spotify_playlist = "https://open.spotify.com/embed?uri=" + festival_playlists.first.uri
     festival.playlist = spotify_playlist
     festival.save
   else
