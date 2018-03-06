@@ -104,60 +104,20 @@
                   <h3 class ="month"><%= ( festival_hash[:date].last + 1.month).strftime("%B") %></h3>
                   <h2 class="day"><%= festival_hash[:date].last.day %></h2>
                 </div>
+                <div class="btn-turn">
+                  <div class="btn-get-turn"></div>
+                </div>
               </div>
             </div>
             <!-- Back of the card -->
             <div class="back">
-              <div class="pad">
-                <div id="desc-fest">
-                  <div class="desc-flex-align-colle">
-                    <p id="desc"> <%= festival_hash[:festival_name].capitalize %> has matched with the following artists: </p>
-                  </div>
-                </div>
-              </div>
-              <div class="content-flexbox">
-                <div class="artists-top text-center">
-                  <div class="artists-top-number"><%= festival_hash[:top_artists].count %></div>
-                  <div class="artists-top-desc">from your top artists</div>
-                </div>
-                <div class="artists-recently-listened text-center">
-                  <div class="artists-recently-listened-number"><%= festival_hash[:top_tracks_artists].count%></div>
-                  <div class="artists-recently-listened-desc">recently listened artists</div>
-                </div>
-                <div class="artists-you-could-like text-center">
-                  <div class="artists-you-could-like-number"><%= festival_hash[:related_artists].count %></div>
-                  <div class="artists-you-could-like-desc">artists you could like</div>
-                </div>
-              </div>
-              <div class="collapse-content-top">
-                <ul>
-                  <% festival_hash[:top_artists].each do |artist|%>
-                    <li> <%= artist %> </li>
-                  <% end %>
-                </ul>
-              </div>
-              <div class="collapse-content-saved">
-                <ul>
-                  <% festival_hash[:top_tracks_artists].each do |artist|%>
-                    <li> <%= artist %> </li>
-                  <% end %>
-                </ul>
-              </div>
-              <div class="collapse-content-related">
-                <ul>
-                  <% festival_hash[:related_artists].each do |artist|%>
-                    <li> <%= artist %> </li>
-                  <% end %>
-                </ul>
-              </div>
-              <div class="content-flexbox2">
-                <div class="lunch-playlist">
-                  <span class="logo-playlist">></span>
-                  <span class="lunch-playlist-desc">Launch playlist</span>
-                </div>
-                <div class="tickets-button">
-                  <div class="btn-get-tickets">Book tickets</div>
-                </div>
+              <!-- <div class="btn-turn">
+                  <div class="btn-get-turn"></div>
+              </div> -->
+            </div>
+            <div class="line-up line-up-close">
+              <div class="btn-line-up">
+                  <div class="btn-get-line-up">></div>
               </div>
             </div>
           </div>
@@ -179,104 +139,6 @@
           <% end %>
         <% end %>
       <% end %>
-
-      <div class="col-md-8 col-md-offset-2">
-          <div class="card-black">
-            <!-- Front of the card -->
-            <div class="front">
-              <div class="pad">
-                <h2 id="title-fest">Main Square Festival</h2>
-                <div id="title-place">
-                  <div class="flex-align-colle">
-                    <h2 id="city">Arras</h2>
-                    <h2 class="text-bold" id="country">/ FRANCE</h2>
-                  </div>
-                </div>
-                <div class="title-affinity">
-                  <h2 style="font-size: 40px">0%</h2>d'affinité
-                </div>
-                <div class="card-date">
-                  <h3 class="month">July</h3>
-                  <h2 class="day">24</h2>
-                  <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month">July</h3>
-                  <h2 class="day">26</h2>
-                </div>
-              </div>
-            </div>
-            <!-- Back of the card -->
-            <div class="back">
-              <div class="pad">
-                <div id="desc-fest">
-                  <div class="desc-flex-align-colle">
-                    <p id="desc">Le Main Square Festival est un festival de musique qui se déroule à la citadelle d'Arras. Il se caractérise par une programmation internationale et une rivalité avec le festival des Eurockéennes. Le festival fêtera cette année ses 15 ans</p>
-                  </div>
-                </div>
-                <div class="content-flexbox">
-                  <div class="artists-top text-center">
-                    <div class="artists-top-number">8</div>
-                    <div class="artists-top-desc">artists you like</div>
-                  </div>
-                  <div class="artists-recently-listened text-center">
-                    <div class="artists-recently-listened-number">7</div>
-                    <div class="artists-recently-listened-desc">artists recently listened</div>
-                  </div>
-                  <div class="artists-you-could-like text-center">
-                    <div class="artists-you-could-like-number">10</div>
-                    <div class="artists-you-could-like-desc">artists you could like</div>
-                  </div>
-
-                </div>
-                <div class="collapse-content-top">
-                  <ul>
-                    <li>AC/DC</li>
-                    <li>Arcade Fire</li>
-                    <li>The Police</li>
-                    <li>Manu Chao</li>
-                    <li>Aerosmith</li>
-                    <li>Deep Purple</li>
-                    <li>David Bowie</li>
-                    <li>Led Zeppelin</li>
-                  </ul>
-                </div>
-                <div class="collapse-content-saved">
-                  <ul>
-                    <li>blo</li>
-                    <li>blo</li>
-                    <li>blo</li>
-                    <li>blo</li>
-                    <li>blo</li>
-                    <li>blo</li>
-                    <li>blo</li>
-                  </ul>
-                </div>
-                <div class="collapse-content-related">
-                  <ul>
-                    <li>bli</li>
-                    <li>bli</li>
-                    <li>bli</li>
-                    <li>bli</li>
-                    <li>bli</li>
-                    <li>bli</li>
-                    <li>bli</li>
-                    <li>bli</li>
-                    <li>bli</li>
-                    <li>bli</li>
-                  </ul>
-                </div>
-                <div class="content-flexbox2">
-                  <div class="lunch-playlist">
-                    <span class="logo-playlist">></span>
-                    <span class="lunch-playlist-desc">Launch playlist</span>
-                  </div>
-                  <div class="tickets-button">
-                    <div class="btn-get-tickets">Book tickets</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
     </div>
   </div>

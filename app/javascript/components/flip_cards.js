@@ -15,10 +15,39 @@ function flip_cards() {
   //  div.style.display = "none";
   // });
 
-const cards_black = document.querySelectorAll(".card-black")
-cards_black.forEach (function(card_black) {
-  card_black.addEventListener("mouseenter", (event) => {
-    event.currentTarget.classList.toggle("flip");
+// const cards_black = document.querySelectorAll(".card-black .back")
+// const flip_btns = document.querySelectorAll(".btn-get-turn")
+// cards_black.forEach (function(card_black) {
+//   card_black.addEventListener("click", (event) => {
+//     event.currentTarget.closest(".card_black").classList.toggle("flip");
+//   });
+// });
+
+const line_ups = document.querySelectorAll('.line-up')
+
+const flip_btns = document.querySelectorAll(".btn-get-turn")
+flip_btns.forEach (function(flip_btn) {
+  flip_btn.addEventListener("click", (event) => {
+    flip_btn.closest(".card-black").classList.toggle("flip");
+    if ($(".line-up-close")[0]) {
+      flip_btn.closest(".card-black").querySelector(".line-up").classList.remove("line-up-close");
+    }
+    flip_btn.closest(".card-black").querySelector(".line-up").classList.add("line-up-open");
+  });
+});
+
+const flip_btns2 = document.querySelectorAll(".btn-get-line-up")
+flip_btns2.forEach (function(flip_btn2) {
+  flip_btn2.addEventListener("click", (event) => {
+    flip_btn2.closest(".card-black").querySelector(".line-up").classList.remove("line-up-open");
+    flip_btn2.closest(".card-black").querySelector(".line-up").classList.add("line-up-reclose");
+    setTimeout(function(){
+      flip_btn2.closest(".card-black").classList.toggle("flip");
+      flip_btn2.closest(".card-black").querySelector(".line-up").classList.remove("line-up-reclose");
+      flip_btn2.closest(".card-black").querySelector(".line-up").classList.add("line-up-close");
+    }, 1500);
+  });
+});
 
     // const artists_top_number = event.currentTarget.children[2].firstChild.firstChild
     // const artists_saved_number = event.currentTarget.children[2].children[2].firstChild
@@ -48,13 +77,12 @@ cards_black.forEach (function(card_black) {
 
 
 
-  });
-});
-cards_black.forEach (function(card_black) {
-  card_black.addEventListener("mouseleave", (event) => {
-    event.currentTarget.classList.toggle("flip");
-  });
-});
+
+// cards_black.forEach (function(card_black) {
+//   card_black.addEventListener("mouseleave", (event) => {
+//     event.currentTarget.classList.toggle("flip");
+//   });
+// });
 
 }
 
