@@ -5,10 +5,11 @@ class SpotifyArtistsService
     @top_tracks_artists_array = top_tracks_artists
     @saved_tracks_artists_array = saved_tracks_artists
     @related_artists_array = related_artists
+    # @all_artists = list_artists
   end
 
   def top_artists
-    top_artists = @spotify_user.top_artists(limit: 50, offset: 0, time_range: 'short_term')
+    top_artists = @spotify_user.top_artists(limit: 50, offset: 0, time_range: 'medium_term')
     # top_artists << @spotify_user.top_artists(limit: 50, offset: 50, time_range: 'short_term')
     # top_artists.flatten!
     @top_artists_array = top_artists.map do |top_artist|
@@ -69,30 +70,33 @@ class SpotifyArtistsService
     # @followed_artists = spotify_user.following(type: 'artist')
     # @saved_albums_10 = spotify_user.saved_albums(limit: 10, offset: 0)
     #Remove duplicates
-    a = @top_artists_array.uniq
-    b = @top_tracks_artists_array.uniq
-    c = @saved_tracks_artists_array.uniq
-    d = @related_artists_array.uniq
-    return a + b + c + d
+    sum = @top_artists_array + @top_tracks_artists_array + @saved_tracks_artists_array + @related_artists_array
+    @all_artists = sum.uniq
+    return @all_artists
   end
 
   def favorites_artists(festival)
     festival_artists_array = []
-
+    # raise
     festival.artists.each do |artist|
-      artist_hash = {
-        name: artist.name,
-        is_top_artist: @top_artists_array.include?(artist.name),
-        nb_top_tracks: @top_tracks_artists_array.count(artist.name),
-        nb_saved_tracks: @saved_tracks_artists_array.count(artist.name),
-        related_to: [@related_artists_array.include?(artist.name)],
-        score: 0
-      }
-      artist_hash[:score] = 10 if artist_hash[:is_top_artist]
-      artist_hash[:score] += 3 * artist_hash[:nb_top_tracks]
-      artist_hash[:score] += 1 * artist_hash[:nb_saved_tracks]
-      artist_hash[:score] = artist_hash[:related_to].count if artist_hash[:score] = 0
-
+      if @all_artists.include?(artist.name)
+        if @related_artists_array.include?(artist.name)
+          artist_hash = {name: artist.name, score: 0.5}
+        else
+          artist_hash = {
+            name: artist.name,
+            is_top_artist: @top_artists_array.include?(artist.name),
+            nb_top_tracks: @top_tracks_artists_array.count(artist.name),
+            nb_saved_tracks: @saved_tracks_artists_array.count(artist.name),
+          }
+          artist_hash[:score] = 10 if artist_hash[:is_top_artist]
+          artist_hash[:score] += 3 * artist_hash[:nb_top_tracks]
+          artist_hash[:score] += 1 * artist_hash[:nb_saved_tracks]
+        end
+      else
+        artist_hash = {name: artist.name}
+      end
+      # artist_hash[:related_to].count
       festival_artists_array << artist_hash
     end
     return festival_artists_array
