@@ -98,8 +98,6 @@ Artist.all.each do |artist|
   end
 end
 
-# ###
-
 ### ASSOCIATING A PLAYLIST TO EACH EVENT
 
 # Creating the RSpotify user instance that creates playlists
