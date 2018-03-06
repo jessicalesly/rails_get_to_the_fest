@@ -13,7 +13,7 @@ class SpotifyArtistsService
     # top_artists << @spotify_user.top_artists(limit: 50, offset: 50, time_range: 'short_term')
     # top_artists.flatten!
     @top_artists_array = top_artists.map do |top_artist|
-      top_artist.name
+      top_artist.name.downcase
     end
     return @top_artists_array
   end
@@ -27,7 +27,7 @@ class SpotifyArtistsService
     @top_tracks_artists_array = []
     top_tracks_recent.each do |top_track|
       top_track.artists.map do |artist|
-        @top_tracks_artists_array << artist.name
+        @top_tracks_artists_array << artist.name.downcase
       end
     end
     return @top_tracks_artists_array
@@ -48,7 +48,7 @@ class SpotifyArtistsService
     @saved_tracks_artists_array = []
     saved_tracks.each do |saved_track|
       saved_track.album.artists.each do |artist|
-        @saved_tracks_artists_array << artist.name
+        @saved_tracks_artists_array << artist.name.downcase
       end
     end
     return @saved_tracks_artists_array
@@ -59,7 +59,7 @@ class SpotifyArtistsService
     top_artists_rspotify = @spotify_user.top_artists(limit: 50, offset: 0, time_range: 'medium_term')
     top_artists_rspotify.each do |top_artist|
       top_artist.related_artists.each do |related_artist|
-        @related_artists_array << related_artist.name unless ( @top_artists_array.include?(related_artist.name) || @top_tracks_artists_array.include?(related_artist.name) || @saved_tracks_artists_array.include?(related_artist.name) )
+        @related_artists_array << related_artist.name.downcase unless ( @top_artists_array.include?(related_artist.name.downcase) || @top_tracks_artists_array.include?(related_artist.name.downcase) || @saved_tracks_artists_array.include?(related_artist.name.downcase) )
       end
     end
     top_tracks_rspotify = @spotify_user.top_tracks(limit: 50, offset: 0, time_range: 'medium_term')
@@ -67,7 +67,7 @@ class SpotifyArtistsService
     top_tracks_rspotify.each do |top_track|
       top_track.artists.each do |artist|
         artist.related_artists.each do |related_artist|
-          @related_artists_array << related_artist.name unless ( @top_artists_array.include?(related_artist.name) || @top_tracks_artists_array.include?(related_artist.name) || @saved_tracks_artists_array.include?(related_artist.name) )
+          @related_artists_array << related_artist.name.downcase unless ( @top_artists_array.include?(related_artist.name.downcase) || @top_tracks_artists_array.include?(related_artist.name.downcase) || @saved_tracks_artists_array.include?(related_artist.name.downcase) )
         end
       end
     end

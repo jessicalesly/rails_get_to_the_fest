@@ -4,6 +4,7 @@ class MatchesController < ApplicationController
     @festival_array = []
     #List of festivals where there is at least one user's artist
     @festivals = Festival.joins(line_ups: :artist).where("artists.name IN (?)", list_spotify_artists(rspotify)).distinct
+    # raise
     @festivals.each do |festival|
       fest_hash = {
         festival_instance: festival,
