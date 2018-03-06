@@ -5,9 +5,9 @@ require 'json'
 
 p "Cleaning seed..."
 
-LineUp.destroy_all
-Festival.destroy_all
-Artist.destroy_all
+# LineUp.destroy_all
+# Festival.destroy_all
+# Artist.destroy_all
 
 p "Finished cleaning seed"
 
@@ -15,88 +15,89 @@ p "Finished cleaning seed"
 
 p "Beginning to map metroarea ids from Songkick..."
 
-city_page = 1 #iterate over this until totalEntries / 50
-total_entries = 1000
-sg_metroarea_ids = []
-until city_page > total_entries
-  cities = RestClient.get("http://api.songkick.com/api/3.0/search/locations.json?query=france&apikey=#{ENV["SONGKICK_API_KEY"]}&page=#{city_page}", {accept: :json})
-  cities = JSON.parse(cities)
-  total_entries = (cities["resultsPage"]["totalEntries"]/50).ceil
-  cities = cities["resultsPage"]["results"]["location"]
-  cities.each do |city|
-    unless sg_metroarea_ids.include?(city["metroArea"]["id"])
-      sg_metroarea_ids << city["metroArea"]["id"]
-    end
-  end
-  city_page += 1
-end
+# city_page = 1 #iterate over this until totalEntries / 50
+# total_entries = 1000
+# sg_metroarea_ids = []
+# until city_page > total_entries
+#   cities = RestClient.get("http://api.songkick.com/api/3.0/search/locations.json?query=france&apikey=#{ENV["SONGKICK_API_KEY"]}&page=#{city_page}", {accept: :json})
+#   cities = JSON.parse(cities)
+#   total_entries = (cities["resultsPage"]["totalEntries"]/50).ceil
+#   cities = cities["resultsPage"]["results"]["location"]
+#   cities.each do |city|
+#     unless sg_metroarea_ids.include?(city["metroArea"]["id"])
+#       sg_metroarea_ids << city["metroArea"]["id"]
+#     end
+#   end
+#   city_page += 1
+# end
 
-p "Finished mapping metroarea ids from Songkick"
-p city_page
+# p "Finished mapping metroarea ids from Songkick"
+# p city_page
 
-# # iterating over festivals for a specific location
+# # # iterating over festivals for a specific location
 
-sg_metroarea_ids.each do |sg_metroarea_id|
-  p "Seeding line-ups from metroarea #{sg_metroarea_id}..."
-  all_festivals = RestClient.get("http://api.songkick.com/api/3.0/events.json?apikey=#{ENV["SONGKICK_API_KEY"]}&location=sk:#{sg_metroarea_id}&type=festival", {accept: :json})
-  all_festivals = JSON.parse(all_festivals)
-  all_festivals = all_festivals["resultsPage"]["results"]["event"]
-  if all_festivals
-    all_festivals.each do |event|
-      unless event["performance"] == []
-        fest = Festival.new
-        fest.name = event["displayName"]
-        fest.start_date = event["start"]["date"]
-        fest.end_date = event["end"]["date"]
-        fest.city = event["venue"]["metroArea"]["displayName"]
-        fest.country = event["venue"]["metroArea"]["country"]["displayName"]
-        fest.tickets_link = event["uri"]
-        fest.save!
-        event["performance"].each do |artists|
-          lineup = LineUp.new
-          lineup.festival = fest
-          if Artist.find_by(name: artists["artist"]["displayName"])
-            lineup.artist = Artist.find_by(name: artists["artist"]["displayName"])
-            else
-            Artist.create(name: artists["artist"]["displayName"].downcase)
-            lineup.artist = Artist.find_by(name: artists["artist"]["displayName"])
-          end
-          lineup.save!
-        end
-      end
-    end
-  end
-end
+# sg_metroarea_ids.each do |sg_metroarea_id|
+#   p "Seeding line-ups from metroarea #{sg_metroarea_id}..."
+#   all_festivals = RestClient.get("http://api.songkick.com/api/3.0/events.json?apikey=#{ENV["SONGKICK_API_KEY"]}&location=sk:#{sg_metroarea_id}&type=festival", {accept: :json})
+#   all_festivals = JSON.parse(all_festivals)
+#   all_festivals = all_festivals["resultsPage"]["results"]["event"]
+#   if all_festivals
+#     all_festivals.each do |event|
+#       unless event["performance"] == []
+#         fest = Festival.new
+#         fest.name = event["displayName"]
+#         fest.start_date = event["start"]["date"]
+#         fest.end_date = event["end"]["date"]
+#         fest.city = event["venue"]["metroArea"]["displayName"]
+#         fest.country = event["venue"]["metroArea"]["country"]["displayName"]
+#         fest.tickets_link = event["uri"]
+#         fest.save!
+#         event["performance"].each do |artists|
+#           lineup = LineUp.new
+#           lineup.festival = fest
+#           if Artist.find_by(name: artists["artist"]["displayName"].downcase)
+#             lineup.artist = Artist.find_by(name: artists["artist"]["displayName"].downcase)
+#             else
+#             Artist.create(name: artists["artist"]["displayName"].downcase)
+#             lineup.artist = Artist.find_by(name: artists["artist"]["displayName"].downcase)
+#           end
+#           lineup.save!
+#         end
+#       end
+#     end
+#   end
+# end
 
 # iterating over artists to add pictures
 
 counter = 0
 
-Artist.all.each do |artist|
-  if artist.picture.nil?
-    if COUNTER < 15 && artist.picture == nil
-      picture = RSpotify::Artist.search(artist.name)
-      unless picture == []
-        picture = picture.first
-        unless picture == []
-          picture = picture.images
-          unless picture == []
-            picture = picture.first["url"]
-            artist.picture = picture
-            artist.save!
-            p artist
-            counter += 1
-            p counter
-          end
-        end
-      end
-    else
-      counter = 0
-      p counter
-      sleep(3)
-    end
-  end
-end
+# Artist.all.each do |artist|
+#   if artist.picture.nil?
+#     if counter < 15 && artist.picture == nil
+#       picture = RSpotify::Artist.search(artist.name)
+#       unless picture == []
+#         picture = picture.first
+#         unless picture == []
+#           picture = picture.images
+#           p artist.name
+#           unless picture == []
+#             picture = picture.first["url"]
+#             artist.picture = picture
+#             artist.save!
+#             p artist
+#             counter += 1
+#             p counter
+#           end
+#         end
+#       end
+#     else
+#       counter = 0
+#       p counter
+#       sleep(3)
+#     end
+#   end
+# end
 
 # ###
 
