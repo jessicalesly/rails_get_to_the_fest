@@ -46,24 +46,24 @@
   <div class= "searchbar-icon" id= "searchicon">
     <div class="background-filter" id="search-filter">
       <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
-        <%= text_field_tag :query,
-            params[:query],
+        <%= text_field_tag :start_date,
+            @start_date,
             class: "form-control filter_style", id: "range_start",
             placeholder: "Start at" %>
-        <%= text_field_tag :query,
-            params[:query],
+        <%= text_field_tag :end_date,
+            @end_date,
             class: "form-control filter_style", id: "secondRangeInput",
             placeholder: "End at" %>
-      <%= text_field_tag :query,
-        params[:query],
+      <%= text_field_tag :localisation,
+        params[:localisation],
         class: "form-control filter_style", id: "fest_address",
         placeholder: "Localisation" %>
    <!--    <#%= text_field_tag :query,
         params[:query],
         class: "form-control filter_style",
         placeholder: "Genre" %> -->
-      <%= text_field_tag :query,
-        params[:query],
+      <%= text_field_tag :artist,
+        params[:artist],
         class: "form-control filter_style",
         placeholder: "Artiste" %>
       <%= submit_tag 'Rechercher', class: 'button-search' %>

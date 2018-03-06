@@ -3,8 +3,38 @@ class MatchesController < ApplicationController
     rspotify = SpotifyArtistsService.new(user_hash: current_user.spotify_hash)
     @festival_array = []
     #List of festivals where there is at least one user's artist
-    @festivals = Festival.joins(line_ups: :artist).where("artists.name IN (?)", list_spotify_artists(rspotify)).distinct
-    # raise
+
+    @festivals = Festival.all
+
+    if params[:artist].present?
+      @festivals = @festivals.search_by_artist(params[:artist])
+    else
+      @festivals = @festivals.joins(line_ups: :artist).where("artists.name IN (?)", list_spotify_artists(rspotify))
+    end
+
+    if params[:localisation].present?
+      @festivals = @festivals.search_by_localisation(params[:localisation])
+    end
+
+    if params[:start_date].present?
+      @start_date = params[:start_date].split(" to ").first
+      @festivals = @festivals.where("date(start_date) >= ?", @start_date)
+    end
+
+    if params[:end_date].present?
+      if params[:start_date] && params[:start_date].include?(" to ")
+        @end_date = params[:start_date].split(" to ").last
+      else
+        @end_date = params[:end_date]
+      end
+
+      @festivals = @festivals.where("date(start_date) <= :end_date OR date(end_date) <= :end_date", end_date: @end_date)
+    end
+
+    # Thanks to pg_search we can't put a distinct...
+    festival_ids = @festivals.pluck(:id)
+    @festivals = Festival.where(id: festival_ids)
+
     @festivals.each do |festival|
       fest_hash = {
         festival_instance: festival,
