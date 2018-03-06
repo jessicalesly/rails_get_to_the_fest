@@ -89,22 +89,22 @@
             <!-- Front of the card -->
             <div class="front">
               <div class="pad">
-                <h2 id="title-fest"><%= festival_hash[:festival_name] %></h2>
+                <h2 id="title-fest"><%= festival_hash[:festival_instance].name %></h2>
                 <div id="title-place">
                   <div class="flex-align-colle">
-                    <h2 id="city"><%= festival_hash[:location].first %></h2>
-                    <h2 class="text-bold" id="country">/ <%= festival_hash[:location].last.upcase %></h2>
+                    <h2 id="city"><%= festival_hash[:festival_instance].city %></h2>
+                    <h2 class="text-bold" id="country">/ <%= festival_hash[:festival_instance].country.upcase %></h2>
                   </div>
                 </div>
                 <div class="title-affinity">
-                  <h2 style="font-size: 40px"><%= festival_hash[:score] %>%</h2>d'affinité
+                  <h2 style="font-size: 40px"><%= festival_hash[:affinity] %>%</h2>d'affinité
                 </div>
                 <div class="card-date">
-                  <h3 class="month"><%= ( festival_hash[:date].first + 1.month).strftime("%B") %></h3>
-                  <h2 class="day"><%= festival_hash[:date].first.day %></h2>
+                  <h3 class="month">AOUT</h3>
+                  <h2 class="day">12</h2>
                   <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month"><%= ( festival_hash[:date].last + 1.month).strftime("%B") %></h3>
-                  <h2 class="day"><%= festival_hash[:date].last.day %></h2>
+                  <h3 class ="month">AOUT</h3>
+                  <h2 class="day">12</h2>
                 </div>
                 <div class="btn-turn">
                   <div class="btn-get-turn"></div>
