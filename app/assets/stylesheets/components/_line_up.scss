@@ -1,0 +1,90 @@
+.line-up {
+  padding-top: 300px;
+  border-radius: 50px 0px 50px 0;
+}
+
+.line-up-close {
+  display: none;
+  // animation: slideout 3s;
+  // animation-fill-mode: forwards;
+}
+
+.line-up-open {
+  animation: slidein 3s;
+  animation-fill-mode: forwards;
+}
+
+.line-up-reclose {
+  animation: slideout 3s;
+  animation-fill-mode: forwards;
+}
+
+.btn-line-up {
+  position: absolute;
+  // animation: slideinbutton 10s;
+  // animation-fill-mode: forwards;
+  color: #F9CE00;
+  font-size: 16px;
+  cursor: pointer;
+  bottom: 10px;
+  right: 10px;
+}
+
+@keyframes slideinbutton {
+
+  0% {
+
+  }
+  10% {
+    background-color: black;
+  }
+  100% {
+    color: #F9CE00;
+    font-size: 16px;
+    border-radius: 10px 0px 49px 0;
+    padding: 10px 15px;
+    background-color: black;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    cursor: pointer;
+  }
+
+}
+
+@keyframes slidein {
+
+  0% {
+    height: 0px;
+  }
+
+  100% {
+    display: block;
+    height: 800px;
+    border-radius: 50px 0px 50px 0;
+    box-shadow: 5px 5px 5px #624210;
+    background-color: black;
+  }
+}
+
+@keyframes slideout {
+
+  0% {
+    display: block;
+    height: 800px;
+    border-radius: 50px 0px 50px 0;
+    box-shadow: 5px 5px 5px #624210;
+    background-color: black;
+  }
+
+  100% {
+    display: none;
+    height: 0px;
+  }
+}
