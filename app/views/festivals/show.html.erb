@@ -7,10 +7,11 @@
   <!-- Right Navigation -->
   <div class="navbar-gttf-right hidden-xs hidden-sm">
 
+    <%= link_to "Get to the fest", root_path, class:"title-navbar" %>
+
   <!-- Profile picture with dropdown list -->
     <div class="navbar-gttf-item">
       <div class="dropdown">
-        <%= link_to "Get to the fest", root_path, class:"title-navbar" %>
         <%= link_to root_path do %>
           <img src="<%=image_path('rock-hand.png')%>", class="avatar", id="navbar-gttf-menu" data-toggle="">
         <% end %>
@@ -53,11 +54,11 @@
                   </div>
                 </div>
                 <div class="card-date">
-                  <h3 class="month"><%= @festival.start_date %></h3>
-                  <h2 class="day"><%= @festival.start_date %></h2>
+                  <h3 class="month"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></h3>
+                  <h2 class="day"> <%= Time.parse(@festival.start_date).day %> </h2>
                   <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month"><%= @festival.end_date %></h3>
-                  <h2 class="day"><%= @festival.end_date %></h2>
+                  <h3 class ="month"><%= Time.parse(@festival.end_date).strftime('%B').upcase %></h3>
+                  <h2 class="day"><%= Time.parse(@festival.end_date).day %></h2>
                 </div>
                 <div class="btn-turn">
                   <div class="btn-get-turn"><p>Line Up</p></div>

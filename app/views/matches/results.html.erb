@@ -7,8 +7,9 @@
   <!-- Right Navigation -->
   <div class="navbar-gttf-right hidden-xs hidden-sm">
 
-    <a href="" class="navbar-gttf-item navbar-gttf-link">Favorites</a>
-    <a href="" class="navbar-gttf-item navbar-gttf-link">Settings</a>
+    <!-- <a href="" class="navbar-gttf-item navbar-gttf-link">Favorites</a>
+    <a href="" class="navbar-gttf-item navbar-gttf-link">Settings</a> -->
+    <%= link_to "All festivals", match_path_url, class: "navbar-gttf-item navbar-gttf-link" %>
     <%= link_to destroy_user_session_path, class: "navbar-gttf-item navbar-gttf-link", method: "delete" do %>
       <%= t(".sign_out", default: "Log out") %>
     <% end %>
@@ -16,7 +17,10 @@
   <!-- Profile picture with dropdown list -->
     <div class="navbar-gttf-item">
       <div class="dropdown">
-        <img src="<%=image_path('rock-hand.png')%>" class="avatar" id="navbar-gttf-menu" data-toggle="">
+        <!-- <img src="<%#=image_path("rock-hand.png")%>" class="avatar" id="navbar-gttf-menu" data-toggle=""> -->
+        <%= link_to root_path do %>
+          <img src="<%=image_path('rock-hand.png')%>", class="avatar", id="navbar-gttf-menu" data-toggle="">
+        <% end %>
         <!-- <ul class="dropdown-menu dropdown-menu-right navbar-gttf-dropdown-menu">
           <li><a href="#">Profile</a></li>
           <li><a href="#">Dashboard</a></li>
@@ -79,7 +83,11 @@
 <div class="yellow-container-results">
   <div class="container">
     <div class="row">
-
+      <% if @festival_array.empty? %>
+        <div class="col-md-8 col-md-offset-2">
+          <h2>Sooooorryyyyyyyyy</h2>
+        </div>
+      <% end %>
       <% counter = 0 %>
       <% animal_counter = 0 %>
       <% @festival_array.each do |festival_hash|  %>
@@ -97,14 +105,14 @@
                   </div>
                 </div>
                 <div class="title-affinity">
-                  <h2 style="font-size: 40px"><%= festival_hash[:affinity] %>%</h2>d'affinité
+                  <h2 style="font-size: 40px"><%= festival_hash[:affinity] %>%</h2>affinity
                 </div>
                 <div class="card-date">
-                  <h3 class="month">AOUT</h3>
-                  <h2 class="day">12</h2>
+                  <h3 class="month"><%= Time.parse(festival_hash[:festival_instance].start_date).strftime('%B').upcase %></h3>
+                  <h2 class="day"> <%= Time.parse(festival_hash[:festival_instance].start_date).day %> </h2>
                   <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month">AOUT</h3>
-                  <h2 class="day">12</h2>
+                  <h3 class ="month"><%= Time.parse(festival_hash[:festival_instance].end_date).strftime('%B').upcase %></h3>
+                  <h2 class="day"><%= Time.parse(festival_hash[:festival_instance].end_date).day %></h2>
                 </div>
                 <div class="btn-turn">
                   <div class="btn-get-turn"><p>Line Up</p></div>
@@ -128,10 +136,10 @@
                     <% if artist[:score] > 1 %>
                       <li>
                         <img src=<%="#{Artist.find_by(name: artist[:name]).picture}"%> style="height: 50px; width: 50px;" alt="">
-                        <%= artist[:name] %>
+                        <%= artist[:name].capitalize %>
                         <%= ", is one of your top artists" if artist[:is_top_artist] %>
-                        <%= ", we found #{artist[:nb_top_tracks]} tracks in your top tracks" if artist[:nb_top_tracks] > 0 %>
-                        <%= ", you saved #{artist[:nb_saved_tracks]} tracks" if artist[:nb_saved_tracks] > 0 %>
+                        <%= ", we found #{pluralize(artist[:nb_top_tracks],'track')} tracks in your top tracks" if artist[:nb_top_tracks] > 0 %>
+                        <%= ", you saved #{pluralize(artist[:nb_saved_tracks],'track')}" if artist[:nb_saved_tracks] > 0 %>
                         <%= "is an artist you could like" if artist[:score] == 1 %>
                       </li>
                     <% elsif artist[:score] > 0 %>
@@ -141,7 +149,7 @@
                     <% end %>
                   <% end %>
                   <li>
-                    <%= "#{related.count} artists you could like : #{related.join(', ')}" %>
+                    <%= "#{pluralize(related.count,'artist')} you could like : #{related.join(', ')}" %>
                   </li>
                   <li>
                     <%= "Other artists : #{other_artists.join(', ')}" %>
@@ -224,28 +232,3 @@
     </li>
   </ul>
 <% end %>
-
-
-
-<%#= @premium %>
-<!-- <h2>Top artist</h2>
- <p> <%= @top_artists_array %> </p>
-<br> -->
-<!-- <h2>Top tracks artists</h2>
-<p><%= @top_tracks_artists_array %></p>
-<br>
-<h2>Related artists</h2>
-<p><%= @related_artists_array %></p>
-<h2>saved tracks artists</h2>
-<p> <%= @saved_tracks_artists_array %> </p>
- -->
-
-<!-- <h2>top artists offset 0</h2>
- <%= @top_art_offset_0 %>
- <img src=<%=  %> alt="">
-<h2>top artists offset 1</h2>
-<%= @top_art_offset_1 %>
-<h2>tracks added at</h2>
-<%= @tracks_added_at %> -->
-<!-- "#{@top_art_offset_0.sample.images.first['url']}" -->
-<%#= @festival_array %>
