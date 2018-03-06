@@ -1,5 +1,5 @@
 .line-up {
-  padding-top: 300px;
+  padding-top: 200px;
   border-radius: 50px 0px 50px 0;
 }
 
@@ -23,11 +23,100 @@
   position: absolute;
   // animation: slideinbutton 10s;
   // animation-fill-mode: forwards;
-  color: #F9CE00;
-  font-size: 16px;
+  color: #F7A629;
+  animation: btn_line_up 3s;
+  animation-fill-mode: forwards;
+  font-size: 20px;
   cursor: pointer;
-  bottom: 10px;
-  right: 10px;
+  bottom: 20px;
+  right: 28px;
+}
+
+.btn-get-line-up {
+  font-family: 'Lobster', cursive;
+}
+
+.btn-get-line-up:hover {
+  font-family: 'Lobster', cursive;
+  animation: btn_get_line_up 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.line-up-content {
+  position: absolute;
+  font-family: 'Lobster', cursive;
+  top: 300px;
+  left: 20px;
+  color: #F9CE00;
+  font-size: 21px;
+  animation: slideincontent 3s;
+  animation-fill-mode: forwards;
+}
+
+.line-up-content-close {
+  display: none;
+}
+
+.line-up-content-open {
+  animation: slideincontent 3s;
+  animation-fill-mode: forwards;
+}
+
+.line-up-content-reclose {
+  animation: slideoutcontent 3s;
+  animation-fill-mode: forwards;
+}
+
+.line-up-content li {
+  list-style-type: none;
+}
+
+@keyframes slideincontent {
+
+  0% {
+    top: 10px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 300px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideoutcontent {
+
+  0% {
+    top: 300px;
+    opacity: 1;
+  }
+
+  100% {
+    top: 10px;
+    opacity: 0;
+  }
+}
+
+@keyframes btn_get_line_up {
+
+  0% {
+    margin-right: 0;
+  }
+  100% {
+    margin-right: 7px;
+  }
+}
+
+@keyframes btn_line_up {
+
+  0% {
+    color: #F7A629;
+    opacity: 0;
+  }
+  100% {
+    color: #F9CE00;
+    opacity: 1;
+  }
 }
 
 @keyframes slideinbutton {
@@ -62,14 +151,19 @@
 
   0% {
     height: 0px;
+    display: none;
+    top: 20px;
+    padding-top: 200px;
   }
-
   100% {
     display: block;
-    height: 800px;
+    height: 630px;
     border-radius: 50px 0px 50px 0;
     box-shadow: 5px 5px 5px #624210;
     background-color: black;
+    opacity: 1;
+    top: 0px;
+    padding-top: 200px;
   }
 }
 
@@ -77,7 +171,7 @@
 
   0% {
     display: block;
-    height: 800px;
+    height: 630px;
     border-radius: 50px 0px 50px 0;
     box-shadow: 5px 5px 5px #624210;
     background-color: black;

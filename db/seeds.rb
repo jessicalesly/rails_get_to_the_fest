@@ -50,54 +50,53 @@ require 'json'
 #         fest.city = event["venue"]["metroArea"]["displayName"]
 #         fest.country = event["venue"]["metroArea"]["country"]["displayName"]
 #         fest.tickets_link = event["uri"]
-#         fest.save
+#         fest.save!
 #         event["performance"].each do |artists|
 #           lineup = LineUp.new
 #           lineup.festival = fest
 #           if Artist.find_by(name: artists["artist"]["displayName"])
 #             lineup.artist = Artist.find_by(name: artists["artist"]["displayName"])
-#           else
+#             else
 #             Artist.create(name: artists["artist"]["displayName"])
 #             lineup.artist = Artist.find_by(name: artists["artist"]["displayName"])
 #           end
-#           lineup.save
+#           lineup.save!
 #         end
 #       end
 #     end
 #   end
-#   p "Finished seeding this metroarea"😀
 # end
 
 # iterating over artists to add pictures
 
-COUNTER = 0
+# COUNTER = 0
+# Artist.all.each do |artist|
+#   if artist.picture.nil?
+#     if COUNTER < 15 && artist.picture == nil
+#       picture = RSpotify::Artist.search(artist.name)
+#       unless picture == []
+#         picture = picture.first
+#         unless picture == []
+#           picture = picture.images
+#           unless picture == []
+#             picture = picture.first["url"]
+#             artist.picture = picture
+#             artist.save!
+#             p artist
+#             p artist.name
+#             COUNTER += 1
+#             p COUNTER
+#           end
+#         end
+#       end
+#     else
+#       COUNTER = 0
+#       p COUNTER
+#       sleep(3)
+#     end
+#   end
+# end
 
-Artist.all.each do |artist|
-  if COUNTER < 15 && artist.picture == nil
-    picture = RSpotify::Artist.search(artist.name)
-    unless picture == []
-      picture = picture.first
-      unless picture == []
-        picture = picture.images
-        unless picture == []
-          picture = picture.first["url"]
-          artist.picture = picture
-          artist.save!
-          p artist
-          p artist.name
-          COUNTER += 1
-          p COUNTER
-        end
-      end
-    end
-  else
-    COUNTER = 0
-    p COUNTER
-    sleep(3)
-  end
-end
-
-# ###
 
 ### ASSOCIATING A PLAYLIST TO EACH EVENT
 
@@ -122,6 +121,7 @@ Festival.all.each do |festival|
   if PLAYLIST_NAMES.include?(festival.name)
     festival_playlists = ADMIN_PLAYLISTS.select { |playlist| playlist.name == festival.name }
     spotify_playlist = festival_playlists.first.external_urls["spotify"]
+    festival.playlist = spotify_playlist
     festival.save
   else
     puts festival.name

@@ -31,8 +31,10 @@ flip_btns.forEach (function(flip_btn) {
     flip_btn.closest(".card-black").classList.toggle("flip");
     if ($(".line-up-close")[0]) {
       flip_btn.closest(".card-black").querySelector(".line-up").classList.remove("line-up-close");
+      flip_btn.closest(".card-black").querySelector(".line-up-content").classList.remove("line-up-content-close");
     }
     flip_btn.closest(".card-black").querySelector(".line-up").classList.add("line-up-open");
+    flip_btn.closest(".card-black").querySelector(".line-up-content").classList.add("line-up-content-open");
   });
 });
 
@@ -40,12 +42,16 @@ const flip_btns2 = document.querySelectorAll(".btn-get-line-up")
 flip_btns2.forEach (function(flip_btn2) {
   flip_btn2.addEventListener("click", (event) => {
     flip_btn2.closest(".card-black").querySelector(".line-up").classList.remove("line-up-open");
+    flip_btn2.closest(".card-black").querySelector(".line-up-content").classList.remove("line-up-content-open");
     flip_btn2.closest(".card-black").querySelector(".line-up").classList.add("line-up-reclose");
+    flip_btn2.closest(".card-black").querySelector(".line-up-content").classList.add("line-up-content-reclose");
     setTimeout(function(){
       flip_btn2.closest(".card-black").classList.toggle("flip");
       flip_btn2.closest(".card-black").querySelector(".line-up").classList.remove("line-up-reclose");
+      flip_btn2.closest(".card-black").querySelector(".line-up-content").classList.remove("line-up-content-reclose");
       flip_btn2.closest(".card-black").querySelector(".line-up").classList.add("line-up-close");
-    }, 1500);
+      flip_btn2.closest(".card-black").querySelector(".line-up-content").classList.add("line-up-content-close");
+    }, 800);
   });
 });
 
