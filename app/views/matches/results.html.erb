@@ -46,24 +46,24 @@
   <div class= "searchbar-icon" id= "searchicon">
     <div class="background-filter" id="search-filter">
       <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
-        <%= text_field_tag :query,
-            params[:query],
+        <%= text_field_tag :start_date,
+            @start_date,
             class: "form-control filter_style", id: "range_start",
             placeholder: "Start at" %>
-        <%= text_field_tag :query,
-            params[:query],
+        <%= text_field_tag :end_date,
+            @end_date,
             class: "form-control filter_style", id: "secondRangeInput",
             placeholder: "End at" %>
-      <%= text_field_tag :query,
-        params[:query],
+      <%= text_field_tag :localisation,
+        params[:localisation],
         class: "form-control filter_style", id: "fest_address",
         placeholder: "Localisation" %>
    <!--    <#%= text_field_tag :query,
         params[:query],
         class: "form-control filter_style",
         placeholder: "Genre" %> -->
-      <%= text_field_tag :query,
-        params[:query],
+      <%= text_field_tag :artist,
+        params[:artist],
         class: "form-control filter_style",
         placeholder: "Artiste" %>
       <%= submit_tag 'Rechercher', class: 'button-search' %>
@@ -113,16 +113,38 @@
             </div>
             <!-- Back of the card -->
             <div class="back">
-              <!-- <div class="btn-turn">
-                  <div class="btn-get-turn"></div>
-              </div> -->
+              <p style="color: white;">BONJOUR</p>
+              <div>
+                <iframe src=<%"#{festival_hash[:festival_instance].playlist}"%> width="100" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe>
+              </div>
             </div>
             <div class="line-up line-up-close">
               <div class="line-up-content line-up-content-close">
                 <ul>
-                  <li>Artist</li>
-                  <li>Artist</li>
-                  <li>Artist</li>
+                  <% related = [] %>
+                  <% other_artists = [] %>
+                  <% festival_hash[:artists].each do |artist| %>
+                    <% if artist[:score] > 1 %>
+                      <li>
+                        <img src=<%="#{Artist.find_by(name: artist[:name]).picture}"%> style="height: 50px; width: 50px;" alt="">
+                        <%= artist[:name] %>
+                        <%= ", is one of your top artists" if artist[:is_top_artist] %>
+                        <%= ", we found #{artist[:nb_top_tracks]} tracks in your top tracks" if artist[:nb_top_tracks] > 0 %>
+                        <%= ", you saved #{artist[:nb_saved_tracks]} tracks" if artist[:nb_saved_tracks] > 0 %>
+                        <%= "is an artist you could like" if artist[:score] == 1 %>
+                      </li>
+                    <% elsif artist[:score] > 0 %>
+                      <% related << artist[:name] %>
+                    <% else %>
+                      <% other_artists << artist[:name] %>
+                    <% end %>
+                  <% end %>
+                  <li>
+                    <%= "#{related.count} artists you could like : #{related.join(', ')}" %>
+                  </li>
+                  <li>
+                    <%= "Other artists : #{other_artists.join(', ')}" %>
+                  </li>
                 </ul>
               </div>
               <div class="btn-line-up">

@@ -8,6 +8,7 @@
     "git-open": "^2.0.0",
     "gsap": "^1.20.4",
     "hover.css": "^2.2.1",
+    "http-error-pages": "^2.0.0",
     "jquery": "^3.3.1"
   },
   "devDependencies": {

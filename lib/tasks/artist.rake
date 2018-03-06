@@ -26,3 +26,6 @@ namespace :artist do
     end
   end
 end
+
+
+#### CALL ME WITH rails artist:fetch_picture
