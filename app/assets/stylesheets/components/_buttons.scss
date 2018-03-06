@@ -86,14 +86,14 @@
 
 .btn-get-turn {
   color: white;
-  background: linear-gradient(135deg, black 50%, #F9CE00 90%);
+  background: linear-gradient(155deg, black 50%, #F9CE00 90%);
   font-size: 16px;
   /* border: 1px black solid; */
   border-radius: 10px 0px 49px 0;
   padding: 10px 15px;
   background-color: #F9CE00;
-  width: 90px;
-  height: 90px;
+  width: 180px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,6 +103,14 @@
   right: 0px;
   animation: fade 3s infinite;
   cursor: pointer;
+}
+
+.btn-get-turn p {
+  font-family: 'Lobster', cursive;
+  position: absolute;
+  animation: fadelineup 3s infinite;
+  right: 22px;
+  bottom: -4px;
 }
 
 .btn-get-turn:link {
@@ -178,511 +186,324 @@
   }
 }
 
-@keyframes fade {
+@keyframes fadelineup {
   0% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  1% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  2% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  3% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  4% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  5% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  6% {
-    background: linear-gradient(135deg, black 99%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  7% {
-    background: linear-gradient(135deg, black 98%, #F9CE00 90%);
-    width: 90.5px;
-    height: 90.5px;
-  }
-  8% {
-    background: linear-gradient(135deg, black 97%, #F9CE00 90%);
-    width: 90.5px;
-    height: 90.5px;
-  }
-  9% {
-    background: linear-gradient(135deg, black 96%, #F9CE00 90%);
-    width: 90.5px;
-    height: 90.5px;
-  }
-  10% {
-    background: linear-gradient(135deg, black 95%, #F9CE00 90%);
-    width: 91px;
-    height: 91px;
-  }
-  11% {
-    background: linear-gradient(135deg, black 94%, #F9CE00 90%);
-    width: 91px;
-    height: 91px;
-  }
-  12% {
-    background: linear-gradient(135deg, black 93%, #F9CE00 90%);
-    width: 91.5px;
-    height: 91.5px;
-  }
-  13% {
-    background: linear-gradient(135deg, black 92%, #F9CE00 90%);
-    width: 91.5px;
-    height: 91.5px;
-  }
-  14% {
-    background: linear-gradient(135deg, black 91%, #F9CE00 90%);
-    width: 91.5px;
-    height: 91.5px;
-  }
-  15% {
-    background: linear-gradient(135deg, black 90%, #F9CE00 90%);
-    width: 92px;
-    height: 92px;
-  }
-  16% {
-    background: linear-gradient(135deg, black 89%, #F9CE00 90%);
-    width: 92px;
-    height: 92px;
-  }
-  17% {
-    background: linear-gradient(135deg, black 88%, #F9CE00 90%);
-    width: 92.5px;
-    height: 92.5px;
-  }
-  18% {
-    background: linear-gradient(135deg, black 87%, #F9CE00 90%);
-    width: 92.5px;
-    height: 92.5px;
-  }
-  19% {
-    background: linear-gradient(135deg, black 86%, #F9CE00 90%);
-    width: 92.5px;
-    height: 92.5px;
+    color: black;
   }
   20% {
-    background: linear-gradient(135deg, black 85%, #F9CE00 90%);
-    width: 93px;
-    height: 93px;
-  }
-  21% {
-    background: linear-gradient(135deg, black 84%, #F9CE00 90%);
-    width: 93px;
-    height: 93px;
-  }
-  22% {
-    background: linear-gradient(135deg, black 83%, #F9CE00 90%);
-    width: 93.5px;
-    height: 93.5px;
-  }
-  23% {
-    background: linear-gradient(135deg, black 82%, #F9CE00 90%);
-    width: 93.5px;
-    height: 93.5px;
-  }
-  24% {
-    background: linear-gradient(135deg, black 81%, #F9CE00 90%);
-    width: 93.5px;
-    height: 93.5px;
-  }
-  25% {
-    background: linear-gradient(135deg, black 80%, #F9CE00 90%);
-    width: 94px;
-    height: 94px;
-  }
-  26% {
-    background: linear-gradient(135deg, black 79%, #F9CE00 90%);
-    width: 94px;
-    height: 94px;
-  }
-  27% {
-    background: linear-gradient(135deg, black 78%, #F9CE00 90%);
-    width: 94.5px;
-    height: 94.5px;
-  }
-  28% {
-    background: linear-gradient(135deg, black 77%, #F9CE00 90%);
-    width: 94.5px;
-    height: 94.5px;
-  }
-  29% {
-    background: linear-gradient(135deg, black 76%, #F9CE00 90%);
-    width: 94.5px;
-    height: 94.5px;
-  }
-  30% {
-    background: linear-gradient(135deg, black 75%, #F9CE00 90%);
-    width: 95px;
-    height: 95px;
-  }
-  31% {
-    background: linear-gradient(135deg, black 74%, #F9CE00 90%);
-    width: 95px;
-    height: 95px;
-  }
-  32% {
-    background: linear-gradient(135deg, black 73%, #F9CE00 90%);
-    width: 95.5px;
-    height: 95.5px;
-  }
-  33% {
-    background: linear-gradient(135deg, black 72%, #F9CE00 90%);
-    width: 95.5px;
-    height: 95.5px;
-  }
-  34% {
-    background: linear-gradient(135deg, black 71%, #F9CE00 90%);
-    width: 95.5px;
-    height: 95.5px;
-  }
-  35% {
-    background: linear-gradient(135deg, black 70%, #F9CE00 90%);
-    width: 96px;
-    height: 96px;
-  }
-  36% {
-    background: linear-gradient(135deg, black 69%, #F9CE00 90%);
-    width: 96px;
-    height: 96px;
-  }
-  37% {
-    background: linear-gradient(135deg, black 68%, #F9CE00 90%);
-    width: 96.5px;
-    height: 96.5px;
-  }
-  38% {
-    background: linear-gradient(135deg, black 67%, #F9CE00 90%);
-    width: 96.5px;
-    height: 96.5px;
-  }
-  39% {
-    background: linear-gradient(135deg, black 66%, #F9CE00 90%);
-    width: 96.5px;
-    height: 96.5px;
-  }
-  40% {
-    background: linear-gradient(135deg, black 65%, #F9CE00 90%);
-    width: 97px;
-    height: 97px;
-  }
-  41% {
-    background: linear-gradient(135deg, black 64%, #F9CE00 90%);
-    width: 97px;
-    height: 97px;
-  }
-  42% {
-    background: linear-gradient(135deg, black 63%, #F9CE00 90%);
-    width: 97.5px;
-    height: 97.5px;
-  }
-  43% {
-    background: linear-gradient(135deg, black 62%, #F9CE00 90%);
-    width: 97.5px;
-    height: 97.5px;
-  }
-  44% {
-    background: linear-gradient(135deg, black 61%, #F9CE00 90%);
-    width: 97.5px;
-    height: 97.5px;
-  }
-  45% {
-    background: linear-gradient(135deg, black 60%, #F9CE00 90%);
-    width: 98px;
-    height: 98px;
-  }
-  46% {
-    background: linear-gradient(135deg, black 59%, #F9CE00 90%);
-    width: 98px;
-    height: 98px;
-  }
-  47% {
-    background: linear-gradient(135deg, black 58%, #F9CE00 90%);
-    width: 98.5px;
-    height: 98.5px;
-  }
-  48% {
-    background: linear-gradient(135deg, black 57%, #F9CE00 90%);
-    width: 98.5px;
-    height: 98.5px;
-  }
-  49% {
-    background: linear-gradient(135deg, black 56%, #F9CE00 90%);
-    width: 98.5px;
-    height: 98.5px;
+    color: black;
   }
   50% {
-    background: linear-gradient(135deg, black 55%, #F9CE00 90%);
-    width: 99px;
-    height: 99px;
-  }
-  51% {
-    background: linear-gradient(135deg, black 56%, #F9CE00 90%);
-    width: 99px;
-    height: 99px;
-  }
-  52% {
-    background: linear-gradient(135deg, black 57%, #F9CE00 90%);
-    width: 98.5px;
-    height: 98.5px;
-  }
-  53% {
-    background: linear-gradient(135deg, black 58%, #F9CE00 90%);
-    width: 98.5px;
-    height: 98.5px;
-  }
-  54% {
-    background: linear-gradient(135deg, black 59%, #F9CE00 90%);
-    width: 98.5px;
-    height: 98.5px;
-  }
-  55% {
-    background: linear-gradient(135deg, black 60%, #F9CE00 90%);
-    width: 98px;
-    height: 98px;
-  }
-  56% {
-    background: linear-gradient(135deg, black 61%, #F9CE00 90%);
-    width: 98px;
-    height: 98px;
-  }
-  57% {
-    background: linear-gradient(135deg, black 62%, #F9CE00 90%);
-    width: 97.5px;
-    height: 97.5px;
-  }
-  58% {
-    background: linear-gradient(135deg, black 63%, #F9CE00 90%);
-    width: 97.5px;
-    height: 97.5px;
-  }
-  59% {
-    background: linear-gradient(135deg, black 64%, #F9CE00 90%);
-    width: 97.5px;
-    height: 97.5px;
-  }
-  60% {
-    background: linear-gradient(135deg, black 65%, #F9CE00 90%);
-    width: 97px;
-    height: 97px;
-  }
-  61% {
-    background: linear-gradient(135deg, black 66%, #F9CE00 90%);
-    width: 97px;
-    height: 97px;
-  }
-  62% {
-    background: linear-gradient(135deg, black 67%, #F9CE00 90%);
-    width: 96.5px;
-    height: 96.5px;
-  }
-  63% {
-    background: linear-gradient(135deg, black 68%, #F9CE00 90%);
-    width: 96.5px;
-    height: 96.5px;
-  }
-  64% {
-    background: linear-gradient(135deg, black 69%, #F9CE00 90%);
-    width: 96.5px;
-    height: 96.5px;
-  }
-  65% {
-    background: linear-gradient(135deg, black 70%, #F9CE00 90%);
-    width: 96px;
-    height: 96px;
-  }
-  66% {
-    background: linear-gradient(135deg, black 71%, #F9CE00 90%);
-    width: 96px;
-    height: 96px;
-  }
-  67% {
-    background: linear-gradient(135deg, black 72%, #F9CE00 90%);
-    width: 95.5px;
-    height: 95.5px;
-  }
-  68% {
-    background: linear-gradient(135deg, black 73%, #F9CE00 90%);
-    width: 95.5px;
-    height: 95.5px;
-  }
-  69% {
-    background: linear-gradient(135deg, black 74%, #F9CE00 90%);
-    width: 95.5px;
-    height: 95.5px;
-  }
-  70% {
-    background: linear-gradient(135deg, black 75%, #F9CE00 90%);
-    width: 95px;
-    height: 95px;
-  }
-  71% {
-    background: linear-gradient(135deg, black 76%, #F9CE00 90%);
-    width: 95px;
-    height: 95px;
-  }
-  72% {
-    background: linear-gradient(135deg, black 77%, #F9CE00 90%);
-    width: 94.5px;
-    height: 94.5px;
-  }
-  73% {
-    background: linear-gradient(135deg, black 78%, #F9CE00 90%);
-    width: 94.5px;
-    height: 94.5px;
-  }
-  74% {
-    background: linear-gradient(135deg, black 79%, #F9CE00 90%);
-    width: 94.5px;
-    height: 94.5px;
-  }
-  75% {
-    background: linear-gradient(135deg, black 80%, #F9CE00 90%);
-    width: 94px;
-    height: 94px;
-  }
-  76% {
-    background: linear-gradient(135deg, black 81%, #F9CE00 90%);
-    width: 94px;
-    height: 94px;
-  }
-  77% {
-    background: linear-gradient(135deg, black 82%, #F9CE00 90%);
-    width: 93.5px;
-    height: 93.5px;
-  }
-  78% {
-    background: linear-gradient(135deg, black 83%, #F9CE00 90%);
-    width: 93.5px;
-    height: 93.5px;
-  }
-  79% {
-    background: linear-gradient(135deg, black 84%, #F9CE00 90%);
-    width: 93.5px;
-    height: 93.5px;
-  }
-  80% {
-    background: linear-gradient(135deg, black 85%, #F9CE00 90%);
-    width: 93px;
-    height: 93px;
-  }
-  81% {
-    background: linear-gradient(135deg, black 86%, #F9CE00 90%);
-    width: 93px;
-    height: 93px;
-  }
-  82% {
-    background: linear-gradient(135deg, black 87%, #F9CE00 90%);
-    width: 92.5px;
-    height: 92.5px;
-  }
-  83% {
-    background: linear-gradient(135deg, black 88%, #F9CE00 90%);
-    width: 92.5px;
-    height: 92.5px;
-  }
-  84% {
-    background: linear-gradient(135deg, black 89%, #F9CE00 90%);
-    width: 92.5px;
-    height: 92.5px;
-  }
-  85% {
-    background: linear-gradient(135deg, black 90%, #F9CE00 90%);
-    width: 92px;
-    height: 92px;
-  }
-  86% {
-    background: linear-gradient(135deg, black 91%, #F9CE00 90%);
-    width: 92px;
-    height: 92px;
-  }
-  87% {
-    background: linear-gradient(135deg, black 92%, #F9CE00 90%);
-    width: 91.5px;
-    height: 91.5px;
-  }
-  88% {
-    background: linear-gradient(135deg, black 93%, #F9CE00 90%);
-    width: 91.5px;
-    height: 91.5px;
-  }
-  89% {
-    background: linear-gradient(135deg, black 94%, #F9CE00 90%);
-    width: 91.5px;
-    height: 91.5px;
-  }
-  90% {
-    background: linear-gradient(135deg, black 95%, #F9CE00 90%);
-    width: 91px;
-    height: 91px;
-  }
-  91% {
-    background: linear-gradient(135deg, black 96%, #F9CE00 90%);
-    width: 91px;
-    height: 91px;
-  }
-  92% {
-    background: linear-gradient(135deg, black 97%, #F9CE00 90%);
-    width: 90.5px;
-    height: 90.5px;
-  }
-  93% {
-    background: linear-gradient(135deg, black 98%, #F9CE00 90%);
-    width: 90.5px;
-    height: 90.5px;
-  }
-  94% {
-    background: linear-gradient(135deg, black 99%, #F9CE00 90%);
-    width: 90.5px;
-    height: 90.5px;
-  }
-  95% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  96% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  97% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  98% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
-  }
-  99% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
+    color: white;
   }
   100% {
-    background: linear-gradient(135deg, black 100%, #F9CE00 90%);
-    width: 90px;
-    height: 90px;
+    color: black;
+  }
+}
+
+@keyframes fade {
+  0% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  1% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  2% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  3% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  4% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  5% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  6% {
+    background: linear-gradient(155deg, black 99%, #F9CE00 90%);
+  }
+  7% {
+    background: linear-gradient(155deg, black 98%, #F9CE00 90%);
+  }
+  8% {
+    background: linear-gradient(155deg, black 97%, #F9CE00 90%);
+  }
+  9% {
+    background: linear-gradient(155deg, black 96%, #F9CE00 90%);
+  }
+  10% {
+    background: linear-gradient(155deg, black 95%, #F9CE00 90%);
+  }
+  11% {
+    background: linear-gradient(155deg, black 94%, #F9CE00 90%);
+  }
+  12% {
+    background: linear-gradient(155deg, black 93%, #F9CE00 90%);
+  }
+  13% {
+    background: linear-gradient(155deg, black 92%, #F9CE00 90%);
+  }
+  14% {
+    background: linear-gradient(155deg, black 91%, #F9CE00 90%);
+  }
+  15% {
+    background: linear-gradient(155deg, black 90%, #F9CE00 90%);
+  }
+  16% {
+    background: linear-gradient(155deg, black 89%, #F9CE00 90%);
+  }
+  17% {
+    background: linear-gradient(155deg, black 88%, #F9CE00 90%);
+  }
+  18% {
+    background: linear-gradient(155deg, black 87%, #F9CE00 90%);
+  }
+  19% {
+    background: linear-gradient(155deg, black 86%, #F9CE00 90%);
+  }
+  20% {
+    background: linear-gradient(155deg, black 85%, #F9CE00 90%);
+  }
+  21% {
+    background: linear-gradient(155deg, black 84%, #F9CE00 90%);
+  }
+  22% {
+    background: linear-gradient(155deg, black 83%, #F9CE00 90%);
+  }
+  23% {
+    background: linear-gradient(155deg, black 82%, #F9CE00 90%);
+  }
+  24% {
+    background: linear-gradient(155deg, black 81%, #F9CE00 90%);
+  }
+  25% {
+    background: linear-gradient(155deg, black 80%, #F9CE00 90%);
+  }
+  26% {
+    background: linear-gradient(155deg, black 79%, #F9CE00 90%);
+  }
+  27% {
+    background: linear-gradient(155deg, black 78%, #F9CE00 90%);
+  }
+  28% {
+    background: linear-gradient(155deg, black 77%, #F9CE00 90%);
+  }
+  29% {
+    background: linear-gradient(155deg, black 76%, #F9CE00 90%);
+  }
+  30% {
+    background: linear-gradient(155deg, black 75%, #F9CE00 90%);
+  }
+  31% {
+    background: linear-gradient(155deg, black 74%, #F9CE00 90%);
+  }
+  32% {
+    background: linear-gradient(155deg, black 73%, #F9CE00 90%);
+  }
+  33% {
+    background: linear-gradient(155deg, black 72%, #F9CE00 90%);
+  }
+  34% {
+    background: linear-gradient(155deg, black 71%, #F9CE00 90%);
+  }
+  35% {
+    background: linear-gradient(155deg, black 70%, #F9CE00 90%);
+  }
+  36% {
+    background: linear-gradient(155deg, black 69%, #F9CE00 90%);
+  }
+  37% {
+    background: linear-gradient(155deg, black 68%, #F9CE00 90%);
+  }
+  38% {
+    background: linear-gradient(155deg, black 67%, #F9CE00 90%);
+  }
+  39% {
+    background: linear-gradient(155deg, black 66%, #F9CE00 90%);
+  }
+  40% {
+    background: linear-gradient(155deg, black 65%, #F9CE00 90%);
+  }
+  41% {
+    background: linear-gradient(155deg, black 64%, #F9CE00 90%);
+  }
+  42% {
+    background: linear-gradient(155deg, black 63%, #F9CE00 90%);
+  }
+  43% {
+    background: linear-gradient(155deg, black 62%, #F9CE00 90%);
+  }
+  44% {
+    background: linear-gradient(155deg, black 61%, #F9CE00 90%);
+  }
+  45% {
+    background: linear-gradient(155deg, black 60%, #F9CE00 90%);
+  }
+  46% {
+    background: linear-gradient(155deg, black 59%, #F9CE00 90%);
+  }
+  47% {
+    background: linear-gradient(155deg, black 58%, #F9CE00 90%);
+  }
+  48% {
+    background: linear-gradient(155deg, black 57%, #F9CE00 90%);
+  }
+  49% {
+    background: linear-gradient(155deg, black 56%, #F9CE00 90%);
+  }
+  50% {
+    background: linear-gradient(155deg, black 55%, #F9CE00 90%);
+  }
+  51% {
+    background: linear-gradient(155deg, black 56%, #F9CE00 90%);
+  }
+  52% {
+    background: linear-gradient(155deg, black 57%, #F9CE00 90%);
+  }
+  53% {
+    background: linear-gradient(155deg, black 58%, #F9CE00 90%);
+  }
+  54% {
+    background: linear-gradient(155deg, black 59%, #F9CE00 90%);
+  }
+  55% {
+    background: linear-gradient(155deg, black 60%, #F9CE00 90%);
+  }
+  56% {
+    background: linear-gradient(155deg, black 61%, #F9CE00 90%);
+  }
+  57% {
+    background: linear-gradient(155deg, black 62%, #F9CE00 90%);
+  }
+  58% {
+    background: linear-gradient(155deg, black 63%, #F9CE00 90%);
+  }
+  59% {
+    background: linear-gradient(155deg, black 64%, #F9CE00 90%);
+  }
+  60% {
+    background: linear-gradient(155deg, black 65%, #F9CE00 90%);
+  }
+  61% {
+    background: linear-gradient(155deg, black 66%, #F9CE00 90%);
+  }
+  62% {
+    background: linear-gradient(155deg, black 67%, #F9CE00 90%);
+  }
+  63% {
+    background: linear-gradient(155deg, black 68%, #F9CE00 90%);
+  }
+  64% {
+    background: linear-gradient(155deg, black 69%, #F9CE00 90%);
+  }
+  65% {
+    background: linear-gradient(155deg, black 70%, #F9CE00 90%);
+  }
+  66% {
+    background: linear-gradient(155deg, black 71%, #F9CE00 90%);
+  }
+  67% {
+    background: linear-gradient(155deg, black 72%, #F9CE00 90%);
+  }
+  68% {
+    background: linear-gradient(155deg, black 73%, #F9CE00 90%);
+  }
+  69% {
+    background: linear-gradient(155deg, black 74%, #F9CE00 90%);
+  }
+  70% {
+    background: linear-gradient(155deg, black 75%, #F9CE00 90%);
+  }
+  71% {
+    background: linear-gradient(155deg, black 76%, #F9CE00 90%);
+  }
+  72% {
+    background: linear-gradient(155deg, black 77%, #F9CE00 90%);
+  }
+  73% {
+    background: linear-gradient(155deg, black 78%, #F9CE00 90%);
+  }
+  74% {
+    background: linear-gradient(155deg, black 79%, #F9CE00 90%);
+  }
+  75% {
+    background: linear-gradient(155deg, black 80%, #F9CE00 90%);
+  }
+  76% {
+    background: linear-gradient(155deg, black 81%, #F9CE00 90%);
+  }
+  77% {
+    background: linear-gradient(155deg, black 82%, #F9CE00 90%);
+  }
+  78% {
+    background: linear-gradient(155deg, black 83%, #F9CE00 90%);
+  }
+  79% {
+    background: linear-gradient(155deg, black 84%, #F9CE00 90%);
+  }
+  80% {
+    background: linear-gradient(155deg, black 85%, #F9CE00 90%);
+  }
+  81% {
+    background: linear-gradient(155deg, black 86%, #F9CE00 90%);
+  }
+  82% {
+    background: linear-gradient(155deg, black 87%, #F9CE00 90%);
+  }
+  83% {
+    background: linear-gradient(155deg, black 88%, #F9CE00 90%);
+  }
+  84% {
+    background: linear-gradient(155deg, black 89%, #F9CE00 90%);
+  }
+  85% {
+    background: linear-gradient(155deg, black 90%, #F9CE00 90%);
+  }
+  86% {
+    background: linear-gradient(155deg, black 91%, #F9CE00 90%);
+  }
+  87% {
+    background: linear-gradient(155deg, black 92%, #F9CE00 90%);
+  }
+  88% {
+    background: linear-gradient(155deg, black 93%, #F9CE00 90%);
+  }
+  89% {
+    background: linear-gradient(155deg, black 94%, #F9CE00 90%);
+  }
+  90% {
+    background: linear-gradient(155deg, black 95%, #F9CE00 90%);
+  }
+  91% {
+    background: linear-gradient(155deg, black 96%, #F9CE00 90%);
+  }
+  92% {
+    background: linear-gradient(155deg, black 97%, #F9CE00 90%);
+  }
+  93% {
+    background: linear-gradient(155deg, black 98%, #F9CE00 90%);
+  }
+  94% {
+    background: linear-gradient(155deg, black 99%, #F9CE00 90%);
+  }
+  95% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  96% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  97% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  98% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  99% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
+  }
+  100% {
+    background: linear-gradient(155deg, black 100%, #F9CE00 90%);
   }
 }
 

@@ -67,7 +67,6 @@ sg_metroarea_ids.each do |sg_metroarea_id|
   end
 end
 
-
 ### ASSOCIATING A PLAYLIST TO EACH EVENT
 
 # Creating the RSpotify user instance that creates playlists
