@@ -125,8 +125,8 @@ Festival.all.each do |festival|
     festival.save
   else
     puts festival.name
-    puts "WARNING: New festival, consider generating playlist on @Spotify#gttf.lewagon@gmail.com"
-  end)
+    puts "WARNING: This festival has no playlist or lineup, you might want to create one on @Spotify#gttf.lewagon@gmail.com"
+  end
 end
 
 p "😂😂😂 Done seeding playlists ! 😂😂😂"
