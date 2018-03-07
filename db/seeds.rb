@@ -69,36 +69,48 @@ end
 
 ## ASSOCIATING A PLAYLIST TO EACH EVENT
 
-# Creating the RSpotify user instance that creates playlists
-p "Creating a RSpotify User instance with gttf.lewagon..."
-admin = RSpotify::User.new(User.find_by(email: "gttf.lewagon@gmail.com").spotify_hash)
+# # Creating the RSpotify user instance that creates playlists
+# p "Creating a RSpotify User instance with gttf.lewagon..."
+# admin = RSpotify::User.new(User.find_by(email: "gttf.lewagon@gmail.com").spotify_hash)
 
-# Iterating over festivals in DB
+# # Iterating over festivals in DB
 
-p "Mapping existing playlists on the account..."
-ADMIN_PLAYLISTS = []
-counter = 0
-PLAYLIST_NAMES = []
-while admin.playlists(limit: 50, offset: counter).count > 0
-  ADMIN_PLAYLISTS = ADMIN_PLAYLISTS + admin.playlists(limit: 50, offset: counter)
-  counter += 50
-end
-ADMIN_PLAYLISTS.each { |playlist| PLAYLIST_NAMES << playlist.name }
+# p "Mapping existing playlists on the account..."
+# ADMIN_PLAYLISTS = []
+# counter = 0
+# PLAYLIST_NAMES = []
+# while admin.playlists(limit: 50, offset: counter).count > 0
+#   ADMIN_PLAYLISTS = ADMIN_PLAYLISTS + admin.playlists(limit: 50, offset: counter)
+#   counter += 50
+# end
+# ADMIN_PLAYLISTS.each { |playlist| PLAYLIST_NAMES << playlist.name }
 
-p "Associating playlists with matching festival names..."
-Festival.all.each do |festival|
-  if PLAYLIST_NAMES.include?(festival.name)
-    festival_playlists = ADMIN_PLAYLISTS.select { |playlist| playlist.name == festival.name }
-    spotify_playlist = "https://open.spotify.com/embed?uri=" + festival_playlists.first.uri
-    festival.playlist = spotify_playlist
-    festival.save
-  else
-    puts festival.name
-    puts "WARNING: This festival has no playlist or lineup, you might want to create one on @Spotify#gttf.lewagon@gmail.com"
+# p "Associating playlists with matching festival names..."
+# Festival.all.each do |festival|
+#   if PLAYLIST_NAMES.include?(festival.name)
+#     festival_playlists = ADMIN_PLAYLISTS.select { |playlist| playlist.name == festival.name }
+#     spotify_playlist = "https://open.spotify.com/embed?uri=" + festival_playlists.first.uri
+#     festival.playlist = spotify_playlist
+#     festival.save
+#   else
+#     puts festival.name
+#     puts "WARNING: This festival has no playlist or lineup, you might want to create one on @Spotify#gttf.lewagon@gmail.com"
+#   end
+# end
+
+# p "😂😂😂 Done seeding playlists ! 😂😂😂"
+
+# ASSOCIATING CLOUDINARY URL TO ARTISTS
+
+Artist.find_each do  |artist|
+  unless artist.picture.nil?
+    url = artist.picture
+    artist.remote_cloudinary_picture_url = url
+    artist.save
   end
 end
 
-p "😂😂😂 Done seeding playlists ! 😂😂😂"
+puts "Done seeding artist pictures in cloudinary !"
 
 ## 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫
 ## PLAYLIST GENERATOR - DO NOT USE UNLESS YOU NEED TO GENERATE NEW PLAYLISTS
