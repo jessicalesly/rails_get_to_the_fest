@@ -118,6 +118,24 @@
                 <iframe src="https://open.spotify.com/embed?uri=spotify:user:8foox3aatein8vp9fqjbvk9t1:playlist:79z3ChMs8D7besJjFkNFSQ" width="700" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe>
                 <!-- <iframe src="<%= festival_hash[:festival_instance].playlist %>" width="100" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe> -->
               </div>
+
+              <!-- Social buttons -->
+              <div class="social-buttons">
+                <!-- Facebook -->
+                <div class="socialspace">
+                  <div class="fb-share-button" data-href="https://www.gettothefest.com/festival/<%= festival_hash[:festival_instance].id %>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.gettothefest.com%2Ffestival%2F1&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                </div>
+                <!-- Twitter -->
+                <div class="socialspace">
+                  <a href="https://www.gettothefest.com/festival/<%= festival_hash[:festival_instance].id %>"  class="twitter-share-button" data-text="Get To The Fest - A simple tool to find festivals" data-url="https://www.gettothefest.com/festival/<%= festival_hash[:festival_instance].id %>" data-show-count="false">Tweet</a>
+                </div>
+                <!-- email -->
+                <div class="socialspace">
+                  <a href= "mailto:?subject=Discover Get to the fest&amp;body=Check out this site http://www.gettothefest.com. It's a simple tool to find festivals fitting with your musical tastes.">
+                  <i class="fas fa-envelope" id= "enveleope-color"></i>
+                  </a>
+                </div>
+              </div>
             </div>
             <div class="line-up line-up-close">
               <div class="line-up-content line-up-content-close">

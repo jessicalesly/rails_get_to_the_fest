@@ -1,0 +1,27 @@
+#fbstyle {
+  cursor: pointer;
+ }
+
+.social-buttons {
+  display: flex;
+  justify-content:flex-start;
+  align-items: inherit;
+}
+
+.socialspace {
+  margin-right: 10px;
+  display: flex;
+}
+
+#enveleope-color {
+  color: white;
+  font-size: 22px;
+}
+
+#twitter-widget-0 {
+  vertical-align: middle !important;
+}
+
+.fb_iframe_widget span {
+  vertical-align: inherit !important;
+}
