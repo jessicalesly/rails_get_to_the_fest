@@ -11,6 +11,8 @@ gem 'rails', '5.1.5'
 gem 'redis'
 # gem 'omniauth-spotify'
 gem 'rspotify'
+gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
