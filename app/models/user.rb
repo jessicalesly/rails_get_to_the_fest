@@ -26,48 +26,19 @@ class User < ApplicationRecord
       user.update(user_params) #updating the authentification hash # updating user's hash for rspotify requests
       # user.music_hash = user_music_hash
     else # setting up a new user
-      # spotify_user = RSpotify::User.new(auth)
-      # user = User.new(email: auth.info.email)
-      # user.token = auth.token
-      # user.refresh_token = auth.credentials.refresh_token
-      # user.provider = auth.provider
-      # user.uid = auth.uid
-      # user.expires_at = auth.credentials.expires_at
-      # user.spotify_hash = spotify_user.to_hash
-      # user.spotify_picture_url = auth.info.images.first.url if auth.info.images.first
-      # user.spotify_profile_url = auth.info.external_urls.spotify
       user = User.new(user_params)
       user.password = Devise.friendly_token[0,20]
       user.save!
     end
+
+    #calls to stoptify
+    update_spotify_user_artists(user)
+
     return user #returning user for omniauth controller
   end
 
-  # def favorites_artists(festival)
-  #   service = SpotifyArtistsService.new(user_hash: self.spotify_hash)
-  #   top_artists_array = service.top_artists
-  #   top_tracks_artists_array = service.top_tracks_artists
-  #   saved_tracks_artists_array = service.saved_tracks_artists
-  #   related_artists_array = service.related_artists
-
-  #   festival_artists_array = []
-
-  #   festival.artists.each do |artist|
-  #     artist_hash = {
-  #       name: artist.name,
-  #       is_top_artist: top_artists_array.include?(artist.name),
-  #       nb_top_tracks: top_tracks_artists_array.count(artist.name),
-  #       nb_saved_tracks: saved_tracks_artists_array.count(artist.name),
-  #       related_to: [],
-  #       score: 0
-  #     }
-  #     artist_hash[:score] = 10 if artist_hash[:is_top_artist]
-  #     artist_hash[:score] += 3 * artist_hash[:nb_top_tracks]
-  #     artist_hash[:score] += 1 * artist_hash[:nb_saved_tracks]
-  #     artist_hash[:score] = artist_hash[:related_to].count if artist_hash[:score] = 0
-
-  #     festival_artists_array << artist_hash
-  #   end
-  #   return festival_artists_array
-  # end
+  def update_spotify_user_artists(user)
+     spotify_service = SpotifySynchronisationService.new(user)
+     spotify_service.call
+   end
 end

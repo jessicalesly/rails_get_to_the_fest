@@ -13,13 +13,11 @@ class SpotifySynchronisationService
     related_artists_array = related_artists
     all_artists = (top_artists_array + top_tracks_artists_array + saved_tracks_artists_array + related_artists_array).uniq
 
-    # TODO: reprendre le taff de l'autre service et mettre en base
-    all_artists.each do |artist|
-      # UserArtist.find_by()
-      # UserArtist.new()
-    end
-    # laisser en bas
-    user.user_artists.where("last_synchronised_at < ?", synchronisation_time).destroy_all
+    # Persister
+    persist(top_artists_array, top_tracks_artists_array, saved_tracks_artists_array, related_artists_array, all_artists)
+
+    # Detruire les artistes qui ne sont plus lies au user
+    user.user_artists.where("last_synchronized_at < ?", synchronisation_time).destroy_all
   end
 
   private
@@ -89,4 +87,35 @@ class SpotifySynchronisationService
     end
     return @related_artists_array
   end
+
+  def persist(top_artists_array, top_tracks_artists_array, saved_tracks_artists_array, related_artists_array, all_artists)
+    all_artists.each do |artist_name|
+      user_artist_params = {
+        artist: Artist.find_by(name: artist_name)
+        user: @user
+        is_top_artist: top_artists_array.include?(artist_name)
+        is_related: related_artists_array.include?(artist_name)
+        nb_top_tracks: top_tracks_artists_array.count(artist_name)
+        nb_saved_tracks: saved_tracks_artists_array.count(artist_name)
+        last_synchronized_at: synchronisation_time
+        score: 0
+      }
+      if user_artist_params[:is_related]
+        user_artist_params[:score] = 1
+      else
+        user_artist_params[:score] += 10 if user_artist_params[:is_top_artist]
+        user_artist_params[:score] += 3 * artist_hash[:nb_top_tracks]
+        user_artist_params[:score] += 2 * artist_hash[:nb_saved_tracks]
+      end
+      user_artist_params = user_artist_params.to_h
+
+      user_artist = UserArtist.joins(artists:).where("artists.name = (?)", artist_name).first
+      if user_artist
+        user_artist.update(user_artist_params)
+      else
+        user_artist = UserArtist.create(user_artist_params)
+      end
+    end
+  end
+
 end
