@@ -9,7 +9,7 @@
 
     <!-- <a href="" class="navbar-gttf-item navbar-gttf-link">Favorites</a>
     <a href="" class="navbar-gttf-item navbar-gttf-link">Settings</a> -->
-    <%= link_to "All festivals", match_path_url, class: "navbar-gttf-item navbar-gttf-link" %>
+    <%= link_to "All festivals", match_path, class: "navbar-gttf-item navbar-gttf-link" %>
     <%= link_to destroy_user_session_path, class: "navbar-gttf-item navbar-gttf-link", method: "delete" do %>
       <%= t(".sign_out", default: "Log out") %>
     <% end %>
@@ -49,7 +49,7 @@
 
   <div class= "searchbar-icon" id= "searchicon">
     <div class="background-filter" id="search-filter">
-      <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
+      <%= form_tag match_path, method: :get, class: 'form-inline' do %>
         <%= text_field_tag :start_date,
             @start_date,
             class: "form-control filter_style", id: "range_start",
@@ -83,36 +83,36 @@
 <div class="yellow-container-results">
   <div class="container">
     <div class="row">
-      <% if @festival_array.empty? %>
+      <% if @festivals.nil? %>
         <div class="col-md-8 col-md-offset-2">
           <h2>Sooooorryyyyyyyyy</h2>
         </div>
       <% end %>
       <% counter = 0 %>
       <% animal_counter = 0 %>
-      <% @festival_array.each do |festival_hash|  %>
+      <% @festivals.each do |festival|  %>
         <% counter += 1 %>
         <div class="col-md-8 col-md-offset-2">
           <div class="card-black">
             <!-- Front of the card -->
             <div class="front">
               <div class="pad">
-                <h2 id="title-fest" style="font-family: 'Lobster', cursive;" ><%= festival_hash[:festival_instance].name.downcase.capitalize %></h2>
+                <h2 id="title-fest" style="font-family: 'Lobster', cursive;" ><%= festival.name.downcase.capitalize %></h2>
                 <div id="title-place">
                   <div class="flex-align-colle">
-                    <h2 id="city" style="font-family: 'Roboto', sans-serif;"><%= festival_hash[:festival_instance].city %></h2>
-                    <h2 class="text-bold" id="country" style="font-family: 'Roboto', sans-serif;">/ <%= festival_hash[:festival_instance].country.upcase %></h2>
+                    <h2 id="city" style="font-family: 'Roboto', sans-serif;"><%= festival.city %></h2>
+                    <h2 class="text-bold" id="country" style="font-family: 'Roboto', sans-serif;">/ <%= festival.country.upcase %></h2>
                   </div>
                 </div>
                 <div class="title-affinity" style="font-family: 'Roboto', sans-serif;">
-                  <h2 style="font-size: 40px; font-family: 'Lobster', cursive;"><%= festival_hash[:affinity] %>%</h2><span style="font-family: 'Lobster', cursive;">affinity</span>
+                  <h2 style="font-size: 40px; font-family: 'Lobster', cursive;"><%= festival.affinity %>%</h2><span style="font-family: 'Lobster', cursive;">affinity</span>
                 </div>
                 <div class="card-date" style="font-family: 'Roboto', sans-serif;">
-                  <h3 class="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival_hash[:festival_instance].start_date).strftime('%B').upcase %></h3>
-                  <h2 class="day" style="font-family: 'Lobster', cursive;"> <%= Time.parse(festival_hash[:festival_instance].start_date).day %> </h2>
+                  <h3 class="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival.start_date).strftime('%B').upcase %></h3>
+                  <h2 class="day" style="font-family: 'Lobster', cursive;"> <%= Time.parse(festival.start_date).day %> </h2>
                   <h3 style="color:white; margin:0; font-weight:bold; font-family: 'Roboto', sans-serif;">>></h3>
-                  <h3 class ="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival_hash[:festival_instance].end_date).strftime('%B').upcase %></h3>
-                  <h2 class="day" style="font-family: 'Lobster', cursive;"><%= Time.parse(festival_hash[:festival_instance].end_date).day %></h2>
+                  <h3 class ="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival.end_date).strftime('%B').upcase %></h3>
+                  <h2 class="day" style="font-family: 'Lobster', cursive;"><%= Time.parse(festival.end_date).day %></h2>
                 </div>
                 <!-- <span class="check" style="font-family: 'Roboto', sans-serif;">Check the </span> --><span class="line" style="font-family: 'Lobster', cursive;">Line Up</span>
                 <div class="btn-turn">
@@ -125,45 +125,44 @@
               <div class="btn-line-up">
                   <div class="btn-get-line-up">X</div>
               </div>
-              <h2 id="title-fest" style="font-family: 'Lobster', cursive;" ><%= festival_hash[:festival_instance].name.downcase.capitalize %></h2>
+              <h2 id="title-fest" style="font-family: 'Lobster', cursive;" ><%= festival.name.downcase.capitalize %></h2>
               <div id="title-place-back">
                 <div class="flex-align-colle">
-                  <h2 id="city" style="font-family: 'Roboto', sans-serif;"><%= festival_hash[:festival_instance].city %></h2>
-                  <h2 class="text-bold" id="country" style="font-family: 'Roboto', sans-serif;">/ <%= festival_hash[:festival_instance].country.upcase %></h2>
+                  <h2 id="city" style="font-family: 'Roboto', sans-serif;"><%= festival.city %></h2>
+                  <h2 class="text-bold" id="country" style="font-family: 'Roboto', sans-serif;">/ <%= festival.country.upcase %></h2>
                 </div>
               </div>
               <div class="title-affinity-back" style="font-family: 'Roboto', sans-serif;">
-                <h2 style="font-size: 32px; font-family: 'Lobster', cursive;"><%= festival_hash[:affinity] %>%<div style="font-family: 'Lobster', cursive;">affinity</div>
+                <h2 style="font-size: 32px; font-family: 'Lobster', cursive;"><%= festival.affinity %>%<div style="font-family: 'Lobster', cursive;">affinity</div>
               </div>
               <span class="card-date-back" style="font-family: 'Roboto', sans-serif;">
-                <span class="day-back" style="font-family: 'Lobster', cursive;"> <%= Time.parse(festival_hash[:festival_instance].start_date).day %> </span>
-                <span class="month-back" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival_hash[:festival_instance].start_date).strftime('%B').upcase %></span>
+                <span class="day-back" style="font-family: 'Lobster', cursive;"> <%= Time.parse(festival.start_date).day %> </span>
+                <span class="month-back" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival.start_date).strftime('%B').upcase %></span>
                 <span style="color:white; margin:0; font-weight:bold; font-family: 'Roboto', sans-serif;">>></span>
-                <span class="day-back" style="font-family: 'Lobster', cursive;"><%= Time.parse(festival_hash[:festival_instance].end_date).day %></span>
-                <span class ="month-back" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival_hash[:festival_instance].end_date).strftime('%B').upcase %></span>
+                <span class="day-back" style="font-family: 'Lobster', cursive;"><%= Time.parse(festival.end_date).day %></span>
+                <span class ="month-back" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival.end_date).strftime('%B').upcase %></span>
               </span>
               <div class="player">
-                <iframe src="<%= festival_hash[:festival_instance].playlist %>" width="700" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe>
+                <iframe src="<%= festival.playlist %>" width="700" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe>
               </div>
             </div>
             <div class="line-up line-up-close">
               <div class="line-up-content line-up-content-close" style="font-family: 'Roboto', sans-serif;">
                 <% related = [] %>
                 <% other_artists = [] %>
-                <% festival_hash[:artists].each do |artist| %>
-                  <% if artist[:score] > 1 %>
+                <% @artists[festival.id].each do |artist| %>
+                  <% if artist.score.nil? %>
+                    <% other_artists << artist.name %>
+                  <% elsif artist.score > 1 %>
                   <div class="content-line-up">
-                    <div class="line-up-content-desc-img"><img src=<%="#{Artist.find_by(name: artist[:name]).picture}"%> style="height: 100px; width: 100px; border-radius: 50%; border: 2px white solid; margin-left: 3px; margin-bottom: 10px;" alt=""></div>
-                    <span style="margin-left: 8px; font-weight: bold; font-family: 'Lobster', cursive;"><%= artist[:name].capitalize %></span>
-                    <span><%= ", is one of your top artists" if artist[:is_top_artist] %></span>
-                    <span><%= ", we found #{pluralize(artist[:nb_top_tracks],'track')} tracks in your top tracks" if artist[:nb_top_tracks] > 0 %></span>
-                    <span><%= ", you saved #{pluralize(artist[:nb_saved_tracks],'track')}" if artist[:nb_saved_tracks] > 0 %></span>
-                    <span><%= "is an artist you could like" if artist[:score] == 1 %></span>
+                    <div class="line-up-content-desc-img"><img src=<%="#{Artist.find_by(name: artist.name).picture}"%> style="height: 100px; width: 100px; border-radius: 50%; border: 2px white solid; margin-left: 3px; margin-bottom: 10px;" alt=""></div>
+                    <span style="margin-left: 8px; font-weight: bold; font-family: 'Lobster', cursive;"><%= artist.name.capitalize %></span>
+                    <span><%= ", is one of your top artists" if artist.is_top_artist %></span>
+                    <span><%= ", we found #{pluralize(artist.nb_top_tracks,'track')} tracks in your top tracks" if artist.nb_top_tracks > 0 %></span>
+                    <span><%= ", you saved #{pluralize(artist.nb_saved_tracks,'track')}" if artist.nb_saved_tracks > 0 %></span>
                   </div>
                   <% elsif artist[:score] > 0 %>
-                    <% related << artist[:name] %>
-                  <% else %>
-                    <% other_artists << artist[:name] %>
+                    <% related << artist.name %>
                   <% end %>
                 <% end %>
                 <div>
@@ -253,3 +252,9 @@
     </li>
   </ul>
 <% end %>
+
+<% @artists[@festivals.first.id].each do |artist| %>
+  <p> <%= artist.name %> </p>
+<% end %>
+
+

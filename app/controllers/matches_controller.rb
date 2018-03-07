@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
   def results
-    rspotify = SpotifyArtistsService.new(user_hash: current_user.spotify_hash)
+    # rspotify = SpotifyArtistsService.new(user_hash: current_user.spotify_hash)
     @festival_array = []
     #List of festivals where there is at least one user's artist
 
@@ -9,7 +9,8 @@ class MatchesController < ApplicationController
     if params[:artist].present?
       @festivals = @festivals.search_by_artist(params[:artist])
     else
-      @festivals = @festivals.joins(line_ups: :artist).where("artists.name IN (?)", list_spotify_artists(rspotify))
+      # @festivals = @festivals.joins(line_ups: :artist).where("artists.name IN (?)", list_spotify_artists(rspotify))
+      @festivals = @festivals.joins(line_ups: {artist: :user_artists}).where(user_artists: {user_id: current_user.id})
     end
 
     if params[:localisation].present?
@@ -32,22 +33,38 @@ class MatchesController < ApplicationController
     end
 
     # Thanks to pg_search we can't put a distinct...
-    festival_ids = @festivals.pluck(:id)
-    @festivals = Festival.where(id: festival_ids)
+    # festival_ids = @festivals.pluck(:id)
+    # @festivals = Festival.where(id: festival_ids)
+
+    @festivals = @festivals.select("festivals.*, SUM(user_artists.score) AS affinity").
+      group(:id).
+      order("affinity DESC").
+      limit(15)
+
+    @artists = {}
 
     @festivals.each do |festival|
-      fest_hash = {
-        festival_instance: festival,
-        artists: list_artists_for_a_fest(rspotify, festival),
-      }
-      fest_hash[:affinity] = 0
-      fest_hash[:artists].each do |artist_hash|
-        fest_hash[:affinity] += artist_hash[:score]
-      end
-      fest_hash[:affinity] = 100 / 50 * fest_hash[:affinity]
-      @festival_array <<  fest_hash
+      @artists[festival.id] = festival.artists.
+        select("artists.*, user_artists.*, artists.id AS id").
+        joins("LEFT OUTER JOIN user_artists ON user_artists.artist_id = artists.id AND user_artists.user_id = #{current_user.id}").
+        order("user_artists.score DESC NULLS LAST")
+
+        # @artists[festival.id].where("user_artists.user_id = (?)", current_user.id)
+      # fest_hash = {
+      #   festival_instance: festival,
+      #   # artists: list_artists_for_a_fest(rspotify, festival),
+      #   artists: Artist.joins(line_ups: :festival).where(festivals.name = festival.name).order(score: :desc)
+      # }
+      # festival_hash[:nb_related]
+      # fest_hash[:affinity] = 0
+      # fest_hash[:artists].each do |artist_hash|
+      #   fest_hash[:affinity] += artist_hash[:score]
+      # end
+      # fest_hash[:affinity] = 100 / 50 * fest_hash[:affinity]
+
+      # @festival_array <<  fest_hash
     end
-    @festival_array.sort_by! { |festival_hash| festival_hash[:affinity] }.reverse!
+    # @festival_array.sort_by! { |festival_hash| festival_hash[:affinity] }.reverse!
   end
 
   private
