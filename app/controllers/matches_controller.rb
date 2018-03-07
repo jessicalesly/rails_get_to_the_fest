@@ -33,13 +33,20 @@ class MatchesController < ApplicationController
     end
 
     # Thanks to pg_search we can't put a distinct...
-    # festival_ids = @festivals.pluck(:id)
-    # @festivals = Festival.where(id: festival_ids)
+    festival_ids = @festivals.pluck(:id)
+    @festivals = Festival.where(id: festival_ids)
 
-    @festivals = @festivals.select("festivals.*, SUM(user_artists.score) AS affinity").
+    @festivals = @festivals.select("festivals.*, SUM(user_artists.score) AS affinity, COUNT(user_artists.id) filter (where user_artists.is_related = 'true') AS related_artists_count").
+      joins(line_ups: {artist: :user_artists}).
       group(:id).
-      order("affinity DESC").
       limit(15)
+
+    case params[:sort]
+    when 'discovery'
+      @festivals = @festivals.order("related_artists_count DESC")
+    else
+      @festivals = @festivals.order("affinity DESC")
+    end
 
     @artists = {}
 
@@ -65,6 +72,10 @@ class MatchesController < ApplicationController
       # @festival_array <<  fest_hash
     end
     # @festival_array.sort_by! { |festival_hash| festival_hash[:affinity] }.reverse!
+    @nb_fest_in_db = Festival.all.count
+    @nb_fest_match = @festivals.size
+    @nb_saved_tracks = current_user.nb_saved_tracks
+    @nb_artists_user = current_user.nb_spotify_artists
   end
 
   private
