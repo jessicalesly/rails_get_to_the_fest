@@ -1,0 +1,27 @@
+.about {
+  color: white;
+  padding-right: 100px;
+  vertical-align: center;
+}
+
+.about-algorithm {
+
+}
+
+.team {
+  display: flex;
+  justify-content: space-around;
+}
+
+.team_pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.team_desc {
+  width: 300px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  margin: 10px;
+}
