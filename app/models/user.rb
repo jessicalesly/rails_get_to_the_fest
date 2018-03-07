@@ -30,10 +30,10 @@ class User < ApplicationRecord
       user = User.new(user_params)
       user.password = Devise.friendly_token[0,20]
       user.save!
+      #calls to stoptify
     end
+      user.update_spotify_user_artists
 
-    #calls to stoptify
-    user.update_spotify_user_artists
 
     return user #returning user for omniauth controller
   end

@@ -18,7 +18,7 @@ class SpotifySynchronisationService
 
     # Detruire les artistes qui ne sont plus lies au user
     @user.user_artists.where("last_synchronized_at < ?", @synchronisation_time).destroy_all
-    @user.update(last_synchronized_at: @synchronisation_time)
+    @user.update(last_synchronized_at: @synchronisation_time, nb_saved_tracks: saved_tracks_artists_array.count, nb_spotify_artists: all_artists.count)
 
     return {
       artists_not_found: artists_not_found,
