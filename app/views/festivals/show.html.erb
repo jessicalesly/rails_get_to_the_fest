@@ -75,7 +75,8 @@
               <div class="line-up-content line-up-content-close">
                 <ul>
                   <% @festival.artists.each do |artist| %>
-                  <li> <%= artist.name %> </li>
+                  <li> <img src=<%="#{Artist.find_by(name: artist[:name]).picture}"%> style="height: 50px; width: 50px;" alt="">
+                    <%= artist.name %> </li>
                   <% end %>
                 </ul>
               </div>
