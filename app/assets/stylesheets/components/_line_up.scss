@@ -36,8 +36,8 @@
   // animation: slideinbutton 10s;
   // animation-fill-mode: forwards;
   color: #F9CE00;
-  animation: btn_line_up 3s;
-  animation-fill-mode: forwards;
+  // animation: btn_line_up 3s;
+  // animation-fill-mode: forwards;
   font-size: 20px;
   cursor: pointer;
   top: 20px;
@@ -56,15 +56,18 @@
 
 .btn-line-up-book {
   position: absolute;
-  // animation: slideinbutton 10s;
-  // animation-fill-mode: forwards;
-  color: #F7A629;
+  color: #F9CE00;
+  border-radius: 25px 0px 25px 0px;
+  -webkit-animation: btn_line_up 3s;
   animation: btn_line_up 3s;
+  -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   font-size: 20px;
   cursor: pointer;
   bottom: 20px;
-  right: 28px;
+  left: 315px;
+  border: 3px solid;
+  padding: 10px;
 }
 
 .btn-get-line-up-book {

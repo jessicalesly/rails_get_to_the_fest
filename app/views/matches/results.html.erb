@@ -114,7 +114,7 @@
                   <h3 class ="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival_hash[:festival_instance].end_date).strftime('%B').upcase %></h3>
                   <h2 class="day" style="font-family: 'Lobster', cursive;"><%= Time.parse(festival_hash[:festival_instance].end_date).day %></h2>
                 </div>
-                <span class="check" style="font-family: 'Roboto', sans-serif;">Check the </span><span class="line" style="font-family: 'Lobster', cursive;">Line Up</span>
+                <!-- <span class="check" style="font-family: 'Roboto', sans-serif;">Check the </span> --><span class="line" style="font-family: 'Lobster', cursive;">Line Up</span>
                 <div class="btn-turn">
                   <div class="btn-get-turn"><p><i class="fas fa-arrow-right"></i></p></div>
                 </div>
@@ -185,13 +185,17 @@
         <!-- Renard logo -->
         <% if counter%2 == 0 %>
           <% animal_counter +=1 %>
-          <% if animal_counter%2 == 0 %>
-            <div class="col-md-6 col-md-offset-3">
-              <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
+          <% if animal_counter == 1 %>
+            <div class="col-md-3 col-md-offset-3">
+              <img src="<%=image_path('renard.png')%>" style="margin-top:90px; height: 270px; width: 500px;" alt="">
             </div>
+          <% elsif animal_counter == 2 %>
+          <div class="col-md-4 col-md-offset-4">
+            <img src="<%=image_path('suricate.png')%>" style="margin-top:90px; height: 270px; width: 360px;" alt="">
+          </div>
           <% else %>
-            <div class="col-md-4 col-md-offset-4">
-              <img src="<%=image_path('suricate.png')%>" style="margin-top:90px;" alt="">
+            <div class="col-md-6 col-md-offset-3">
+              <img src="<%=image_path('rat.png')%>" style="margin-top:90px; height: 270px; width: 520px; margin-left: 35px;" alt="">
             </div>
           <% end %>
         <% end %>
