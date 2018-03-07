@@ -9,7 +9,7 @@
 
     <!-- <a href="" class="navbar-gttf-item navbar-gttf-link">Favorites</a>
     <a href="" class="navbar-gttf-item navbar-gttf-link">Settings</a> -->
-    <%= link_to "All festivals", match_path_url, class: "navbar-gttf-item navbar-gttf-link" %>
+    <%= link_to "All festivals", match_path, class: "navbar-gttf-item navbar-gttf-link" %>
     <%= link_to destroy_user_session_path, class: "navbar-gttf-item navbar-gttf-link", method: "delete" do %>
       <%= t(".sign_out", default: "Log out") %>
     <% end %>
@@ -49,7 +49,7 @@
 
   <div class= "searchbar-icon" id= "searchicon">
     <div class="background-filter" id="search-filter">
-      <%= form_tag match_path_url, method: :get, class: 'form-inline' do %>
+      <%= form_tag match_path, method: :get, class: 'form-inline' do %>
         <%= text_field_tag :start_date,
             @start_date,
             class: "form-control filter_style", id: "range_start",
