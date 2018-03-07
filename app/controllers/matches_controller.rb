@@ -42,11 +42,13 @@ class MatchesController < ApplicationController
         # artists: list_artists_for_a_fest(rspotify, festival),
         artists: Artist.joins(line_ups: :festival).where(festivals.name = festival.name).order(score: :desc)
       }
+      # festival_hash[:nb_related]
       fest_hash[:affinity] = 0
-      fest_hash[:artists].each do |artist_hash|
-        fest_hash[:affinity] += artist_hash[:score]
-      end
-      fest_hash[:affinity] = 100 / 50 * fest_hash[:affinity]
+      # fest_hash[:artists].each do |artist_hash|
+      #   fest_hash[:affinity] += artist_hash[:score]
+      # end
+      # fest_hash[:affinity] = 100 / 50 * fest_hash[:affinity]
+
       @festival_array <<  fest_hash
     end
     @festival_array.sort_by! { |festival_hash| festival_hash[:affinity] }.reverse!
