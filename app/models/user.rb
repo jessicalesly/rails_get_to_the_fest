@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:spotify]
+  has_many :user_artists
 
   def self.find_for_spotify_oauth(auth)
     # rspotify_user = RSpotify::User.new(auth)

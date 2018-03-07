@@ -10,8 +10,7 @@ class MatchesController < ApplicationController
       @festivals = @festivals.search_by_artist(params[:artist])
     else
       # @festivals = @festivals.joins(line_ups: :artist).where("artists.name IN (?)", list_spotify_artists(rspotify))
-      present_artists = current_user.user_artists
-      @festivals.joins(line_ups: :artist).joins(artists: :user_artist).where("user_artist.name IN (?)", current_user.user_artists)
+      @festivals = @festivals.joins(line_ups: {artist: :user_artists}).where(user_artists: {user_id: current_user.id})
     end
 
     if params[:localisation].present?
@@ -40,7 +39,8 @@ class MatchesController < ApplicationController
     @festivals.each do |festival|
       fest_hash = {
         festival_instance: festival,
-        artists: list_artists_for_a_fest(rspotify, festival),
+        # artists: list_artists_for_a_fest(rspotify, festival),
+        artists: Artist.joins(line_ups: :festival).where(festivals.name = festival.name).order(score: :desc)
       }
       fest_hash[:affinity] = 0
       fest_hash[:artists].each do |artist_hash|

@@ -5,7 +5,7 @@ class SpotifySynchronisationService
   end
 
   def call
-    synchronisation_time = Time.now
+    @synchronisation_time = Time.now
 
     top_artists_array = top_artists
     top_tracks_artists_array = top_tracks_artists
@@ -14,10 +14,16 @@ class SpotifySynchronisationService
     all_artists = (top_artists_array + top_tracks_artists_array + saved_tracks_artists_array + related_artists_array).uniq
 
     # Persister
-    persist(top_artists_array, top_tracks_artists_array, saved_tracks_artists_array, related_artists_array, all_artists)
+    artists_not_found = persist(top_artists_array, top_tracks_artists_array, saved_tracks_artists_array, related_artists_array, all_artists)
 
     # Detruire les artistes qui ne sont plus lies au user
-    user.user_artists.where("last_synchronized_at < ?", synchronisation_time).destroy_all
+    @user.user_artists.where("last_synchronized_at < ?", @synchronisation_time).destroy_all
+    @user.update(last_synchronized_at: @synchronisation_time)
+
+    return {
+      artists_not_found: artists_not_found,
+      synchronisation_time: @synchronisation_time
+    }
   end
 
   private
@@ -89,33 +95,43 @@ class SpotifySynchronisationService
   end
 
   def persist(top_artists_array, top_tracks_artists_array, saved_tracks_artists_array, related_artists_array, all_artists)
+    artists_not_found = []
+
     all_artists.each do |artist_name|
+      artist = Artist.find_by(name: artist_name)
+
+      unless artist
+        artists_not_found << artist_name
+        next
+      end
+
       user_artist_params = {
-        artist: Artist.find_by(name: artist_name)
-        user: @user
-        is_top_artist: top_artists_array.include?(artist_name)
-        is_related: related_artists_array.include?(artist_name)
-        nb_top_tracks: top_tracks_artists_array.count(artist_name)
-        nb_saved_tracks: saved_tracks_artists_array.count(artist_name)
-        last_synchronized_at: synchronisation_time
+        artist: artist,
+        is_top_artist: top_artists_array.include?(artist_name),
+        is_related: related_artists_array.include?(artist_name),
+        nb_top_tracks: top_tracks_artists_array.count(artist_name),
+        nb_saved_tracks: saved_tracks_artists_array.count(artist_name),
+        last_synchronized_at: @synchronisation_time,
         score: 0
       }
       if user_artist_params[:is_related]
         user_artist_params[:score] = 1
       else
         user_artist_params[:score] += 10 if user_artist_params[:is_top_artist]
-        user_artist_params[:score] += 3 * artist_hash[:nb_top_tracks]
-        user_artist_params[:score] += 2 * artist_hash[:nb_saved_tracks]
+        user_artist_params[:score] += 3 * user_artist_params[:nb_top_tracks]
+        user_artist_params[:score] += 2 * user_artist_params[:nb_saved_tracks]
       end
-      user_artist_params = user_artist_params.to_h
 
-      user_artist = UserArtist.joins(artists:).where("artists.name = (?)", artist_name).first
+      user_artist = @user.user_artists.find_by_artist_id(artist.id)
+
       if user_artist
         user_artist.update(user_artist_params)
       else
-        user_artist = UserArtist.create(user_artist_params)
+        user_artist = @user.user_artists.create(user_artist_params)
       end
     end
+
+    return artists_not_found
   end
 
 end
