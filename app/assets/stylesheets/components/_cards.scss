@@ -14,8 +14,8 @@
 .card-date{
   position: absolute;
   width: 70px;
-  top: 30px;
-  right:80px;
+  top: 28px;
+  right: 80px;
 }
 
 .card-date .month{
@@ -25,6 +25,26 @@
 }
 
 .card-date .day {
+  font-family: $headers-font, cursive;
+  color: #F9CE00;
+  font-size:30px;
+  margin-top: 0;
+}
+
+.card-date-back {
+  position: absolute;
+  width: 157px;
+  top: 127px;
+  left: 58px;
+}
+
+.card-date-back .month-back{
+  color:white;
+  margin-bottom: 0;
+  font-size: 18px;
+}
+
+.card-date-back .day-back {
   font-family: $headers-font, cursive;
   color: #F9CE00;
   font-size:30px;
@@ -47,8 +67,15 @@
   left:60px;
 }
 
+#title-place-back {
+  position: absolute;
+  top:66px;
+  left:60px;
+}
+
 #city{
   font-size: 20px;
+  font-weight: bold;
 }
 
 #country {
@@ -62,6 +89,14 @@
   top:150px;
   left:60px;
   color: #F9CE00;
+}
+
+.title-affinity-back {
+  position: absolute;
+  top: 23px;
+  left: 592px;
+  color: #F9CE00;
+  width: 20px;
 }
 
 #desc-fest {

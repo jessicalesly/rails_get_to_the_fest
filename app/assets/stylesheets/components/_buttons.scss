@@ -16,6 +16,22 @@
   }
 }
 
+.check {
+  color: white;
+  position: absolute;
+  bottom: 11px;
+  left: 549px;
+  z-index: 100;
+}
+
+.line {
+  color: #F9CE00;
+  position: absolute;
+  bottom: 11px;
+  left: 635px;
+  z-index: 100;
+}
+
 .btn-get:link {
   color: black;
   text-decoration: none;
@@ -109,8 +125,9 @@
   font-family: 'Lobster', cursive;
   position: absolute;
   animation: fadelineup 3s infinite;
-  right: 22px;
-  bottom: -4px;
+  right: 25px;
+  bottom: -10px;
+  font-size: 30px;
 }
 
 .btn-get-turn:link {

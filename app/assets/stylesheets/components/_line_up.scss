@@ -3,6 +3,18 @@
   border-radius: 50px 0px 50px 0;
 }
 
+.content-line-up {
+  height: 210px;
+  width: 200px;
+  text-align: center;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+.line-up-content-desc-img {
+  border-radius: 50%;
+}
+
 .line-up-close {
   display: none;
   // animation: slideout 3s;
@@ -23,12 +35,12 @@
   position: absolute;
   // animation: slideinbutton 10s;
   // animation-fill-mode: forwards;
-  color: #F7A629;
+  color: #F9CE00;
   animation: btn_line_up 3s;
   animation-fill-mode: forwards;
   font-size: 20px;
   cursor: pointer;
-  bottom: 20px;
+  top: 20px;
   right: 28px;
 }
 
@@ -42,15 +54,40 @@
   animation-fill-mode: forwards;
 }
 
+.btn-line-up-book {
+  position: absolute;
+  // animation: slideinbutton 10s;
+  // animation-fill-mode: forwards;
+  color: #F7A629;
+  animation: btn_line_up 3s;
+  animation-fill-mode: forwards;
+  font-size: 20px;
+  cursor: pointer;
+  bottom: 20px;
+  right: 28px;
+}
+
+.btn-get-line-up-book {
+  font-family: 'Lobster', cursive;
+}
+
+.btn-get-line-up-book:hover {
+  font-family: 'Lobster', cursive;
+  animation: btn_get_line_up 0.5s;
+  animation-fill-mode: forwards;
+}
+
 .line-up-content {
   position: absolute;
+  display: flex;
+  flex-wrap: wrap;
   padding-top: 10px;
-  font-family: 'Lobster', cursive;
   height: 250px;
+  width: 700px;
   top: 300px;
   left: 20px;
-  color: #F9CE00;
-  font-size: 21px;
+  color: white;
+  font-size: 16px;
   animation: slideincontent 3s;
   animation-fill-mode: forwards;
   overflow: auto;
