@@ -46,9 +46,10 @@ class MatchesController < ApplicationController
     @festivals.each do |festival|
       @artists[festival.id] = festival.artists.
         select("artists.*, user_artists.*, artists.id AS id").
-        joins("LEFT OUTER JOIN user_artists ON user_artists.artist_id = artists.id").
+        joins("LEFT OUTER JOIN user_artists ON user_artists.artist_id = artists.id AND user_artists.user_id = #{current_user.id}").
         order("user_artists.score DESC NULLS LAST")
 
+        # @artists[festival.id].where("user_artists.user_id = (?)", current_user.id)
       # fest_hash = {
       #   festival_instance: festival,
       #   # artists: list_artists_for_a_fest(rspotify, festival),

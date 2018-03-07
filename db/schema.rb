@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180307112522) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.string "cloudinary_picture"
   end
 
   create_table "festivals", force: :cascade do |t|
