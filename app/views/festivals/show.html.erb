@@ -1,5 +1,5 @@
 <% content_for :meta_title, "#{@festival.name} is on #{DEFAULT_META["meta_product_name"]}" %>
-<% content_for :meta_image, cl_image_path 'cover.jpg' %>
+<% #content_for :meta_image, cl_image_path('cover.jpg')%>
 
 <div class="navbar-gttf">
 <!-- Logo -->
@@ -49,52 +49,71 @@
             <!-- Front of the card -->
             <div class="front">
               <div class="pad">
-                <h2 id="title-fest"><%= @festival.name %></h2>
+                <h2 id="title-fest" style="font-family: 'Lobster', cursive;" ><%= @festival.name.downcase.capitalize %></h2>
                 <div id="title-place">
                   <div class="flex-align-colle">
-                    <h2 id="city"><%= @festival.city %></h2>
-                    <h2 class="text-bold" id="country">/ <%= @festival.country.upcase %></h2>
+                    <h2 id="city" style="font-family: 'Roboto', sans-serif;"><%= @festival.city %></h2>
+                    <h2 class="text-bold" id="country" style="font-family: 'Roboto', sans-serif;">/ <%= @festival.country.upcase %></h2>
                   </div>
                 </div>
-                <div class="card-date">
-                  <h3 class="month"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></h3>
-                  <h2 class="day"> <%= Time.parse(@festival.start_date).day %> </h2>
-                  <h3 style="color:white; margin:0; font-weight:bold">>></h3>
-                  <h3 class ="month"><%= Time.parse(@festival.end_date).strftime('%B').upcase %></h3>
-                  <h2 class="day"><%= Time.parse(@festival.end_date).day %></h2>
+                <div class="title-affinity" style="font-family: 'Roboto', sans-serif;">
                 </div>
+                <div class="card-date" style="font-family: 'Roboto', sans-serif;">
+                  <h3 class="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></h3>
+                  <h2 class="day" style="font-family: 'Lobster', cursive;"> <%= Time.parse(@festival.start_date).day %> </h2>
+                  <h3 style="color:white; margin:0; font-weight:bold; font-family: 'Roboto', sans-serif;">>></h3>
+                  <h3 class ="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></h3>
+                  <h2 class="day" style="font-family: 'Lobster', cursive;"><%= Time.parse(@festival.start_date).day %></h2>
+                </div>
+                <!-- <span class="check" style="font-family: 'Roboto', sans-serif;">Check the </span> --><span class="line" style="font-family: 'Lobster', cursive;">Line Up</span>
                 <div class="btn-turn">
-                  <div class="btn-get-turn"><p>Line Up</p></div>
+                  <div class="btn-get-turn"><p><i class="fas fa-arrow-right"></i></p></div>
                 </div>
               </div>
             </div>
             <!-- Back of the card -->
             <div class="back">
-              <!-- <div class="btn-turn">
-                  <div class="btn-get-turn"></div>
-              </div> -->
+              <div class="btn-line-up">
+                  <div class="btn-get-line-up">X</div>
+              </div>
+              <h2 id="title-fest" style="font-family: 'Lobster', cursive;" ><%= @festival.name.downcase.capitalize %></h2>
+              <div id="title-place-back">
+                <div class="flex-align-colle">
+                  <h2 id="city" style="font-family: 'Roboto', sans-serif;"><%= @festival.city %></h2>
+                  <h2 class="text-bold" id="country" style="font-family: 'Roboto', sans-serif;">/ <%= @festival.country.upcase %></h2>
+                </div>
+              </div>
+              <div class="title-affinity-back" style="font-family: 'Roboto', sans-serif;">
+              </div>
+              <span class="card-date-back" style="font-family: 'Roboto', sans-serif;">
+                <span class="day-back" style="font-family: 'Lobster', cursive;"> <%= Time.parse(@festival.start_date).day %> </span>
+                <span class="month-back" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></span>
+                <span style="color:white; margin:0; font-weight:bold; font-family: 'Roboto', sans-serif;">>></span>
+                <span class="day-back" style="font-family: 'Lobster', cursive;"><%= Time.parse(@festival.start_date).day %></span>
+                <span class ="month-back" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></span>
+              </span>
+              <div class="player">
+                <iframe src="<%= @festival.playlist %>" width="700" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe>
+              </div>
             </div>
             <div class="line-up line-up-close">
-              <div class="line-up-content line-up-content-close">
-                <ul>
-                  <% @festival.artists.each do |artist| %>
-                  <li> <img src=<%="#{Artist.find_by(name: artist[:name]).picture}"%> style="height: 50px; width: 50px;" alt="">
-                    <%= artist.name %> </li>
-                  <% end %>
-                </ul>
+              <div class="line-up-content line-up-content-close" style="font-family: 'Roboto', sans-serif;">
+                <% @festival.artists.each do |artist| %>
+                  <div class="content-line-up">
+                    <div class="line-up-content-desc-img"><img src=<%="#{Artist.find_by(name: artist.name).picture}"%> style="height: 100px; width: 100px; border-radius: 50%; border: 2px white solid; margin-left: 3px; margin-bottom: 10px;" alt=""></div>
+                    <span style="margin-left: 8px; font-weight: bold; font-family: 'Lobster', cursive;"><%= artist.name.capitalize %></span>
+                  </div>
+                <% end %>
               </div>
-              <div class="btn-line-up">
-                  <div class="btn-get-line-up">Get back to the Fest</div>
+              <div class="btn-line-up-book">
+                  <div class="btn-get-line-up-book">Book tickets</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- End of the festival card -->
-
-        <!-- Renard logo -->
-        <div class="col-md-6 col-md-offset-3">
-          <img src="<%=image_path('renard.png')%>" style="margin-top:90px;" alt="">
+        <div class="col-md-3 col-md-offset-3">
+          <img src="<%=image_path('renard.png')%>" style="margin-top:90px; height: 300px; width: 500px;" alt="">
         </div>
 
     </div>

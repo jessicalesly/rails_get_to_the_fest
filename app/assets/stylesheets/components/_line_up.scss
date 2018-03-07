@@ -50,17 +50,17 @@
 
 .btn-get-line-up:hover {
   font-family: 'Lobster', cursive;
-  animation: btn_get_line_up 0.5s;
-  animation-fill-mode: forwards;
+  // animation: btn_get_line_up 0.5s;
+  // animation-fill-mode: forwards;
 }
 
 .btn-line-up-book {
   position: absolute;
   color: #F9CE00;
   border-radius: 25px 0px 25px 0px;
-  -webkit-animation: btn_line_up 3s;
-  animation: btn_line_up 3s;
-  -webkit-animation-fill-mode: forwards;
+  // -webkit-animation: btn_line_up 3s;
+  // animation: btn_line_up 3s;
+  // -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   font-size: 20px;
   cursor: pointer;
@@ -70,14 +70,17 @@
   padding: 10px;
 }
 
+.btn-line-up-book:hover {
+  animation: btn_get_line_up 0.5s;
+  animation-fill-mode: forwards;
+}
+
 .btn-get-line-up-book {
   font-family: 'Lobster', cursive;
 }
 
 .btn-get-line-up-book:hover {
   font-family: 'Lobster', cursive;
-  animation: btn_get_line_up 0.5s;
-  animation-fill-mode: forwards;
 }
 
 .line-up-content {
@@ -147,10 +150,10 @@
 @keyframes btn_get_line_up {
 
   0% {
-    margin-right: 0;
+    border-radius: 25px 0px 25px 0px;
   }
   100% {
-    margin-right: 7px;
+    border-radius: 0px 25px 0px 25px;
   }
 }
 
