@@ -90,6 +90,16 @@
       <% end %>
       <% counter = 0 %>
       <% animal_counter = 0 %>
+      <div class="col-md-8 col-md-offset-2">
+        We have <%= @nb_fest_in_db %> festivals in db,
+        <%= @nb_fest_match %> festivals matched with your <%= @nb_artists_user %> spotify artists, based on <%= @nb_saved_tracks %> tracks you saved!
+
+        <% if params[:sort] %>
+          <%= link_to "Back to original algorithm", match_path(start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]) %>
+        <% else %>
+          <%= link_to "Discovery", match_path(sort: "discovery", start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]) %>
+        <% end %>
+      </div>
       <% @festivals.each do |festival|  %>
         <% counter += 1 %>
         <div class="col-md-8 col-md-offset-2">
@@ -105,7 +115,7 @@
                   </div>
                 </div>
                 <div class="title-affinity" style="font-family: 'Roboto', sans-serif;">
-                  <h2 style="font-size: 40px; font-family: 'Lobster', cursive;"><%= festival.affinity %>%</h2><span style="font-family: 'Lobster', cursive;">affinity</span>
+                  <h2 style="font-size: 40px; font-family: 'Lobster', cursive;"><%= festival.affinity %>pts</h2><span style="font-family: 'Lobster', cursive;">affinity</span>
                 </div>
                 <div class="card-date" style="font-family: 'Roboto', sans-serif;">
                   <h3 class="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival.start_date).strftime('%B').upcase %></h3>
@@ -133,7 +143,7 @@
                 </div>
               </div>
               <div class="title-affinity-back" style="font-family: 'Roboto', sans-serif;">
-                <h2 style="font-size: 32px; font-family: 'Lobster', cursive;"><%= festival.affinity %>%<div style="font-family: 'Lobster', cursive;">affinity</div>
+                <h2 style="font-size: 32px; font-family: 'Lobster', cursive;"><%= festival.affinity %>pts<div style="font-family: 'Lobster', cursive;">affinity</div>
               </div>
               <span class="card-date-back" style="font-family: 'Roboto', sans-serif;">
                 <span class="day-back" style="font-family: 'Lobster', cursive;"> <%= Time.parse(festival.start_date).day %> </span>
@@ -161,19 +171,24 @@
                     <span><%= ", we found #{pluralize(artist.nb_top_tracks,'track')} tracks in your top tracks" if artist.nb_top_tracks > 0 %></span>
                     <span><%= ", you saved #{pluralize(artist.nb_saved_tracks,'track')}" if artist.nb_saved_tracks > 0 %></span>
                   </div>
-                  <% elsif artist[:score] > 0 %>
+                  <% elsif artist.score > 0 %>
                     <% related << artist.name %>
                   <% end %>
                 <% end %>
-                <div>
-                  <%= "#{pluralize(related.count,'artist')} you could like : #{related.join(', ')}" %>
-                </div>
-                <div>
-                  <%= "Other artists : #{other_artists.join(', ')}" %>
-                </div>
+                <% if related.count > 0 %>
+                  <div>
+                    <%= "#{pluralize(related.count,'artist')} you could like : #{related.join(', ')}" %>
+                  </div>
+                <% end %>
+                <% if other_artists.count > 0 %>
+                  <div>
+                    <%= "Other artists : #{other_artists.join(', ')}" %>
+                  </div>
+                <% end %>
               </div>
               <div class="btn-line-up-book">
-                  <div class="btn-get-line-up-book">Book tickets</div>
+
+                  <a target="_blank", href=" <%= festival.tickets_link %> ", class="btn-get-line-up-book">Book tickets</a>
               </div>
             </div>
           </div>
@@ -186,7 +201,7 @@
           <% animal_counter +=1 %>
           <% if animal_counter == 1 %>
             <div class="col-md-3 col-md-offset-3">
-              <img src="<%=image_path('renard.png')%>" style="margin-top:90px; height: 270px; width: 500px;" alt="">
+              <img src="<%=image_path('renard.png')%>" style="margin-top:90px; height: 300px; width: 500px;" alt="">
             </div>
           <% elsif animal_counter == 2 %>
           <div class="col-md-4 col-md-offset-4">
