@@ -33,13 +33,13 @@ class User < ApplicationRecord
     end
 
     #calls to stoptify
-    update_spotify_user_artists(user)
+    user.update_spotify_user_artists
 
     return user #returning user for omniauth controller
   end
 
-  def update_spotify_user_artists(user)
-     spotify_service = SpotifySynchronisationService.new(user)
-     spotify_service.call
-   end
+  def update_spotify_user_artists
+    spotify_service = SpotifySynchronisationService.new(self)
+    spotify_service.call
+  end
 end
