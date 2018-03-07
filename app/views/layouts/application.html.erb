@@ -24,7 +24,9 @@
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
 
-    <title>Get to the fest</title>
+    <title>Get to the fest - A simple tool to find festivals</title>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,700" rel="stylesheet"> -->
+   <!--  <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Faster+One|Holtwood+One+SC|Monoton|Plaster|Righteous|Shrikhand|Ultra" rel="stylesheet"> -->
 
     <link href="https://fonts.googleapis.com/css?family=Plaster|Raleway|Ubuntu:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
@@ -46,6 +48,6 @@
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
-
+   
   </body>
 </html>
