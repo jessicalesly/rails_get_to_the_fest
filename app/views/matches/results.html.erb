@@ -246,42 +246,42 @@
                 <% @artists[festival.id].each do |artist| %>
                   <% if artist.score.nil? %>
                     <% other_artists << artist.name.capitalize %>
-                  <% elsif artist.score > 1 %>
-                  <div class="content-line-up">
-                    <div class="line-up-content-desc-image"><%= image_tag artist.cloudinary_picture.url(:artist_avatar), class: "line-up-content-desc-img" if artist.cloudinary_picture.url(:artist_avatar) %>
+                  <% elsif artist.score > 100 %>
+                    <div class="content-line-up">
+                      <div class="line-up-content-desc-image"><%= image_tag artist.cloudinary_picture.url(:artist_avatar), class: "line-up-content-desc-img" if artist.cloudinary_picture.url(:artist_avatar) %>
+                      </div>
+                      <div style="margin-left: 8px; font-weight: bold; font-family: 'Roboto', cursive;"><%= artist.name.upcase %></div>
+                      <span><%= "is one of your top artists" if artist.is_top_artist %></span>
+                      <span><%= ", we found #{pluralize(artist.nb_top_tracks,'track')} in your top tracks" if artist.nb_top_tracks > 0 %></span>
+                      <span><%= "you saved #{pluralize(artist.nb_saved_tracks,'track')}" if artist.nb_saved_tracks > 0 %></span>
                     </div>
-                    <div style="margin-left: 8px; font-weight: bold; font-family: 'Roboto', cursive;"><%= artist.name.upcase %></div>
-                    <span><%= "is one of your top artists" if artist.is_top_artist %></span>
-                    <span><%= ", we found #{pluralize(artist.nb_top_tracks,'track')} in your top tracks" if artist.nb_top_tracks > 0 %></span>
-                    <span><%= "you saved #{pluralize(artist.nb_saved_tracks,'track')}" if artist.nb_saved_tracks > 0 %></span>
-                  </div>
                   <% elsif artist.score > 0 %>
                     <% related << artist.name.upcase %>
                   <% end %>
                 <% end %>
-                <% if related.count > 0 %>
-                  <div class="more-desc">
-                    <div class="could-like">
-                      <div class="could-like-title">
-                        <%= "#{pluralize(related.count,'artist')} you could like : " %>
-                      </div>
-                      <div class="could-like-desc">
-                        <%= "#{related.join(', ')}" %>
+                  </br>
+                  <% if related.count > 0 %>
+                    <div class="more-desc">
+                      <div class="could-like">
+                        <div class="could-like-title">
+                          <%= "#{pluralize(related.count,'artist')} you could like : " %>
+                        </div>
+                        <div class="could-like-desc">
+                          <%= "#{related.join(', ')}" %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
                   <% end %>
-                  <% if other_artists.count > 0 %>
-                    <div class="other">
-                      <div class="other-title">
-                        <%= "Other artists :" %>
+                    <% if other_artists.count > 0 %>
+                      <div class="other">
+                        <div class="other-title">
+                          <%= "Other artists :" %>
+                        </div>
+                        <div class="other-desc">
+                          <%= "#{other_artists.join(', ')}" %>
+                        </div>
                       </div>
-                      <div class="other-desc">
-                        <%= "#{other_artists.join(', ')}" %>
-                      </div>
-                    </div>
-                <% end %>
+                  <% end %>
                 <!-- <p class= fa-angle-down-desc>Scroll down</p>
                 <i class="fas fa-angle-down"></i> -->
               </div>
