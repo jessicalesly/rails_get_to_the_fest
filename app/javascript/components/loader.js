@@ -32,14 +32,6 @@ function bindLoaderToSpotifyConnectButton(button) {
     tlArrayStep('.loader1 rect:nth-child(2)', loader1Bar2Timeline, (2 / loader1Bar2Heights.length), loader1Bar2Heights);
     tlArrayStep('.loader1 rect:nth-child(3)', loader1Bar3Timeline, (1.4 / loader1Bar3Heights.length), loader1Bar3Heights);
     tlArrayStep('.loader1 rect:nth-child(4)', loader1Bar4Timeline, (2 / loader1Bar4Heights.length), loader1Bar4Heights);
-
-
-
-
-
-
-
   })
 }
-
 export { bindLoaderToSpotifyConnectButton };
