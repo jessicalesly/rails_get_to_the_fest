@@ -47,7 +47,15 @@
 .title-container {
   padding-top: 20px;
   padding-left: 100px;
-  background: url(image_path('fest.jpeg')) fixed no-repeat bottom right;;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5)), url(image_path('fest.jpeg')) fixed no-repeat bottom right;
+  background-size: cover;
+  height: 100vh;
+}
+
+.title-container-team {
+  padding-top: 20px;
+  padding-left: 100px;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0, 0, 0, 0.4)), url(image_path('cover.jpeg')) fixed no-repeat bottom right;
   background-size: cover;
   height: 100vh;
 }

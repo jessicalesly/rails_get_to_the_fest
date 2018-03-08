@@ -33,24 +33,71 @@
       <!-- <img src="images/roc.png" alt=""> -->
     </div>
   </div>
-  <div class="title-container">
+  <div class="title-container" id="about-anchor">
     <div class="about">
       <div class="about-algorithm">
-        <h2>How it works</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <h2>The team</h2>
-      </div>
+        <h2 class="text-center">How it works</h2>
+        <p class="text-center">
+        As you connect with your Spotify account, our app goes and fetches your favorite artists and figures out artists your could like. </br>
+      Our algorithm then compares those artists with Festival line-ups from all over the country to find the festival that matches. </br>
+      Finally, our app shows you the 15 best festival matches for you with a customised playlist ! Get ready for the fest 🚀
+    </p>
+    <p class="text-center">Scores computation details:</p>
+    <ul class="text-center">
+      <li>one top artist = 1000</li>
+      <li>one top track = 300</li>
+      <li>one saved track = 200</li>
+      <li>one related artist = 100</li>
+    </ul>
+  </br>
+  <p class="text-center">Examples</p>
+
+  <div class="about-examples">
+    <div class="about-small">
+      <%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/c_scale,h_150,w_150/v1520506335/Gorillaz.jpg", :class => "team_pic" %>
+      <p>Gorillaz is one of my top artists, I saved 9 songs by this band among their albums</p>
+      <p>Every festival with Gorillaz in the line-up receive 2800 stars</p>
+    </div>
+
+    <div class="about-small">
+      <%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/c_scale,h_150,w_150/v1520506335/Lomepal.jpg", :class => "team_pic" %>
+      <p>Among my top tracks there are 3 songs by Lomepal, I saved one of those tracks </p>
+      <p>Every festival with Lomepal in the line-up receive 1100 stars</p>
+    </div>
+  </div>
+  <div class="navigation">
+  <a href="#team-anchor" id="chevron"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+</div>
+</div>
+
+</div>
+
+  </div>
+  <div class="title-container-team" id="team-anchor">
+    <div class="about">
+      <h2>The team</h2>
       <div class="team">
+        <div class="team_desc">
         <%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/christopher_cardoso.png", :class => "team_pic" %>
-        <%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/loic_chesneau.png", :class => "team_pic" %>
-        <%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/jessica_lesly.png", :class => "team_pic" %>
-        <%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/clement_simons.png", :class => "team_pic" %>
-      </div>
-      <div class="team">
-        <p class="team_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="team_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="team_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="team_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>Christopher</p>
+          <p class="about-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+        <div class="team_desc"><%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/loic_chesneau.png", :class => "team_pic" %>
+          <p>Loïc</p>
+          <p class="about-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        </div>
+        <div class="team_desc"><%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/jessica_lesly.png", :class => "team_pic" %>
+          <p>Jessica</p>
+          <p class="about-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        </div>
+        <div class="team_desc"><%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/clement_simons.png", :class => "team_pic" %>
+          <p>Clément</p>
+          <p class="about-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        </div>
       </div>
     </div>
   </div>
@@ -61,11 +108,10 @@
 <div class="footer-copyright">
   Follow us <i class="fa fa-headphones" aria-hidden="true"></i>
 </div>
+<div class="footer-copyright text-center">
+Created at Le Wagon </br> Festival data provided by SongKick
+</div>
 <div class="footer-links">
   <a href="#"><i class="fab fa-github"></i></a>
-  <a href="#"><i class="fab fa-instagram"></i></a>
-  <a href="#"><i class="fab fa-facebook"></i></a>
-  <a href="#"><i class="fab fa-twitter"></i></a>
-  <a href="#"><i class="fab fa-linkedin"></i></a>
 </div>
 </div>

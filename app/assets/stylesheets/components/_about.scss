@@ -1,11 +1,46 @@
 .about {
   color: white;
   padding-right: 100px;
-  vertical-align: center;
+  font-family: $body-font;
 }
 
 .about-algorithm {
+  font-family: $body-font;
+}
 
+.about-algorithm-example {
+
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  i {
+    margin-bottom: 10px;
+  }
+}
+
+#chevron {
+  transition: .5s;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-small {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 14px;
+}
+
+.about-example {
+  text-align: center;
+  color: #f4f4f4;
+  width: 400px;
+  justify-text: center;
 }
 
 .team {
@@ -17,11 +52,14 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  margin-bottom: 15px;
+  border: #f4f4f4 solid 2px;
 }
 
 .team_desc {
-  width: 300px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  margin: 10px;
+  justify-content: center;
+  color: #f4f4f4;
+  width: 300px;
+  justify-text: center;
 }
