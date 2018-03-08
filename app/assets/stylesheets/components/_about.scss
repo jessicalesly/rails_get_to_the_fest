@@ -1,11 +1,33 @@
 .about {
   color: white;
   padding-right: 100px;
-  vertical-align: center;
+  font-family: $body-font;
 }
 
 .about-algorithm {
+  font-family: $body-font;
+}
 
+.about-algorithm-example {
+
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-examples {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.about-example {
+  text-align: center;
+  color: #f4f4f4;
+  width: 400px;
+  justify-text: center;
 }
 
 .team {
@@ -17,11 +39,14 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  margin-bottom: 15px;
+  border: #f4f4f4 solid 2px;
 }
 
 .team_desc {
-  width: 300px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  margin: 10px;
+  justify-content: center;
+  color: #f4f4f4;
+  width: 300px;
+  justify-text: center;
 }
