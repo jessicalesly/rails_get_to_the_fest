@@ -37,7 +37,8 @@ class MatchesController < ApplicationController
     @festivals = Festival.where(id: festival_ids)
 
     @festivals = @festivals.select("festivals.*, SUM(user_artists.score) AS affinity, COUNT(user_artists.id) filter (where user_artists.is_related = 'true') AS related_artists_count").
-      joins(line_ups: {artist: :user_artists}).
+      joins(line_ups: :artist).
+      joins("LEFT OUTER JOIN user_artists ON user_artists.artist_id = artists.id AND user_artists.user_id = #{current_user.id}").
       group(:id).
       limit(15)
 
