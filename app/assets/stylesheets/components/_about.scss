@@ -12,15 +12,28 @@
 
 }
 
+.navigation {
+  display: flex;
+  justify-content: center;
+  i {
+    margin-bottom: 10px;
+  }
+}
+
+#chevron {
+  transition: .5s;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.about-examples {
+.about-small {
   display: flex;
   justify-content: space-evenly;
+  font-size: 14px;
 }
 
 .about-example {
