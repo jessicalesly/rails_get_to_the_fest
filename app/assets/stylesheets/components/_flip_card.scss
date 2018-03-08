@@ -100,3 +100,17 @@
 .modal-desc {
   z-index: 9999;
 }
+
+.scroll_down {
+  animation: scrolling_down 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes scrolling_down {
+  0% {
+    y-index: 0;
+  }
+  100% {
+    y-index: 100px;
+  }
+}

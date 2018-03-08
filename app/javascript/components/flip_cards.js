@@ -1,19 +1,19 @@
 function flip_cards() {
 
-  // const artists_top_div_all = document.querySelectorAll('.collapse-content-top')
-  // const artists_saved_div_all = document.querySelectorAll('.collapse-content-saved')
-  // const artists_related_div_all = document.querySelectorAll('.collapse-content-related')
+// const artists_top_div_all = document.querySelectorAll('.collapse-content-top')
+// const artists_saved_div_all = document.querySelectorAll('.collapse-content-saved')
+// const artists_related_div_all = document.querySelectorAll('.collapse-content-related')
 
 
-  // artists_top_div_all.forEach (function(div){
-  //  div.style.display = "none";
-  // });
-  // artists_saved_div_all.forEach (function(div){
-  //  div.style.display = "none";
-  // });
-  // artists_related_div_all.forEach (function(div){
-  //  div.style.display = "none";
-  // });
+// artists_top_div_all.forEach (function(div){
+//  div.style.display = "none";
+// });
+// artists_saved_div_all.forEach (function(div){
+//  div.style.display = "none";
+// });
+// artists_related_div_all.forEach (function(div){
+//  div.style.display = "none";
+// });
 
 // const cards_black = document.querySelectorAll(".card-black .back")
 // const flip_btns = document.querySelectorAll(".btn-get-turn")
@@ -55,31 +55,38 @@ flip_btns2.forEach (function(flip_btn2) {
   });
 });
 
-    // const artists_top_number = event.currentTarget.children[2].firstChild.firstChild
-    // const artists_saved_number = event.currentTarget.children[2].children[2].firstChild
-    // const artists_related_number = event.currentTarget.children[2].children[3].firstChild
-    // const artists_top_div = event.currentTarget.children[3]
-    // const artists_saved_div = event.currentTarget.children[4]
-    // const artists_related_div = event.currentTarget.children[5]
+const angles_down = document.querySelectorAll(".fa-angle-down")
+angles_down.forEach (function(angle_down) {
+  angle_down.addEventListener("click", (event) => {
+    angle_down.closest(".line-up").querySelector(".line-up-content").classList.add(".scroll_down");
+  });
+});
 
-    // artists_top_number.addEventListener('click', (event) => {
-    //     artists_top_div.style.display = "block";
-    //     artists_saved_div.style.display = "none"
-    //     artists_related_div.style.display = "none"
-    //   });
+// const artists_top_number = event.currentTarget.children[2].firstChild.firstChild
+// const artists_saved_number = event.currentTarget.children[2].children[2].firstChild
+// const artists_related_number = event.currentTarget.children[2].children[3].firstChild
+// const artists_top_div = event.currentTarget.children[3]
+// const artists_saved_div = event.currentTarget.children[4]
+// const artists_related_div = event.currentTarget.children[5]
+
+// artists_top_number.addEventListener('click', (event) => {
+//     artists_top_div.style.display = "block";
+//     artists_saved_div.style.display = "none"
+//     artists_related_div.style.display = "none"
+//   });
 
 
-    // artists_saved_number.addEventListener('click', (event) => {
-    //     artists_saved_div.style.display = "block";
-    //     artists_top_div.style.display = "none"
-    //     artists_related_div.style.display = "none"
-    //   });
+// artists_saved_number.addEventListener('click', (event) => {
+//     artists_saved_div.style.display = "block";
+//     artists_top_div.style.display = "none"
+//     artists_related_div.style.display = "none"
+//   });
 
-    // artists_related_number.addEventListener('click', (event) => {
-    //     artists_related_div.style.display = "block";
-    //     artists_saved_div.style.display = "none"
-    //     artists_top_div.style.display = "none"
-    //   });
+// artists_related_number.addEventListener('click', (event) => {
+//     artists_related_div.style.display = "block";
+//     artists_saved_div.style.display = "none"
+//     artists_top_div.style.display = "none"
+//   });
 
 
 
