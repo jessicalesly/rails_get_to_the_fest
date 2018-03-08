@@ -7,8 +7,9 @@
   height: 210px;
   width: 200px;
   text-align: center;
-  margin-left: 100px;
-  margin-top: 20px;
+  margin-left: 85px;
+  margin-right: 25px;
+  margin-top: 12px;
 }
 
 .line-up-content-desc-img {
@@ -56,12 +57,13 @@
 
 .btn-line-up-book {
   position: absolute;
+  text-decoration: none;
   color: #F9CE00;
   border-radius: 25px 0px 25px 0px;
   // -webkit-animation: btn_line_up 3s;
   // animation: btn_line_up 3s;
   // -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+  // animation-fill-mode: forwards;
   font-size: 20px;
   cursor: pointer;
   bottom: 20px;
@@ -70,17 +72,19 @@
   padding: 10px;
 }
 
-.btn-line-up-book:hover {
-  animation: btn_get_line_up 0.5s;
-  animation-fill-mode: forwards;
+.btn-line-up-book a {
+  text-decoration: none;
+  color: #F9CE00;
 }
 
 .btn-get-line-up-book {
   font-family: 'Lobster', cursive;
+  text-decoration: none;
 }
 
 .btn-get-line-up-book:hover {
   font-family: 'Lobster', cursive;
+  opacity: 0.70;
 }
 
 .line-up-content {
@@ -88,19 +92,20 @@
   display: flex;
   flex-wrap: wrap;
   padding-top: 10px;
-  height: 250px;
-  width: 700px;
+  height: 232px;
+  width: 682px;
   top: 300px;
-  left: 20px;
+  left: 33px;
   color: white;
   font-size: 16px;
+  -webkit-animation: slideincontent 3s;
   animation: slideincontent 3s;
+  -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  overflow: auto;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
   margin-right: 10px;
-  ul {
-    padding-left: 10px;
-  }
+  margin-top: 6px;
 }
 
 .line-up-content-close {
@@ -150,10 +155,10 @@
 @keyframes btn_get_line_up {
 
   0% {
-    border-radius: 25px 0px 25px 0px;
+    margin-left: 0;
   }
   100% {
-    border-radius: 0px 25px 0px 25px;
+    margin-left: 10px;
   }
 }
 
@@ -231,4 +236,20 @@
     display: none;
     height: 0px;
   }
+}
+
+.fa-angle-down {
+  position: absolute;
+  left: 335px;
+  bottom: -8px;
+  font-size: 30px;
+  color: #F9CE00;
+}
+
+.fa-angle-down-desc {
+  position: absolute;
+  left: 310px;
+  bottom: 4px;
+  font-size: 13px;
+  color: #F9CE00;
 }

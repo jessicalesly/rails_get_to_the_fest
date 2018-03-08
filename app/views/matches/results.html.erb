@@ -69,8 +69,8 @@
       <%= text_field_tag :artist,
         params[:artist],
         class: "form-control filter_style",
-        placeholder: "Artiste" %>
-      <%= submit_tag 'Rechercher', class: 'button-search' %>
+        placeholder: "Artist" %>
+      <%= submit_tag 'Search', class: 'button-search' %>
     <% end %>
   </div>
   </div>
@@ -90,14 +90,16 @@
       <% end %>
       <% counter = 0 %>
       <% animal_counter = 0 %>
-      <div class="col-md-8 col-md-offset-2">
-        We have <%= @nb_fest_in_db %> festivals in db,
-        <%= @nb_fest_match %> festivals matched with your <%= @nb_artists_user %> spotify artists, based on <%= @nb_saved_tracks %> tracks you saved!
+      <div class="col-md-8 col-md-offset-2 discovery-content">
+        <p>We have <strong><%= @nb_fest_in_db %></strong> festivals in db,
+        <strong><%= @nb_fest_match %></strong> festivals matched with your <strong><%= @nb_artists_user %></strong> spotify artists, based on <strong><%= @nb_saved_tracks %></strong> tracks you saved!</p>
+
+        <p class="discovery-text">If you use the Discovery mode, you can see the festivals matching with your related artists! -> It can help you to discover new artists you could like!</p>
 
         <% if params[:sort] %>
-          <%= link_to "Back to original algorithm", match_path(start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]) %>
+          <%= link_to "Back to original algorithm", match_path(start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]), class: "discovery-btn" %>
         <% else %>
-          <%= link_to "Discovery", match_path(sort: "discovery", start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]) %>
+          <%= link_to "Discovery", match_path(sort: "discovery", start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]), class: "discovery-btn" %>
         <% end %>
       </div>
       <% @festivals.each do |festival|  %>
@@ -167,11 +169,11 @@
                   <a href="https://www.gettothefest.com/festival/<%= festival.id %>"  class="twitter-share-button" data-text="Get To The Fest - A simple tool to find festivals" data-url="https://www.gettothefest.com/festival/<%= festival.id %>" data-show-count="false">Tweet</a>
                 </div>
                 <!-- email -->
-                <div class="socialspace">
+                <!-- <div class="socialspace">
                   <a href= "mailto:?subject=Discover Get to the fest&amp;body=Check out this site http://www.gettothefest.com. It's a simple tool to find festivals fitting with your musical tastes.">
                   <i class="fas fa-envelope" id= "enveleope-color"></i>
                   </a>
-                </div>
+                </div> -->
               </div>
 
 
@@ -185,7 +187,8 @@
                     <% other_artists << artist.name %>
                   <% elsif artist.score > 1 %>
                   <div class="content-line-up">
-                    <div class="line-up-content-desc-img"><img src=<%="#{Artist.find_by(name: artist.name).picture}"%> style="height: 100px; width: 100px; border-radius: 50%; border: 2px white solid; margin-left: 3px; margin-bottom: 10px;" alt=""></div>
+                    <div class="line-up-content-desc-img"><%= image_tag artist.cloudinary_picture.url(:artist_avatar) if artist.cloudinary_picture.url(:artist_avatar) %>
+                    </div>
                     <span style="margin-left: 8px; font-weight: bold; font-family: 'Lobster', cursive;"><%= artist.name.capitalize %></span>
                     <span><%= ", is one of your top artists" if artist.is_top_artist %></span>
                     <span><%= ", we found #{pluralize(artist.nb_top_tracks,'track')} tracks in your top tracks" if artist.nb_top_tracks > 0 %></span>
@@ -205,6 +208,8 @@
                     <%= "Other artists : #{other_artists.join(', ')}" %>
                   </div>
                 <% end %>
+                <p class= fa-angle-down-desc>Scroll down</p>
+                <i class="fas fa-angle-down"></i>
               </div>
               <div class="btn-line-up-book">
 
@@ -219,18 +224,14 @@
         <!-- Renard logo -->
         <% if counter%2 == 0 %>
           <% animal_counter +=1 %>
-          <% if animal_counter == 1 %>
+          <% if animal_counter%2 == 0 %>
             <div class="col-md-3 col-md-offset-3">
               <img src="<%=image_path('renard.png')%>" style="margin-top:90px; height: 300px; width: 500px;" alt="">
             </div>
-          <% elsif animal_counter == 2 %>
+          <% else %>
           <div class="col-md-4 col-md-offset-4">
             <img src="<%=image_path('suricate.png')%>" style="margin-top:90px; height: 270px; width: 360px;" alt="">
           </div>
-          <% else %>
-            <div class="col-md-6 col-md-offset-3">
-              <img src="<%=image_path('rat.png')%>" style="margin-top:90px; height: 270px; width: 520px; margin-left: 35px;" alt="">
-            </div>
           <% end %>
         <% end %>
       <% end %>

@@ -4,8 +4,11 @@
 
 .social-buttons {
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: inherit;
+  position: absolute;
+  right: 57px;
+  top: 142px;
 }
 
 .socialspace {
