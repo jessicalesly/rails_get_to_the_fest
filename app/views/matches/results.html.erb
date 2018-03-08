@@ -85,7 +85,7 @@
     <div class="row">
       <% if @festivals.nil? %>
         <div class="col-md-8 col-md-offset-2">
-          <h2>Sooooorryyyyyyyyy</h2>
+          <h2>Sorry we couldn't find results for your research.</h2>
         </div>
       <% end %>
       <% counter = 0 %>
@@ -184,18 +184,18 @@
                 <% other_artists = [] %>
                 <% @artists[festival.id].each do |artist| %>
                   <% if artist.score.nil? %>
-                    <% other_artists << artist.name %>
+                    <% other_artists << artist.name.capitalize %>
                   <% elsif artist.score > 1 %>
                   <div class="content-line-up">
                     <div class="line-up-content-desc-image"><%= image_tag artist.cloudinary_picture.url(:artist_avatar), class: "line-up-content-desc-img" if artist.cloudinary_picture.url(:artist_avatar) %>
                     </div>
                     <div style="margin-left: 8px; font-weight: bold; font-family: 'Roboto', cursive;"><%= artist.name.upcase %></div>
                     <span><%= "is one of your top artists" if artist.is_top_artist %></span>
-                    <span><%= ", we found #{pluralize(artist.nb_top_tracks,'track')} tracks in your top tracks" if artist.nb_top_tracks > 0 %></span>
+                    <span><%= ", we found #{pluralize(artist.nb_top_tracks,'track')} in your top tracks" if artist.nb_top_tracks > 0 %></span>
                     <span><%= "you saved #{pluralize(artist.nb_saved_tracks,'track')}" if artist.nb_saved_tracks > 0 %></span>
                   </div>
                   <% elsif artist.score > 0 %>
-                    <% related << artist.name %>
+                    <% related << artist.name.upcase %>
                   <% end %>
                 <% end %>
                 <% if related.count > 0 %>
@@ -220,8 +220,8 @@
                   </div>
                 </div>
                 <% end %>
-                <p class= fa-angle-down-desc>Scroll down</p>
-                <i class="fas fa-angle-down"></i>
+                <!-- <p class= fa-angle-down-desc>Scroll down</p>
+                <i class="fas fa-angle-down"></i> -->
               </div>
               <div class="btn-line-up-book">
 
