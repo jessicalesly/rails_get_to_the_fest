@@ -14,6 +14,10 @@
 
 .line-up-content-desc-img {
   border-radius: 50%;
+  border: 1px white solid;
+  padding: 1px;
+  height: 100px;
+  margin-bottom: 12px;
 }
 
 .line-up-close {
@@ -252,4 +256,33 @@
   bottom: 4px;
   font-size: 13px;
   color: #F9CE00;
+}
+
+.more-desc {
+  width: 100%;
+}
+
+.could-like {
+  text-align: center;
+  width: 100%;
+  flex: 0 0 50%;
+}
+
+.could-like-title {
+  font-weight: bold;
+  color: #F9CE00;
+  margin-bottom: 5px;
+}
+
+.other {
+  text-align: center;
+  width: 100%;
+  flex: 0 0 50%;
+}
+
+.other-title {
+  font-weight: bold;
+  color: #F9CE00;
+  margin-top: 30px;
+  margin-bottom: 5px;
 }
