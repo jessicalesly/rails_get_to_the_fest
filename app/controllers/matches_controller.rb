@@ -72,7 +72,6 @@ class MatchesController < ApplicationController
 
       # @festival_array <<  fest_hash
     end
-    p @festivals
     # @festival_array.sort_by! { |festival_hash| festival_hash[:affinity] }.reverse!
     @nb_fest_in_db = Festival.all.count
     @nb_fest_match = @festivals.size
