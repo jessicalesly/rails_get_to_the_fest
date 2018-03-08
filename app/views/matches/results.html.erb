@@ -160,7 +160,7 @@
               <div class="social-buttons">
                 <!-- Facebook -->
                 <div class="socialspace">
-                  <div class="fb-share-button" data-href="https://www.gettothefest.com/festival/<%= festival.id %>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.gettothefest.com%2Ffestival%2F1&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                  <div class="fb-share-button" data-href="<%= festival_url(festival) %>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<%= festival_url(festival)%>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
                 </div>
                 <!-- Twitter -->
                 <div class="socialspace">
