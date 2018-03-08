@@ -1,19 +1,19 @@
 require 'rest-client'
 require 'json'
 
-# # cleaning seeds
+# # # cleaning seeds
 
-p "Cleaning seed..."
+# p "Cleaning seed..."
 
- # LineUp.destroy_all
- # Festival.destroy_all
- # Artist.destroy_all
+#  LineUp.destroy_all
+#  Festival.destroy_all
+#  Artist.destroy_all
 
-p "Finished cleaning seed"
+# p "Finished cleaning seed"
 
-# # finding all location with SK metro id in France
+# # # finding all location with SK metro id in France
 
-p "Beginning to map metroarea ids from Songkick..."
+# p "Beginning to map metroarea ids from Songkick..."
 
 # city_page = 1 #iterate over this until totalEntries / 50
 # total_entries = 1000
