@@ -199,27 +199,27 @@
                   <% end %>
                 <% end %>
                 <% if related.count > 0 %>
-                <div class="more-desc">
-                  <div class="could-like">
-                    <div class="could-like-title">
-                      <%= "#{pluralize(related.count,'artist')} you could like : " %>
-                    </div>
-                    <div class="could-like-desc">
-                      <%= "#{related.join(', ')}" %>
+                  <div class="more-desc">
+                    <div class="could-like">
+                      <div class="could-like-title">
+                        <%= "#{pluralize(related.count,'artist')} you could like : " %>
+                      </div>
+                      <div class="could-like-desc">
+                        <%= "#{related.join(', ')}" %>
+                      </div>
                     </div>
                   </div>
                   <% end %>
                   <% if other_artists.count > 0 %>
-                  <div class="other">
-                    <div class="other-title">
-                      <%= "Other artists :" %>
+                    <div class="other">
+                      <div class="other-title">
+                        <%= "Other artists :" %>
+                      </div>
+                      <div class="other-desc">
+                        <%= "#{other_artists.join(', ')}" %>
+                      </div>
                     </div>
-                    <div class="other-desc">
-                      <%= "#{other_artists.join(', ')}" %>
-                    </div>
-                  </div>
-                </div>
-                <% end %>
+                  <% end %>
                 <!-- <p class= fa-angle-down-desc>Scroll down</p>
                 <i class="fas fa-angle-down"></i> -->
               </div>
