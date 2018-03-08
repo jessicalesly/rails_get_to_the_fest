@@ -9,7 +9,69 @@
 
     <!-- <a href="" class="navbar-gttf-item navbar-gttf-link">Favorites</a>
     <a href="" class="navbar-gttf-item navbar-gttf-link">Settings</a> -->
-    <%= link_to "All festivals", match_path, class: "navbar-gttf-item navbar-gttf-link" %>
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+
+    Launch demo modal
+    </button> -->
+    <%= link_to "How does it work", "#", class: "navbar-gttf-item navbar-gttf-link", "data-toggle" => "modal", "data-target" => "#exampleModal" %>
+    <%= link_to "Discovery mode", "#", class: "navbar-gttf-item navbar-gttf-link", "data-toggle" => "modal", "data-target" => "#discoveryMode" %>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">About our Algorithm...</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <!-- <span aria-hidden="true">&times;</span> -->
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul class="text-center" style="list-style-type: none; padding: 0; margin: 0;">
+              <li>One top artist = 1000 pts</li>
+              <li>One top track = 300 pts</li>
+              <li>One saved track = 200 pts</li>
+              <li>One related artist = 100 pts</li>
+            </ul>
+            </br>
+            <p class="text-center">There are <strong><%= @nb_fest_in_db %></strong> festivals in our database.
+            </br>
+              <strong>We matched <%= @nb_fest_match %></strong> festivals with your <strong><%= @nb_artists_user %></strong> spotify artists, based on tracks you saved!
+            </p>
+          </div>
+          <div class="modal-footer">
+            <div class="flex-modal-footer">
+              <%= link_to "Close", "#", class: "btn-get-line-up-book" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="discoveryMode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">About the Discovery Mode...</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <!-- <span aria-hidden="true">&times;</span> -->
+            </button>
+          </div>
+          <div class="modal-body">
+            Discover festival with line-ups mainly composed of artists you might like according to Spotify.
+          </div>
+          <div class="modal-footer">
+            <div class="flex-modal-footer">
+            <%= link_to "Close", "#", class: "btn-get-line-up-book" %>
+            <%= link_to "Discovery", match_path(sort: "discovery", start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]), class: "btn-get-line-up-book" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <%= link_to "Main results", match_path, class: "navbar-gttf-item navbar-gttf-link" %>
+
     <%= link_to destroy_user_session_path, class: "navbar-gttf-item navbar-gttf-link", method: "delete" do %>
       <%= t(".sign_out", default: "Log out") %>
     <% end %>
@@ -91,16 +153,15 @@
       <% counter = 0 %>
       <% animal_counter = 0 %>
       <div class="col-md-8 col-md-offset-2 discovery-content">
-        <p>We have <strong><%= @nb_fest_in_db %></strong> festivals in db,
-        <strong><%= @nb_fest_match %></strong> festivals matched with your <strong><%= @nb_artists_user %></strong> spotify artists, based on <strong><%= @nb_saved_tracks %></strong> tracks you saved!</p>
 
-        <p class="discovery-text">If you use the Discovery mode, you can see the festivals matching with your related artists! -> It can help you to discover new artists you could like!</p>
+
+<!--         <p class="discovery-text">If you use the Discovery mode, you can see the festivals matching with your related artists! -> It can help you to discover new artists you could like!</p>
 
         <% if params[:sort] %>
           <%= link_to "Back to original algorithm", match_path(start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]), class: "discovery-btn" %>
         <% else %>
           <%= link_to "Discovery", match_path(sort: "discovery", start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]), class: "discovery-btn" %>
-        <% end %>
+        <% end %> -->
       </div>
       <% @festivals.each do |festival|  %>
         <% counter += 1 %>
@@ -208,20 +269,20 @@
                       <%= "#{related.join(', ')}" %>
                     </div>
                   </div>
+                </div>
                   <% end %>
                   <% if other_artists.count > 0 %>
-                  <div class="other">
-                    <div class="other-title">
-                      <%= "Other artists :" %>
+                    <div class="other">
+                      <div class="other-title">
+                        <%= "Other artists :" %>
+                      </div>
+                      <div class="other-desc">
+                        <%= "#{other_artists.join(', ')}" %>
+                      </div>
                     </div>
-                    <div class="other-desc">
-                      <%= "#{other_artists.join(', ')}" %>
-                    </div>
-                  </div>
-                </div>
                 <% end %>
-                <p class= fa-angle-down-desc>Scroll down</p>
-                <i class="fas fa-angle-down"></i>
+                <!-- <p class= fa-angle-down-desc>Scroll down</p>
+                <i class="fas fa-angle-down"></i> -->
               </div>
               <div class="btn-line-up-book">
 
@@ -263,4 +324,3 @@
     <a href="#"><i class="fab fa-linkedin"></i></a>
   </div>
 </div>
-

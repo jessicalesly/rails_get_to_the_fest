@@ -58,10 +58,12 @@ class SpotifySynchronisationService
     saved_tracks = @spotify_user.saved_tracks(limit: 50, offset: 0)
     current_batch = [1]
 
-    while current_batch.any?
+    while current_batch.any? && (offset_counter < 700)
       offset_counter += 50
       current_batch = @spotify_user.saved_tracks(limit: 50, offset: offset_counter)
       saved_tracks << current_batch
+      p offset_counter
+      p "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     end
     saved_tracks.flatten!
 
@@ -115,11 +117,11 @@ class SpotifySynchronisationService
         score: 0
       }
       if user_artist_params[:is_related]
-        user_artist_params[:score] = 1
+        user_artist_params[:score] = 100
       else
-        user_artist_params[:score] += 10 if user_artist_params[:is_top_artist]
-        user_artist_params[:score] += 3 * user_artist_params[:nb_top_tracks]
-        user_artist_params[:score] += 2 * user_artist_params[:nb_saved_tracks]
+        user_artist_params[:score] += 1000 if user_artist_params[:is_top_artist]
+        user_artist_params[:score] += 300 * user_artist_params[:nb_top_tracks]
+        user_artist_params[:score] += 200 * user_artist_params[:nb_saved_tracks]
       end
 
       user_artist = @user.user_artists.find_by_artist_id(artist.id)

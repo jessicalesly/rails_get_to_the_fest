@@ -1,7 +1,7 @@
 import "gsap";
 import "../plugins/flatpickr";
 import "bootstrap";
-import {divAppear} from '../components/collapse';
+// import {divAppear} from '../components/collapse';
 
 
 import '../components/burger';
@@ -18,4 +18,4 @@ if(cards_black) {
   flip_cards();
 }
 
-divAppear();
+// divAppear();
