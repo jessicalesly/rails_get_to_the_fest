@@ -241,7 +241,9 @@
                       </div>
                       <div style="margin-left: 8px; font-weight: bold; font-family: 'Roboto', cursive;"><%= artist.name.upcase %></div>
                       <span><%= "is one of your top artists" if artist.is_top_artist %></span>
-                      <span><%= ", we found #{pluralize(artist.nb_top_tracks,'track')} in your top tracks" if artist.nb_top_tracks > 0 %></span>
+                      <span> <%= ", " if artist.is_top_artist && (artist.nb_top_tracks > 0 || artist.nb_saved_tracks > 0) %> </span>
+                      <span><%= "we found #{pluralize(artist.nb_top_tracks,'track')} in your top tracks" if artist.nb_top_tracks > 0 %></span>
+                      <span> <%= ", " if artist.nb_saved_tracks > 0 && artist.nb_top_tracks > 0 %> </span>
                       <span><%= "you saved #{pluralize(artist.nb_saved_tracks,'track')}" if artist.nb_saved_tracks > 0 %></span>
                     </div>
                   <% elsif artist.score > 0 %>
