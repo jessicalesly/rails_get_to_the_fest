@@ -8,13 +8,20 @@
   width: 300px;
 }
 
+// .search-filter {
+//   &.active {
+//     z-index: 1;
+//   }
+// }
+
 .searchbar-icon {
   position: relative;
-  z-index: -1;
-  &.active {
-    z-index: 1;
-  }
+  // z-index: -1;
+  // &.active {
+  //   z-index: 1;
+  // }
 }
+
 
 #nav-icon2{
   position: absolute;
