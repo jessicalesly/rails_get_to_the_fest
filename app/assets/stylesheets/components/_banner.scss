@@ -45,8 +45,10 @@
 }
 
 .title-container {
+  position: relative;
   padding-top: 20px;
-  padding-left: 100px;
+  padding-left: 10vw;
+  padding-right: 10vw;
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5)), url(image_path('fest.jpeg')) fixed no-repeat bottom right;
   background-size: cover;
   height: 100vh;
@@ -66,4 +68,12 @@
   width:380px;
   color:white;
   font-size:23px;
+}
+
+#follow-us-link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.4);
+  &:hover {
+    color: rgba(0, 0, 0, 0.5);
+  }
 }
