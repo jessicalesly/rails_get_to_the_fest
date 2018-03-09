@@ -7,6 +7,11 @@
   top: 27.5vh;
   height: 45vh;
   align-items: center;
+  text-shadow: 2px 2px 2px black;
+}
+
+.about-small {
+  font-weight: lighter;
 }
 
 .navigation {
@@ -55,4 +60,5 @@ ul {
   color: #f4f4f4;
   width: 20vw;
   height: 45vh;
+  margin: 10px;
 }
