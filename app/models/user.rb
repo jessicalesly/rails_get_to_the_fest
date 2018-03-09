@@ -24,15 +24,18 @@ class User < ApplicationRecord
     user_params = user_params.to_h
 
     if user
+      sleep(4)
       user.update(user_params) #updating the authentification hash # updating user's hash for rspotify requests
       # user.music_hash = user_music_hash
     else # setting up a new user
       user = User.new(user_params)
       user.password = Devise.friendly_token[0,20]
       user.save!
+      user.update_spotify_user_artists
+
       #calls to stoptify
     end
-      user.update_spotify_user_artists
+
 
 
     return user #returning user for omniauth controller
