@@ -40,10 +40,11 @@
   </div>
 </div>
 
+
+<!-- Results -->
 <div class="yellow-container-results">
   <div class="container">
     <div class="row">
-
         <div class="col-md-8 col-md-offset-2">
           <div class="card-black">
             <!-- Front of the card -->
@@ -56,14 +57,12 @@
                     <h2 class="text-bold" id="country" style="font-family: 'Roboto', sans-serif;">/ <%= @festival.country.upcase %></h2>
                   </div>
                 </div>
-                <div class="title-affinity" style="font-family: 'Roboto', sans-serif;">
-                </div>
                 <div class="card-date" style="font-family: 'Roboto', sans-serif;">
                   <h3 class="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></h3>
                   <h2 class="day" style="font-family: 'Lobster', cursive;"> <%= Time.parse(@festival.start_date).day %> </h2>
                   <h3 style="color:white; margin:0; font-weight:bold; font-family: 'Roboto', sans-serif;">>></h3>
-                  <h3 class ="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></h3>
-                  <h2 class="day" style="font-family: 'Lobster', cursive;"><%= Time.parse(@festival.start_date).day %></h2>
+                  <h3 class ="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.end_date).strftime('%B').upcase %></h3>
+                  <h2 class="day" style="font-family: 'Lobster', cursive;"><%= Time.parse(@festival.end_date).day %></h2>
                 </div>
                 <!-- <span class="check" style="font-family: 'Roboto', sans-serif;">Check the </span> --><span class="line" style="font-family: 'Lobster', cursive;">Line Up</span>
                 <div class="btn-turn">
@@ -83,19 +82,18 @@
                   <h2 class="text-bold" id="country" style="font-family: 'Roboto', sans-serif;">/ <%= @festival.country.upcase %></h2>
                 </div>
               </div>
-              <div class="title-affinity-back" style="font-family: 'Roboto', sans-serif;">
-              </div>
-              <span class="card-date-back" style="font-family: 'Roboto', sans-serif;">
+              <span class="card-date-back" style="font-family: 'Roboto', sans-serif; width: 290px;">
                 <span class="day-back" style="font-family: 'Lobster', cursive;"> <%= Time.parse(@festival.start_date).day %> </span>
                 <span class="month-back" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></span>
                 <span style="color:white; margin:0; font-weight:bold; font-family: 'Roboto', sans-serif;">>></span>
-                <span class="day-back" style="font-family: 'Lobster', cursive;"><%= Time.parse(@festival.start_date).day %></span>
-                <span class ="month-back" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.start_date).strftime('%B').upcase %></span>
+                <span class="day-back" style="font-family: 'Lobster', cursive;"><%= Time.parse(@festival.end_date).day %></span>
+                <span class ="month-back" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(@festival.end_date).strftime('%B').upcase %></span>
               </span>
               <div class="player">
                 <iframe src="<%= @festival.playlist %>" width="700" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media" style="padding: 10px;"></iframe>
               </div>
-                <!-- Social buttons -->
+
+              <!-- Social buttons -->
               <div class="social-buttons">
                 <!-- Facebook -->
                 <div class="socialspace">
@@ -103,32 +101,50 @@
                 </div>
                 <!-- Twitter -->
                 <div class="socialspace">
-                  <a href="https://www.gettothefest.com/festivals/<%= @festival.id %>"  class="twitter-share-button" data-text="Get To The Fest - A simple tool to find festivals" data-url="https://www.gettothefest.com/festivals/<%= @festival.id %>" data-show-count="false">Tweet</a>
+                  <a href="<%= festival_url(@festival) %>"  class="twitter-share-button" data-text="Get To The Fest - A simple tool to find festivals" data-url="<%= festival_url(@festival) %>" data-show-count="false">Tweet</a>
                 </div>
+                <!-- email -->
+                <!-- <div class="socialspace">
+                  <a href= "mailto:?subject=Discover Get to the fest&amp;body=Check out this site http://www.gettothefest.com. It's a simple tool to find festivals fitting with your musical tastes.">
+                  <i class="fas fa-envelope" id= "enveleope-color"></i>
+                  </a>
+                </div> -->
+              </div>
+
+
             </div>
             <div class="line-up line-up-close">
               <div class="line-up-content line-up-content-close" style="font-family: 'Roboto', sans-serif;">
                 <% @festival.artists.each do |artist| %>
                   <div class="content-line-up">
-                    <div class="line-up-content-desc-img"><img src=<%="#{Artist.find_by(name: artist.name).picture}"%> style="height: 100px; width: 100px; border-radius: 50%; border: 2px white solid; margin-left: 3px; margin-bottom: 10px;" alt=""></div>
-                    <span style="margin-left: 8px; font-weight: bold; font-family: 'Lobster', cursive;"><%= artist.name.capitalize %></span>
+                    <div class="line-up-content-desc-image"><%= image_tag artist.cloudinary_picture.url(:artist_avatar), class: "line-up-content-desc-img" if artist.cloudinary_picture.url(:artist_avatar) %>
+                    </div>
+                    <div style="margin-left: 8px; font-weight: bold; font-family: 'Roboto', cursive;"><%= artist.name.upcase %></div>
                   </div>
                 <% end %>
+                  </br>
+                <!-- <p class= fa-angle-down-desc>Scroll down</p>
+                <i class="fas fa-angle-down"></i> -->
               </div>
               <div class="btn-line-up-book">
-                  <div class="btn-get-line-up-book">Book tickets</div>
+                <a target="_blank", href=" <%= @festival.tickets_link %> ", class="btn-get-line-up-book">Book tickets</a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-md-3 col-md-offset-3">
-          <img src="<%=image_path('renard.png')%>" style="margin-top:90px; height: 300px; width: 500px;" alt="">
-        </div>
+        <!-- End of the festival card -->
+
+        <!-- Renard logo -->
+
+      <div class="col-md-3 col-md-offset-3">
+        <img src="<%=image_path('renard.png')%>" style="margin-top:90px; height: 300px; width: 500px;" alt="">
+      </div>
 
     </div>
   </div>
 </div>
+
 
 <!-- Footer -->
 <div class="footer-results">

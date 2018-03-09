@@ -154,9 +154,6 @@
       <% animal_counter = 0 %>
       <div class="col-md-8 col-md-offset-2 discovery-content">
 
-
-<!--         <p class="discovery-text">If you use the Discovery mode, you can see the festivals matching with your related artists! -> It can help you to discover new artists you could like!</p>
-
         <% if params[:sort] %>
           <%= link_to "Back to original algorithm", match_path(start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]), class: "discovery-btn" %>
         <% else %>
