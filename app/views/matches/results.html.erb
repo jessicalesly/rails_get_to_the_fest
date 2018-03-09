@@ -57,7 +57,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Discover festival with line-ups mainly composed of artists you might like according to Spotify.
+            Discover festivals with line-ups mainly composed of artists you might like according to Spotify.
           </div>
           <div class="modal-footer">
             <div class="flex-modal-footer">
@@ -178,7 +178,7 @@
                   </div>
                 </div>
                 <div class="title-affinity" style="font-family: 'Roboto', sans-serif;">
-                  <h2 style="font-size: 40px; font-family: 'Lobster', cursive;"><%= festival.affinity %>pts</h2><span style="font-family: 'Lobster', cursive;">affinity</span>
+                  <h2 style="font-size: 40px; font-family: 'Lobster', cursive;"><%= festival.affinity %> pts</h2><span style="font-family: 'Lobster', cursive;">affinity</span>
                 </div>
                 <div class="card-date" style="font-family: 'Roboto', sans-serif;">
                   <h3 class="month" style="font-family: 'Roboto', sans-serif;"><%= Time.parse(festival.start_date).strftime('%B').upcase %></h3>
@@ -227,7 +227,7 @@
                 </div>
                 <!-- Twitter -->
                 <div class="socialspace">
-                  <a href="<%= festival_url(festival) %>"  class="twitter-share-button" data-text="Get To The Fest - A simple tool to find festivals" data-url="<%= festival_url(festival) %>" data-show-count="false">Tweet</a>
+                  <a href="<%= festival_url(festival)%>"  class="twitter-share-button" data-text="Get To The Fest - A simple tool to find festivals" data-url="<%= festival_url(festival) %>" data-show-count="false">Tweet</a>
                 </div>
                 <!-- email -->
                 <!-- <div class="socialspace">
