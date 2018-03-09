@@ -152,14 +152,6 @@
       <% end %>
       <% counter = 0 %>
       <% animal_counter = 0 %>
-      <div class="col-md-8 col-md-offset-2 discovery-content">
-
-        <% if params[:sort] %>
-          <%= link_to "Back to original algorithm", match_path(start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]), class: "discovery-btn" %>
-        <% else %>
-          <%= link_to "Discovery", match_path(sort: "discovery", start_date: params[:start_date], end_date: params[:end_date], localisation: params[:localisation], artist: params[:artist]), class: "discovery-btn" %>
-        <% end %> -->
-      </div>
       <% @festivals.each do |festival|  %>
         <% counter += 1 %>
         <div class="col-md-8 col-md-offset-2">
@@ -203,7 +195,7 @@
                 </div>
               </div>
               <div class="title-affinity-back" style="font-family: 'Roboto', sans-serif;">
-                <h2 style="font-size: 32px; font-family: 'Lobster', cursive;"><%= festival.affinity %>pts<div style="font-family: 'Lobster', cursive;">affinity</div>
+                <h2 style="font-size: 32px; font-family: 'Lobster', cursive;"><%= festival.affinity %> pts<div style="font-family: 'Lobster', cursive;">affinity</div>
               </div>
               <span class="card-date-back" style="font-family: 'Roboto', sans-serif; width: 290px;">
                 <span class="day-back" style="font-family: 'Lobster', cursive;"> <%= Time.parse(festival.start_date).day %> </span>
