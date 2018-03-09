@@ -1,15 +1,12 @@
-.about {
+.team {
+  position: absolute;
   color: white;
-  padding-right: 100px;
   font-family: $body-font;
-}
-
-.about-algorithm {
-  font-family: $body-font;
-}
-
-.about-algorithm-example {
-
+  display: flex;
+  justify-content: space-around;
+  top: 27.5vh;
+  height: 45vh;
+  align-items: center;
 }
 
 .navigation {
@@ -43,15 +40,11 @@ ul {
   justify-text: center;
 }
 
-.team {
-  display: flex;
-  justify-content: space-around;
-}
-
 .team_pic {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  margin-top: 15px;
   margin-bottom: 15px;
   border: #f4f4f4 solid 2px;
 }
@@ -60,6 +53,6 @@ ul {
   text-align: center;
   justify-content: center;
   color: #f4f4f4;
-  width: 300px;
-  justify-text: center;
+  width: 20vw;
+  height: 45vh;
 }
