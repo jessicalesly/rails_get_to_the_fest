@@ -1,8 +1,7 @@
 .main-title h1 {
-  margin-top: 30px;
   font-family: 'Lobster', cursive;
   color: #F9CE00;
-  font-size: 92px;
+  font-size: 500%;
   font-weight: 400;
 }
 
@@ -14,8 +13,8 @@
 
 .flex-align-colle h2 {
   font-family: $body-font, sans-serif;
-  font-size: 20px;
-  margin-bottom: 10px
+  font-size: 100%;
+  margin-bottom: 0px
 }
 
 .text-bold {
@@ -35,8 +34,6 @@
 
 
 .title-container-linear {
-  padding-top: 20px;
-  padding-left: 100px;
   background: linear-gradient(135deg,
   rgba(0,0,0,0.8) 0%,
   rgba(0, 0, 0, 0.3) 50%) fixed no-repeat bottom right;
@@ -45,10 +42,6 @@
 }
 
 .title-container {
-  position: relative;
-  padding-top: 20px;
-  padding-left: 10vw;
-  padding-right: 10vw;
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5)), url(image_path('fest.jpeg')) fixed no-repeat bottom right;
   background-size: cover;
   height: 100vh;
@@ -63,11 +56,9 @@
 }
 
 .left {
-  padding-top:30px;
-  padding-bottom: 10px;
-  width:380px;
+  padding-top:3vh;
   color:white;
-  font-size:23px;
+  font-size: 80%;
 }
 
 #follow-us-link {

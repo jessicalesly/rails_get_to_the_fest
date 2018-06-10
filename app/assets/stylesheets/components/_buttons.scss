@@ -1,3 +1,39 @@
+.btn-get-home{
+  color: black;
+  font-weight: bolder;
+  background-color: #F9CE00;
+  border-radius: 10px 0px 10px 0;
+  height: 5vh;
+  width: 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  i {
+    padding-right: 2vw;
+  }
+  p {
+    margin: 0px;
+    font-size: 45%;
+  }
+}
+
+.btn-get-home:hover {
+  color: black;
+  text-decoration: none;
+  .btn-get-home-text {
+    opacity: 0.70;
+  }
+}
+
+.btn-get-home:active {
+  color: black;
+  text-decoration: none;
+  .btn-get-home-text {
+    opacity: 0.70;
+  }
+}
+
 .btn-get {
   color: black;
   font-size: 20px;

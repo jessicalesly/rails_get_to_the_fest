@@ -1,13 +1,22 @@
-.team {
-  position: absolute;
-  color: white;
-  font-family: $body-font;
+.team_desc {
+  text-align: center;
+  justify-content: center;
+  color: #f4f4f4;
+}
+
+.team_pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: #f4f4f4 solid 2px;
+}
+
+.about-small {
   display: flex;
-  justify-content: space-around;
-  top: 27.5vh;
-  height: 45vh;
-  align-items: center;
-  text-shadow: 2px 2px 2px black;
+  justify-content: space-evenly;
+  font-size: 14px;
 }
 
 .about-small {
@@ -32,10 +41,16 @@ ul {
   margin: 0;
 }
 
-.about-small {
+.team {
+  position: absolute;
+  color: white;
+  font-family: $body-font;
   display: flex;
-  justify-content: space-evenly;
-  font-size: 14px;
+  justify-content: space-around;
+  top: 27.5vh;
+  height: 45vh;
+  align-items: center;
+  text-shadow: 2px 2px 2px black;
 }
 
 .about-example {
@@ -43,22 +58,4 @@ ul {
   color: #f4f4f4;
   width: 400px;
   justify-text: center;
-}
-
-.team_pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border: #f4f4f4 solid 2px;
-}
-
-.team_desc {
-  text-align: center;
-  justify-content: center;
-  color: #f4f4f4;
-  width: 20vw;
-  height: 45vh;
-  margin: 10px;
 }

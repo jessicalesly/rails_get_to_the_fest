@@ -19,26 +19,46 @@
 
   <div class="title-container-img">
     <div class="title-container-linear">
-      <div class="flex-align-colle">
-        <h2>A SIMPLE TOOL TO FIND FESTIVALS <strong>/ FITTING WITH YOUR MUSICAL TASTES</strong></h2>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-8 col-sm-offset-1 col-sm-7">
+          <div class="flex-align-colle">
+            <h2>A SIMPLE TOOL TO FIND FESTIVALS <strong>/ FITTING WITH YOUR MUSICAL TASTES</strong></h2>
+          </div>
+        </div>
       </div>
-      <div class="main-title">
-      <h1>Get To The</h1>
-      <h1>Fest</h1>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-6">
+          <div class="main-title">
+            <h1>Get To The<br> Fest</h1>
+          </div>
+        </div>
       </div>
-      <div class="left">
-        <p>Discover festivals you could like by matching artists you follow on Spotify - It's really simple, all you have to do is to click below</p>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-8 col-sm-offset-1 col-sm-4">
+          <div class="left">
+            <p>Discover festivals you could like by matching artists you follow on Spotify - It's really simple, all you have to do is to click below</p>
+          </div>
+        </div>
       </div>
       <br>
       <br>
-        <%= link_to omniauth_authorize_path(:user, :spotify), class: "btn-get", id: "connect-spotify" do %>
-        <span class="btn-get-text"><i class="fab fa-spotify"></i>Connect</span>
-        <% end %>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-6">
+          <%= link_to omniauth_authorize_path(:user, :spotify), class: "btn-get-home", id: "connect-spotify" do %>
+            <p><i class="fab fa-spotify"></i>Connect</p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="title-container" id="team-anchor">
-    <h2 style="color: white;">The team</h2>
-    <div class="team">
+  <div class="container title-container" id="team-anchor">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 style="color: white;">The team</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="team_desc">
           <%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/christopher_cardoso.png", :class => "team_pic" %>
           <p>Christopher</p>
@@ -46,22 +66,29 @@
             Christopher is still looking for a rival worth his might. You can try and challenge him if you will, but you'd probably lose.
           </p>
         </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="team_desc"><%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/loic_chesneau.png", :class => "team_pic" %>
           <p>Loïc</p>
           <p class="about-small">Loïc juggles between Ruby on Rails web development and the love for one's neighbour. Love him and he shall love you back. Peace be upon thee.
           </p>
         </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="team_desc"><%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/jessica_lesly.png", :class => "team_pic" %>
           <p>Jessica</p>
           <p class="about-small">Jessica is a born lead dev. She subscribes to Le Figaro Madame since since 1997 and lives by one rule: Reach for the stars.
           </p>
         </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="team_desc">
           <%= image_tag "http://res.cloudinary.com/punkachiendu75/image/upload/v1520424039/clement_simons.png", :class => "team_pic" %>
           <p>Clément</p>
           <p class="about-small">Clément is a fullstack web developer. He is known for his generosity as well as his loves for nutrients of all sorts. He's a stamp-collecting maniac.
           </p>
         </div>
+      </div>
     </div>
   </div>
 </div>
@@ -71,7 +98,7 @@
   <%= link_to "Follow us", "https://open.spotify.com/user/8foox3aatein8vp9fqjbvk9t1", "id" => "follow-us-link" %><i class="fa fa-headphones" aria-hidden="true"></i>
 </div>
 <div class="footer-copyright text-center">
-Powered by Le Wagon - Paris - Batch #120 meilleur batch ! </br> Festival data provided by SongKick
+Powered by Le Wagon - Paris - Batch #120 </br> Festival data provided by SongKick
 </div>
 <div class="footer-links">
   <a href="https://github.com/jessicalesly/rails_get_to_the_fest"><i class="fab fa-github"></i></a>
